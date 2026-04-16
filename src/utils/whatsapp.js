@@ -4,7 +4,7 @@ const DEFAULT_MSG = encodeURIComponent("Olá! Gostaria de falar com a P2A Tech."
  * Apenas dígitos (DDI + DDD + número). Sobrescreva com VITE_WHATSAPP_NUMBER no .env
  * ou altere o fallback abaixo.
  */
-const WHATSAPP_FALLBACK = "5511999999999";
+const WHATSAPP_FALLBACK = "5551993560244";
 
 export function whatsappHref() {
   const raw = import.meta.env.VITE_WHATSAPP_NUMBER ?? WHATSAPP_FALLBACK;
