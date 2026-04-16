@@ -7,7 +7,12 @@ import Sections from "./components/Sections";
 import Partners from "./components/Partners";
 import ROISection from "./components/ROISection";
 import Solutions from "./components/Solutions";
-import WhyP2A from "./components/WhyP2A";
+import Methodology from "./components/Methodology";
+import DiagnosticIA from "./components/DiagnosticIA";
+import Consulting from "./components/Consulting";
+import About from "./components/About";
+import PrivacySecurity from "./components/PrivacySecurity";
+import Contact from "./components/Contact";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
@@ -68,15 +73,22 @@ export default function App() {
       <div className="fixed inset-0 grid-pattern pointer-events-none z-0" />
 
       {/* APP */}
-      <Navbar />
+      <div id="top">
+        <Navbar />
+      </div>
 
       <main className="relative z-10 pt-32">
         <Hero />
         <Partners />
         <Sections />
+        <Methodology />
+        <DiagnosticIA />
         <ROISection />
-        <WhyP2A />
+        <Consulting />
+        <About />
+        <PrivacySecurity />
         <Solutions />
+        <Contact />
         <CTA />
       </main>
 

@@ -39,7 +39,7 @@ const products = [
 
 export default function Solutions() {
   return (
-    <section className="mx-auto max-w-7xl px-8 py-32">
+    <section id="solucoes" className="mx-auto max-w-7xl px-8 py-32">
       <div className="mb-16 flex flex-col items-end justify-between gap-6 md:flex-row">
         <div className="max-w-2xl">
           <h2 className="mb-4 font-headline text-4xl font-bold">

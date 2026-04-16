@@ -1,10 +1,32 @@
 export default function CTA() {
   const onSubmit = (e) => {
     e.preventDefault();
+
+    const form = e.currentTarget;
+    const name = form.name?.value || "";
+    const email = form.email?.value || "";
+    const size = form.size?.value || "";
+
+    const subject = encodeURIComponent("Solicitação de Diagnóstico IA - Site P2A Tech");
+    const bodyLines = [
+      "Nova solicitação de diagnóstico IA a partir do site P2A Tech.",
+      "",
+      `Nome: ${name}`,
+      `E-mail corporativo: ${email}`,
+      `Tamanho da empresa: ${size}`,
+      "",
+      "Por favor, retorne este contato em até 24h úteis.",
+    ];
+
+    const body = encodeURIComponent(bodyLines.join("\n"));
+    window.location.href = `mailto:contato@p2atech.com.br?subject=${subject}&body=${body}`;
   };
 
   return (
-    <section className="mx-auto mb-32 max-w-7xl px-8">
+    <section
+      id="diagnostico-form"
+      className="mx-auto mb-32 max-w-7xl px-8"
+    >
       <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-surface-container-highest to-slate-950 p-12 shadow-2xl md:p-24">
         <div className="absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-primary/10 blur-[120px]" />
         <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-secondary/10 blur-[120px]" />

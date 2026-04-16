@@ -21,7 +21,10 @@ const stats = [
 
 export default function ROISection() {
   return (
-    <section className="mx-auto max-w-7xl px-8 py-20">
+    <section
+      id="roi"
+      className="mx-auto max-w-7xl px-8 pt-10 pb-24 -mt-8 md:-mt-12"
+    >
       <div className="overflow-hidden rounded-2xl border border-primary/20 bg-gradient-to-r from-surface-container-high to-surface-container-low">
         <div className="grid divide-y divide-outline-variant/10 lg:grid-cols-3 lg:divide-x lg:divide-y-0">
           {stats.map((s) => (

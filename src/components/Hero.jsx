@@ -44,6 +44,12 @@ export default function Hero() {
             <button
               type="button"
               className="cta-glow rounded-sm bg-primary px-10 py-5 font-label text-sm font-black uppercase tracking-widest text-on-primary transition-all hover:brightness-125"
+              onClick={() => {
+                const el = document.querySelector("#diagnostico-form");
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }}
             >
               Solicite diagnóstico gratuito
             </button>

@@ -12,6 +12,12 @@ export default function Footer() {
             Líderes em consultoria e desenvolvimento de software AI FIRST na
             América Latina.
           </p>
+          <p className="mb-1 text-xs text-slate-500">
+            Av. Diário de Notícias, 200, Bairro Cristal, Cristal Tower - Sala
+            904.
+          </p>
+          <p className="mb-1 text-xs text-slate-500">CEP: 90810-080</p>
+          <p className="mb-6 text-xs text-slate-500">CNPJ: 66.284.028/0001-06</p>
           <p className="font-label text-[9px] uppercase tracking-widest text-slate-600">
             © 2026 P2A TECH // NEURAL NEXUS ACTIVATED
           </p>
@@ -22,13 +28,16 @@ export default function Footer() {
               PLATAFORMA
             </h5>
             <div className="flex flex-col gap-2">
-              <a className={link} href="#">
+              <a className={link} href="#solucoes">
                 Soluções
               </a>
-              <a className={link} href="#">
-                Nexus API
+              <a className={link} href="#metodologia">
+                Metodologia
               </a>
-              <a className={link} href="#">
+              <a className={link} href="#diagnostico-ia">
+                Diagnóstico IA
+              </a>
+              <a className={link} href="#consultoria">
                 Consultoria
               </a>
             </div>
@@ -38,14 +47,11 @@ export default function Footer() {
               EMPRESA
             </h5>
             <div className="flex flex-col gap-2">
-              <a className={link} href="#">
+              <a className={link} href="#sobre-nos">
                 Sobre Nós
               </a>
-              <a className={link} href="#">
-                Blog
-              </a>
-              <a className={link} href="#">
-                Carreiras
+              <a className={link} href="#contato">
+                Contato
               </a>
             </div>
           </div>
@@ -54,13 +60,10 @@ export default function Footer() {
               SISTEMA
             </h5>
             <div className="flex flex-col gap-2">
-              <a className={link} href="#">
-                Status
-              </a>
-              <a className={link} href="#">
+              <a className={link} href="#seguranca">
                 Segurança
               </a>
-              <a className={link} href="#">
+              <a className={link} href="#privacidade">
                 Privacidade
               </a>
             </div>
