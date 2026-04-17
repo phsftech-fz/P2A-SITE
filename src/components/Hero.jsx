@@ -43,7 +43,7 @@ export default function Hero() {
           <div className="flex flex-col gap-6 sm:flex-row">
             <button
               type="button"
-              className="cta-glow rounded-sm bg-primary px-10 py-5 font-label text-sm font-black uppercase tracking-widest text-on-primary transition-all hover:brightness-125"
+              className="cta-glow cta-pulse rounded-sm bg-primary px-10 py-5 font-label text-sm font-black uppercase tracking-widest text-on-primary transition-all hover:brightness-125"
               onClick={() => {
                 const el = document.querySelector("#diagnostico-form");
                 if (el) {

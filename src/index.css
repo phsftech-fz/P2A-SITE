@@ -23,29 +23,19 @@ body::before {
   pointer-events: none;
 }
 
-/* movimento mais suave */
 @keyframes moveBg {
-  0% { transform: translateY(0px) scale(1); }
+  0%   { transform: translateY(0px) scale(1); }
   100% { transform: translateY(-40px) scale(1.05); }
 }
 
 /* ================= FLOAT (IA VIVA) ================= */
-.float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* variação pra não ficar tudo igual */
-.float-slow {
-  animation: float 8s ease-in-out infinite;
-}
-
-.float-fast {
-  animation: float 4s ease-in-out infinite;
-}
+.float      { animation: float 6s ease-in-out infinite; }
+.float-slow { animation: float 8s ease-in-out infinite; }
+.float-fast { animation: float 4s ease-in-out infinite; }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-12px); }
   100% { transform: translateY(0px); }
 }
 
@@ -66,7 +56,6 @@ body::before {
   transition: all 0.3s ease;
 }
 
-/* glow leve no hover */
 .glass-panel:hover {
   box-shadow: 0 0 40px rgba(0, 227, 253, 0.15);
 }
@@ -80,13 +69,14 @@ body::before {
   );
 }
 
+/* ================= CTA GLOW ================= */
 .cta-glow {
   box-shadow:
     0 0 25px rgba(129, 236, 255, 0.4),
     0 0 50px rgba(129, 236, 255, 0.2);
 }
 
-/* ================= EXTRA: HOVER PREMIUM ================= */
+/* ================= HOVER PREMIUM ================= */
 .card-hover {
   transition: all 0.3s ease;
 }
@@ -96,101 +86,51 @@ body::before {
   box-shadow: 0 0 40px rgba(0, 227, 253, 0.25);
 }
 
-@keyframes rotateSlow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+/* ================= ANIMATIONS ================= */
+@keyframes rotateSlow    { 0% { transform: rotate(0deg);   } 100% { transform: rotate(360deg);  } }
+@keyframes rotateReverse { 0% { transform: rotate(360deg); } 100% { transform: rotate(0deg);    } }
 
 @keyframes pulseGlow {
-  0% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
-  100% { opacity: 0.6; transform: scale(1); }
-}
-
-.ai-rotate {
-  animation: rotateSlow 40s linear infinite;
-}
-
-.ai-pulse {
-  animation: pulseGlow 4s ease-in-out infinite;
-}
-
-/* ================= ESFERA IA (NÍVEL OPENAI) ================= */
-
-@keyframes rotateSlow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes rotateReverse {
-  0% { transform: rotate(360deg); }
-  100% { transform: rotate(0deg); }
-}
-
-@keyframes pulseGlow {
-  0% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.1); }
-  100% { opacity: 0.4; transform: scale(1); }
+  0%, 100% { opacity: 0.4; transform: scale(1);   }
+  50%       { opacity: 0.8; transform: scale(1.1); }
 }
 
 @keyframes floatSoft {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-10px); }
 }
 
-.ai-sphere {
-  animation: floatSoft 6s ease-in-out infinite;
-}
-
-.ai-rotate {
-  animation: rotateSlow 60s linear infinite;
-}
-
-.ai-rotate-reverse {
-  animation: rotateReverse 80s linear infinite;
-}
-
-.ai-glow {
-  animation: pulseGlow 5s ease-in-out infinite;
-}
-
-/* efeito de profundidade no hover */
-.ai-container:hover .ai-rotate {
-  transform: scale(1.05);
-}
-
-/* ================= AISphere: anel 3D de gráficos ================= */
 @keyframes ai-ring-spin {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(-360deg);
-  }
-}
-
-.ai-ring-3d {
-  transform-style: preserve-3d;
-  animation: ai-ring-spin 26s linear infinite;
-}
-
-.ai-scene-tilt {
-  transform-style: preserve-3d;
+  from { transform: rotateY(0deg);    }
+  to   { transform: rotateY(-360deg); }
 }
 
 @keyframes ai-brain-pulse {
-  0%,
-  100% {
-    opacity: 0.65;
-    transform: scale(1);
+  0%, 100% { opacity: 0.65; transform: scale(1);    }
+  50%       { opacity: 1;    transform: scale(1.08); }
+}
+
+/* ================= AI SPHERE ================= */
+.ai-sphere          { animation: floatSoft     6s  ease-in-out infinite; }
+.ai-rotate          { animation: rotateSlow    60s linear     infinite; }
+.ai-rotate-reverse  { animation: rotateReverse 80s linear     infinite; }
+.ai-glow            { animation: pulseGlow     5s  ease-in-out infinite; }
+.ai-pulse           { animation: pulseGlow     4s  ease-in-out infinite; }
+.ai-brain-pulse     { animation: ai-brain-pulse 3.5s ease-in-out infinite; }
+
+.ai-ring-3d    { transform-style: preserve-3d; animation: ai-ring-spin 26s linear infinite; }
+.ai-scene-tilt { transform-style: preserve-3d; }
+
+/* ================= PULSE BUTTON (CTA) ================= */
+@keyframes pulseCTA {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(129, 236, 255, 0.4), 0 0 50px rgba(129, 236, 255, 0.2);
   }
   50% {
-    opacity: 1;
-    transform: scale(1.08);
+    box-shadow: 0 0 40px rgba(129, 236, 255, 0.7), 0 0 80px rgba(129, 236, 255, 0.35);
   }
 }
 
-.ai-brain-pulse {
-  animation: ai-brain-pulse 3.5s ease-in-out infinite;
+.cta-pulse {
+  animation: pulseCTA 2.5s ease-in-out infinite;
 }

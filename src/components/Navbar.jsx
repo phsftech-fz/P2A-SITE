@@ -19,20 +19,23 @@ export default function Navbar() {
         </span>
       </a>
       <nav className="hidden items-center gap-8 md:flex">
-        <a className={navLinkActive} href="#solucoes">
+        <a className={navLink} href="#roi">
+          RESULTADOS
+        </a>
+        <a className={navLink} href="#solucoes">
           SOLUÇÕES
         </a>
         <a className={navLink} href="#metodologia">
           METODOLOGIA
         </a>
-        <a className={navLink} href="#diagnostico-form">
-          DIAGNÓSTICO IA
+        <a className={navLink} href="#depoimentos">
+          DEPOIMENTOS
         </a>
-        <a className={navLink} href="#diagnostico-ia">
-          ROI
-        </a>
-        <a className={navLink} href="#contato">
-          CONTATO
+        <a
+          className="cta-glow cta-pulse rounded-full bg-primary px-5 py-2 font-label text-[10px] font-black uppercase tracking-widest text-on-primary transition-all hover:brightness-125"
+          href="#diagnostico-form"
+        >
+          Diagnóstico Gratuito
         </a>
       </nav>
     </header>

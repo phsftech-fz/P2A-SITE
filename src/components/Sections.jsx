@@ -44,12 +44,15 @@ export default function Sections() {
   return (
     <section className="mx-auto max-w-7xl px-8 py-24">
       <div className="mb-20 text-center">
-        <h2 className="mb-6 font-headline text-4xl font-bold md:text-5xl">
-          Por que somos diferentes?
+        <span className="font-label text-[10px] font-black uppercase tracking-[0.2em] text-error/70">
+          RECONHECE ALGUM DESSES CENARIOS?
+        </span>
+        <h2 className="mt-4 mb-6 font-headline text-4xl font-bold md:text-5xl">
+          Sabemos exatamente o que trava o seu crescimento
         </h2>
         <p className="mx-auto max-w-2xl text-lg text-on-surface-variant">
-          Mude sua perspectiva de tecnologia como custo para tecnologia como
-          gerador de receita.
+          Antes de propor qualquer solução, mapeamos as dores reais do seu negócio
+          — e entregamos a resposta certa para cada uma delas.
         </p>
       </div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

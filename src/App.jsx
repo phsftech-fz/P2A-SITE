@@ -10,9 +10,9 @@ import Solutions from "./components/Solutions";
 import Methodology from "./components/Methodology";
 import DiagnosticIA from "./components/DiagnosticIA";
 import Consulting from "./components/Consulting";
+import Testimonials from "./components/Testimonials";
 import About from "./components/About";
 import PrivacySecurity from "./components/PrivacySecurity";
-import Contact from "./components/Contact";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
@@ -78,17 +78,27 @@ export default function App() {
       </div>
 
       <main className="relative z-10 pt-32">
+        {/* 1. Headline — impacto direto */}
         <Hero />
-        <Partners />
-        <Sections />
-        <Methodology />
-        <DiagnosticIA />
+        {/* 2. Resultado + público */}
         <ROISection />
+        {/* 3. Prova / autoridade */}
+        <Partners />
+        {/* 4. Cases e números */}
+        <DiagnosticIA />
+        {/* 5 & 6. Problema — mostrar que entende o cliente */}
+        <Sections />
+        {/* 7. Solução — oferta */}
+        <Solutions />
         <Consulting />
+        {/* 8. Benefícios claros — metodologia */}
+        <Methodology />
+        {/* Autoridade + confiança */}
         <About />
         <PrivacySecurity />
-        <Solutions />
-        <Contact />
+        {/* 9. Depoimentos */}
+        <Testimonials />
+        {/* 10. CTA final */}
         <CTA />
       </main>
 
