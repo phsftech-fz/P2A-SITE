@@ -122,7 +122,7 @@ export default function CTA() {
               >
                 Agendar Diagnóstico Gratuito →
               </button>
-              <p className="mt-4 text-center font-label text-[10px] text-outline-variant">
+              <p className="mt-4 text-center font-label text-[10px] text-on-surface-variant">
                 Sem compromisso. Resposta em até 24h úteis.
               </p>
             </form>
