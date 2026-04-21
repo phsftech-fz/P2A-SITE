@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P2A Tech — IA Aplicada ao Seu Negócio</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cyan: #00E0FF;
+    --purple: #6A5CFF;
+    --magenta: #FF4DFF;
+    --bg: #0B0E16;
+    --bg2: #0F1320;
+    --bg3: #131828;
+    --gray: #A0A7B3;
+    --light: #F5F7FA;
+    --g1: linear-gradient(135deg, #00E0FF, #6A5CFF);
+    --g2: linear-gradient(135deg, #6A5CFF, #FF4DFF);
+    --g3: linear-gradient(135deg, #00E0FF, #FF4DFF);
+    --g-text: linear-gradient(90deg, #00E0FF, #6A5CFF, #FF4DFF);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--light);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  h1, h2, h3, h4 { font-family: 'Orbitron', sans-serif; line-height: 1.2; }
+  .grad-text {
+    background: var(--g-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+  section { position: relative; }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--g1);
+    color: #fff; font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 15px; padding: 16px 32px; border-radius: 8px;
+    border: none; cursor: pointer; text-decoration: none;
+    transition: opacity .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 0 30px rgba(0,224,255,0.25);
+    white-space: nowrap;
+  }
+  .btn-primary:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,224,255,0.4); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent;
+    color: var(--cyan); font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 15px; padding: 15px 31px; border-radius: 8px;
+    border: 1.5px solid var(--cyan); cursor: pointer; text-decoration: none;
+    transition: background .2s, box-shadow .2s, transform .2s;
+  }
+  .btn-secondary:hover { background: rgba(0,224,255,0.08); transform: translateY(-2px); box-shadow: 0 0 20px rgba(0,224,255,0.15); }
+
+  .btn-big {
+    font-size: 18px; padding: 20px 44px; border-radius: 10px;
+    box-shadow: 0 0 50px rgba(106,92,255,0.4);
+  }
+
+  /* ── MICROCOPY ── */
+  .microcopy {
+    font-size: 13px; color: var(--gray); margin-top: 10px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .microcopy::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; }
+
+  /* ── NOISE / GLOW BACKGROUNDS ── */
+  .glow-orb {
+    position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0;
+  }
+
+  /* ─────────────────────────────── NAV ─────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(11,14,22,0.85); backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background .3s;
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1160px; margin: 0 auto; padding: 16px 24px;
+  }
+  .logo { display: flex; align-items: center; gap: 2px; text-decoration: none; }
+  .logo-p2a { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 22px; }
+  .logo-p2a span.p2 { color: var(--cyan); }
+  .logo-p2a span.a { color: var(--magenta); }
+  .logo-tech { font-family: 'Orbitron', sans-serif; font-weight: 400; font-size: 12px; color: var(--gray); letter-spacing: 0.15em; margin-left: 4px; }
+  nav a.nav-link { color: var(--gray); font-size: 14px; font-weight: 500; text-decoration: none; transition: color .2s; }
+  nav a.nav-link:hover { color: var(--cyan); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+
+  /* ─────────────────────────────── HERO ─────────────────────────────── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 0 80px;
+    overflow: hidden;
+  }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,224,255,0.08); border: 1px solid rgba(0,224,255,0.2);
+    border-radius: 100px; padding: 6px 16px; font-size: 12px;
+    font-weight: 600; color: var(--cyan); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+
+  .hero-h1 { font-size: clamp(32px, 4vw, 52px); font-weight: 700; line-height: 1.15; margin-bottom: 24px; }
+  .hero-sub { font-size: 18px; color: var(--gray); line-height: 1.7; margin-bottom: 36px; max-width: 520px; }
+
+  .hero-ctas { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+
+  /* Headline switcher */
+  .headline-variants { margin-bottom: 16px; display: flex; gap: 8px; }
+  .hv-btn {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    color: var(--gray); font-size: 11px; padding: 4px 12px; border-radius: 100px;
+    cursor: pointer; transition: all .2s; font-family: 'Inter', sans-serif;
+  }
+  .hv-btn.active { background: rgba(0,224,255,0.12); border-color: var(--cyan); color: var(--cyan); }
+
+  /* Hero visual */
+  .hero-visual {
+    position: relative; display: flex; align-items: center; justify-content: center;
+    height: 480px;
+  }
+  .hero-card-main {
+    background: linear-gradient(135deg, rgba(106,92,255,0.15), rgba(0,224,255,0.08));
+    border: 1px solid rgba(106,92,255,0.3);
+    border-radius: 20px; padding: 32px; width: 340px;
+    box-shadow: 0 0 60px rgba(106,92,255,0.2);
+    position: relative; z-index: 2;
+  }
+  .hero-card-main .card-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: var(--g1); display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 16px;
+  }
+  .hero-card-main h3 { font-size: 16px; margin-bottom: 8px; color: var(--light); }
+  .hero-card-main p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+  .floating-badge {
+    position: absolute; background: var(--bg3); border: 1px solid rgba(0,224,255,0.2);
+    border-radius: 12px; padding: 12px 16px; font-size: 13px; font-weight: 600;
+    display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    animation: float 4s ease-in-out infinite;
+    z-index: 3;
+  }
+  .badge-1 { top: 40px; right: -20px; animation-delay: 0s; }
+  .badge-2 { bottom: 80px; left: -30px; animation-delay: 1.5s; }
+  .badge-3 { bottom: 20px; right: 20px; animation-delay: 0.8s; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .badge-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .badge-dot.green { background: #00FF88; box-shadow: 0 0 8px #00FF88; }
+  .badge-dot.cyan { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
+  .badge-dot.purple { background: var(--purple); box-shadow: 0 0 8px var(--purple); }
+
+  /* ─────────────────────────── PAIN POINTS ─────────────────────────── */
+  #dor { padding: 100px 0; background: var(--bg2); }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--cyan); margin-bottom: 12px;
+  }
+  .section-title { font-size: clamp(28px, 3vw, 40px); margin-bottom: 16px; }
+  .section-sub { font-size: 17px; color: var(--gray); line-height: 1.7; max-width: 560px; }
+  .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
+  .pain-item {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px; padding: 24px; display: flex; gap: 16px; align-items: flex-start;
+    transition: border-color .2s, background .2s;
+  }
+  .pain-item:hover { border-color: rgba(255,77,255,0.3); background: rgba(255,77,255,0.04); }
+  .pain-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .pain-item h4 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .pain-item p { font-size: 14px; color: var(--gray); }
+
+  .pain-closer {
+    margin-top: 48px; background: linear-gradient(135deg, rgba(255,77,255,0.08), rgba(106,92,255,0.08));
+    border: 1px solid rgba(255,77,255,0.2); border-radius: 16px; padding: 32px; text-align: center;
+  }
+  .pain-closer p { font-size: 18px; line-height: 1.7; }
+  .pain-closer strong { color: var(--magenta); }
+
+  /* ─────────────────────────── SOLUTION ─────────────────────────── */
+  #solucao { padding: 100px 0; }
+  .solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 60px; }
+  .process-steps { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: flex; gap: 20px; align-items: flex-start;
+    padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer; transition: all .2s;
+  }
+  .step:last-child { border-bottom: none; }
+  .step:hover .step-num { background: var(--g1); color: #fff; }
+  .step-num {
+    width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(0,224,255,0.1); border: 1px solid rgba(0,224,255,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 14px; color: var(--cyan);
+    transition: all .2s;
+  }
+  .step h4 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 16px; margin-bottom: 4px; }
+  .step p { font-size: 14px; color: var(--gray); }
+
+  .solution-visual {
+    background: linear-gradient(135deg, rgba(0,224,255,0.06), rgba(106,92,255,0.1));
+    border: 1px solid rgba(106,92,255,0.25); border-radius: 24px; padding: 40px;
+  }
+  .sol-vis-title { font-size: 13px; font-weight: 600; color: var(--gray); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 28px; }
+  .flow-item {
+    display: flex; align-items: center; gap: 16px; padding: 16px;
+    background: rgba(255,255,255,0.04); border-radius: 10px; margin-bottom: 8px;
+    transition: background .2s;
+  }
+  .flow-item:hover { background: rgba(0,224,255,0.07); }
+  .flow-dot {
+    width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center;
+    justify-content: center; font-size: 16px; flex-shrink: 0;
+  }
+  .flow-item span { font-size: 14px; font-weight: 500; }
+  .flow-arrow { text-align: center; color: rgba(0,224,255,0.4); font-size: 18px; margin: 4px 0; }
+
+  /* ─────────────────────────── BENEFITS ─────────────────────────── */
+  #beneficios { padding: 100px 0; background: var(--bg2); }
+  .benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 56px; }
+  .benefit-card {
+    background: var(--bg3); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px; padding: 28px; text-align: center;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+    cursor: default;
+  }
+  .benefit-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0,224,255,0.3);
+    box-shadow: 0 16px 40px rgba(0,224,255,0.08);
+  }
+  .benefit-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+  .benefit-card h4 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; margin-bottom: 8px; line-height: 1.3; }
+  .benefit-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+  /* ─────────────────────────── OFFER ─────────────────────────── */
+  #oferta { padding: 100px 0; }
+  .offer-wrapper {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 56px;
+  }
+  .offer-box {
+    background: linear-gradient(135deg, rgba(106,92,255,0.1), rgba(0,224,255,0.05));
+    border: 1px solid rgba(106,92,255,0.3); border-radius: 20px; padding: 36px;
+  }
+  .offer-box h3 { font-size: 20px; margin-bottom: 24px; }
+  .offer-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .offer-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; }
+  .offer-list li::before {
+    content: '✓'; color: var(--cyan); font-weight: 700; flex-shrink: 0;
+    width: 22px; height: 22px; background: rgba(0,224,255,0.12);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px;
+    margin-top: 1px;
+  }
+
+  .bonus-box {
+    background: linear-gradient(135deg, rgba(255,77,255,0.08), rgba(106,92,255,0.08));
+    border: 1px solid rgba(255,77,255,0.2); border-radius: 20px; padding: 36px;
+  }
+  .bonus-box h3 { font-size: 20px; margin-bottom: 8px; }
+  .bonus-label {
+    display: inline-block; background: var(--g2); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
+    color: #fff; margin-bottom: 20px;
+  }
+  .bonus-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .bonus-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--gray); }
+  .bonus-list li::before { content: '🎁'; font-size: 14px; }
+
+  /* ─────────────────────────── OBJECTIONS ─────────────────────────── */
+  #objecoes { padding: 100px 0; background: var(--bg2); }
+  .obj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 56px; }
+  .obj-card {
+    background: var(--bg3); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px; padding: 24px; cursor: pointer;
+    transition: border-color .25s, background .25s;
+  }
+  .obj-card.open { border-color: rgba(0,224,255,0.3); background: rgba(0,224,255,0.04); }
+  .obj-q {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .obj-q span { font-weight: 600; font-size: 15px; }
+  .obj-toggle {
+    width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    font-size: 16px; transition: transform .25s, background .25s;
+    color: var(--cyan);
+  }
+  .obj-card.open .obj-toggle { transform: rotate(45deg); background: rgba(0,224,255,0.15); }
+  .obj-a {
+    max-height: 0; overflow: hidden; transition: max-height .3s ease, margin-top .3s;
+    font-size: 14px; color: var(--gray); line-height: 1.7;
+  }
+  .obj-card.open .obj-a { max-height: 200px; margin-top: 16px; }
+
+  /* ─────────────────────────── GUARANTEE ─────────────────────────── */
+  #garantia { padding: 80px 0; }
+  .guarantee-box {
+    background: linear-gradient(135deg, rgba(0,224,255,0.06), rgba(106,92,255,0.08));
+    border: 1px solid rgba(0,224,255,0.2); border-radius: 24px; padding: 56px;
+    display: flex; align-items: center; gap: 48px;
+  }
+  .guarantee-icon { font-size: 72px; flex-shrink: 0; }
+  .guarantee-text h2 { font-size: 28px; margin-bottom: 16px; }
+  .guarantee-text p { font-size: 16px; color: var(--gray); line-height: 1.8; }
+
+  /* ─────────────────────────── SCARCITY ─────────────────────────── */
+  #escassez { padding: 80px 0; background: var(--bg2); }
+  .scarcity-inner { text-align: center; max-width: 640px; margin: 0 auto; }
+  .scarcity-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,77,255,0.1); border: 1px solid rgba(255,77,255,0.3);
+    border-radius: 100px; padding: 8px 20px; font-size: 13px; font-weight: 600; color: var(--magenta);
+    margin-bottom: 24px; animation: pulse-border 2s infinite;
+  }
+  @keyframes pulse-border { 0%,100%{box-shadow:0 0 0 0 rgba(255,77,255,0.3)} 50%{box-shadow:0 0 0 8px rgba(255,77,255,0)} }
+  .slots { display: flex; gap: 8px; justify-content: center; margin: 28px 0; }
+  .slot {
+    width: 32px; height: 12px; border-radius: 100px;
+  }
+  .slot.taken { background: var(--gray); opacity: 0.3; }
+  .slot.available { background: var(--g2); }
+
+  /* ─────────────────────────── FAQ ─────────────────────────── */
+  #faq { padding: 100px 0; }
+  .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 2px; max-width: 800px; margin-left: auto; margin-right: auto; }
+  .faq-item {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px; overflow: hidden; transition: border-color .2s;
+  }
+  .faq-item.open { border-color: rgba(0,224,255,0.2); }
+  .faq-q {
+    padding: 20px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    font-weight: 600; font-size: 15px; user-select: none;
+    transition: color .2s;
+  }
+  .faq-item.open .faq-q { color: var(--cyan); }
+  .faq-icon { font-size: 18px; color: var(--cyan); transition: transform .25s; flex-shrink: 0; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: max-height .3s ease;
+    font-size: 15px; color: var(--gray); line-height: 1.7;
+  }
+  .faq-a-inner { padding: 0 24px 20px; }
+  .faq-item.open .faq-a { max-height: 300px; }
+
+  /* ─────────────────────────── FINAL CTA ─────────────────────────── */
+  #cta-final { padding: 120px 0; text-align: center; overflow: hidden; position: relative; }
+  .cta-final-inner { position: relative; z-index: 1; }
+  .cta-final-inner h2 { font-size: clamp(32px, 4vw, 54px); margin-bottom: 24px; line-height: 1.15; }
+  .cta-final-inner p { font-size: 18px; color: var(--gray); margin-bottom: 48px; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+  .ps-block {
+    margin-top: 72px; padding: 40px; background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07); border-radius: 16px;
+    max-width: 680px; margin-left: auto; margin-right: auto;
+    font-size: 16px; color: var(--gray); line-height: 1.9;
+  }
+  .ps-block strong { color: var(--light); }
+
+  /* ─────────────────────────── FOOTER ─────────────────────────── */
+  footer {
+    padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.07);
+    text-align: center;
+  }
+  footer p { font-size: 13px; color: var(--gray); }
+  .footer-tagline { font-size: 12px; color: rgba(160,167,179,0.6); margin-top: 4px; }
+
+  /* ─────────────────────────── TWEAKS PANEL ─────────────────────────── */
+  #tweaks-panel {
+    display: none; position: fixed; bottom: 24px; right: 24px; z-index: 200;
+    background: #1a1f2e; border: 1px solid rgba(0,224,255,0.2);
+    border-radius: 16px; padding: 20px; width: 260px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+    font-size: 13px;
+  }
+  #tweaks-panel h4 {
+    font-family: 'Orbitron', sans-serif; font-size: 12px; color: var(--cyan);
+    letter-spacing: 0.15em; margin-bottom: 16px;
+  }
+  .tweak-row { margin-bottom: 14px; }
+  .tweak-row label { display: block; color: var(--gray); margin-bottom: 6px; font-size: 12px; font-weight: 500; }
+  .tweak-row select, .tweak-row input[type=range] {
+    width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; color: var(--light); font-family: 'Inter', sans-serif;
+    font-size: 13px; padding: 8px 10px; outline: none; cursor: pointer;
+  }
+  .tweak-row input[type=range] { padding: 4px 0; accent-color: var(--cyan); }
+
+  /* ─────────────────────────── RESPONSIVE ─────────────────────────── */
+  @media (max-width: 900px) {
+    .hero-grid, .solution-grid, .offer-wrapper, .obj-grid { grid-template-columns: 1fr; }
+    .benefits-grid { grid-template-columns: 1fr 1fr; }
+    .hero-visual { height: 300px; }
+    .guarantee-box { flex-direction: column; gap: 24px; padding: 36px; text-align: center; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 560px) {
+    .benefits-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── STATS / CHARTS ── */
+  #stats { padding: 100px 0; }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
+  .stat-card {
+    background: var(--bg3); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px; padding: 32px; overflow: hidden; position: relative;
+    transition: border-color .3s, box-shadow .3s;
+  }
+  .stat-card:hover { border-color: rgba(0,224,255,0.25); box-shadow: 0 0 40px rgba(0,224,255,0.06); }
+  .stat-card-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--cyan); margin-bottom: 20px;
+  }
+  .bar-chart { display: flex; flex-direction: column; gap: 14px; }
+  .bar-row { display: flex; flex-direction: column; gap: 6px; }
+  .bar-meta { display: flex; justify-content: space-between; align-items: center; }
+  .bar-meta span:first-child { font-size: 13px; color: var(--gray); }
+  .bar-meta span:last-child { font-size: 13px; font-weight: 700; color: var(--light); }
+  .bar-track { height: 8px; background: rgba(255,255,255,0.06); border-radius: 100px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 100px; width: 0; transition: width 1.4s cubic-bezier(0.4,0,0.2,1); }
+  .bar-fill.c1 { background: linear-gradient(90deg,#00E0FF,#6A5CFF); }
+  .bar-fill.c2 { background: linear-gradient(90deg,#6A5CFF,#FF4DFF); }
+  .bar-fill.c3 { background: linear-gradient(90deg,#FF4DFF,#00E0FF); }
+  .bar-fill.c4 { background: linear-gradient(90deg,#00E0FF,#FF4DFF); }
+  .counters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .counter-item { text-align: center; padding: 20px 12px; background: rgba(255,255,255,0.03); border-radius: 14px; }
+  .counter-number {
+    font-family: 'Orbitron', sans-serif; font-size: 38px; font-weight: 700;
+    background: var(--g-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; line-height: 1.1; margin-bottom: 6px;
+  }
+  .counter-desc { font-size: 12px; color: var(--gray); line-height: 1.5; }
+  .compare-chart { display: flex; flex-direction: column; gap: 18px; }
+  .compare-row { display: flex; flex-direction: column; gap: 6px; }
+  .compare-label { font-size: 13px; color: var(--light); font-weight: 500; margin-bottom: 4px; }
+  .compare-bar-row { display: flex; align-items: center; gap: 10px; }
+  .compare-tag { font-size: 11px; font-weight: 600; width: 52px; flex-shrink: 0; }
+  .compare-tag.before { color: var(--gray); }
+  .compare-tag.after { color: var(--cyan); }
+  .compare-track { flex: 1; height: 10px; background: rgba(255,255,255,0.05); border-radius: 100px; overflow: hidden; }
+  .compare-fill { height: 100%; border-radius: 100px; width: 0; transition: width 1.4s cubic-bezier(0.4,0,0.2,1); }
+  .compare-fill.before-fill { background: rgba(160,167,179,0.35); }
+  .compare-fill.after-fill { background: linear-gradient(90deg,#00E0FF,#6A5CFF); }
+  .compare-val { font-size: 12px; font-weight: 700; width: 36px; text-align: right; flex-shrink: 0; }
+  .compare-val.before { color: var(--gray); }
+  .compare-val.after { color: var(--cyan); }
+  .pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 4px; }
+  .pillar {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px; padding: 16px; text-align: center;
+    transition: background .2s, border-color .2s;
+  }
+  .pillar:hover { background: rgba(0,224,255,0.06); border-color: rgba(0,224,255,0.2); }
+  .pillar-icon { font-size: 20px; margin-bottom: 8px; display: block; }
+  .pillar-val {
+    font-family: 'Orbitron', sans-serif; font-size: 22px; font-weight: 700;
+    background: var(--g1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin-bottom: 4px;
+  }
+  .pillar-desc { font-size: 11px; color: var(--gray); line-height: 1.4; }
+
+  /* ── WHATSAPP CONTACT ── */
+  #contato { padding: 100px 0; background: var(--bg2); }
+  .contato-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .contato-text h2 { font-size: clamp(28px,3vw,40px); margin-bottom: 16px; }
+  .contato-text p { font-size: 16px; color: var(--gray); line-height: 1.8; margin-bottom: 32px; }
+  .wpp-btn {
+    display: inline-flex; align-items: center; gap: 14px;
+    background: linear-gradient(135deg,#25D366,#128C7E);
+    color: #fff; font-family: 'Inter',sans-serif; font-weight: 700;
+    font-size: 16px; padding: 18px 36px; border-radius: 10px;
+    text-decoration: none; transition: opacity .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 0 40px rgba(37,211,102,0.3);
+  }
+  .wpp-btn:hover { opacity: .92; transform: translateY(-3px); box-shadow: 0 0 60px rgba(37,211,102,0.45); }
+  .contato-card {
+    background: linear-gradient(135deg,rgba(37,211,102,0.08),rgba(18,140,126,0.06));
+    border: 1px solid rgba(37,211,102,0.2); border-radius: 24px; padding: 40px;
+  }
+  .contato-card h3 { font-size: 20px; margin-bottom: 12px; }
+  .contato-card p { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 20px; }
+  .contato-benefits { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .contato-benefits li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--gray); }
+  .contato-benefits li::before { content: '✓'; color: #25D366; font-weight: 700; }
+
+  /* ── WHATSAPP FLOAT ── */
+  #wpp-float {
+    position: fixed; bottom: 28px; left: 28px; z-index: 199;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: linear-gradient(135deg,#25D366,#128C7E);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 24px rgba(0,224,255,0.4);
+    cursor: pointer; text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    animation: wpp-pulse 3s ease-in-out infinite;
+  }
+  #wpp-float:hover { transform: scale(1.1); box-shadow: 0 8px 40px rgba(0,224,255,0.6); animation: none; }
+  @keyframes wpp-pulse {
+    0%,100% { box-shadow: 0 4px 24px rgba(0,224,255,0.5), 0 0 0 0 rgba(0,224,255,0.3); }
+    50% { box-shadow: 0 4px 24px rgba(0,224,255,0.5), 0 0 0 14px rgba(0,224,255,0); }
+  }
+  #wpp-float svg { width: 32px; height: 32px; fill: white; }
+  .wpp-tooltip {
+    position: absolute; right: 72px; bottom: 50%; transform: translateY(50%);
+    background: #1a1f2e; border: 1px solid rgba(37,211,102,0.3);
+    border-radius: 10px; padding: 8px 14px; font-size: 13px; font-weight: 600;
+    white-space: nowrap; color: var(--light); pointer-events: none;
+    opacity: 0; transition: opacity .2s; box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  }
+  #wpp-float:hover .wpp-tooltip { opacity: 1; }
+
+  @media (max-width: 900px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .contato-inner { grid-template-columns: 1fr; }
+  }
+
+  /* ─────────────────────────── SCROLL ANIMATIONS ─────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: .1s; }
+  .reveal-delay-2 { transition-delay: .2s; }
+  .reveal-delay-3 { transition-delay: .3s; }
+  .reveal-delay-4 { transition-delay: .4s; }
+
+  /* ── CONTACT MODAL ── */
+  #contact-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(11,14,22,0.82);
+    backdrop-filter: blur(10px);
+    z-index: 1200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  #contact-modal.open { display: flex; }
+  .modal-card {
+    width: min(760px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: linear-gradient(135deg, rgba(106,92,255,0.16), rgba(0,224,255,0.07));
+    border: 1px solid rgba(106,92,255,0.35);
+    border-radius: 24px;
+    padding: 28px;
+    position: relative;
+    box-shadow: 0 30px 100px rgba(0,0,0,0.55);
+  }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.06);
+    color: var(--light);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<!-- INTRO SPLASH -->
+<div id="intro-overlay" style="position:fixed;inset:0;z-index:9999;background:#0B0E16;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;">
+  <canvas id="intro-canvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
+  <div id="intro-ui" style="position:relative;z-index:2;text-align:center;pointer-events:none;">
+    <div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(40px,7vw,90px);line-height:1;margin-bottom:8px;">
+      <span style="color:#00E0FF;">P2</span><span style="color:#FF4DFF;">A</span><span style="font-weight:400;font-size:0.45em;color:#A0A7B3;letter-spacing:0.2em;vertical-align:middle;margin-left:8px;">TECH</span>
+    </div>
+    <div id="intro-tagline" style="font-family:'Inter',sans-serif;font-size:clamp(13px,1.5vw,18px);color:#A0A7B3;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:60px;opacity:0;transition:opacity 1s ease 1.2s;">
+      Inteligência aplicada. Resultados reais.
+    </div>
+    <div id="intro-cta" style="font-family:'Inter',sans-serif;font-size:14px;color:rgba(160,167,179,0.7);letter-spacing:0.15em;text-transform:uppercase;opacity:0;transition:opacity 1s ease 2s;animation:intro-blink 2s ease-in-out infinite 2.5s;">
+      Clique ou pressione Enter para entrar
+    </div>
+  </div>
+  <div id="intro-progress" style="position:absolute;bottom:0;left:0;height:2px;background:linear-gradient(90deg,#00E0FF,#6A5CFF,#FF4DFF);width:0%;transition:width 0.1s linear;"></div>
+</div>
+
+<style>
+@keyframes intro-blink { 0%,100%{opacity:0.4} 50%{opacity:1} }
+#intro-overlay.dismissing { opacity:0; transition: opacity 0.8s ease; pointer-events:none; }
+</style>
+
+<script>
+(function() {
+  // ── CONFIG ──
+  const BG        = '#0B0E16';
+  const CYAN      = [0, 224, 255];
+  const PURPLE    = [106, 92, 255];
+  const MAGENTA   = [255, 77, 255];
+
+  function lerpColor(a, b, t) {
+    return [
+      Math.round(a[0]*(1-t)+b[0]*t),
+      Math.round(a[1]*(1-t)+b[1]*t),
+      Math.round(a[2]*(1-t)+b[2]*t)
+    ];
+  }
+  function rgbStr(c, alpha=1) { return `rgba(${c[0]},${c[1]},${c[2]},${alpha})`; }
+
+  const canvas = document.getElementById('intro-canvas');
+  const ctx    = canvas.getContext('2d');
+  const dpr    = window.devicePixelRatio || 1;
+  const N_STARS = 4000;
+  const TRAIL   = 70;
+  const CAMERA_Z = -400;
+  const TRAVEL   = 3400;
+  const VIEW_ZOOM = 100;
+  const START_DOT_Y = 28;
+  const CHANGE_T = 0.32;
+
+  let W, H, SIZE;
+  function resize() {
+    W = window.innerWidth; H = window.innerHeight;
+    SIZE = Math.max(W, H);
+    canvas.width  = SIZE * dpr;
+    canvas.height = SIZE * dpr;
+    canvas.style.width  = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.scale(dpr, dpr);
+  }
+  resize();
+  window.addEventListener('resize', () => { ctx.setTransform(1,0,0,1,0,0); resize(); });
+
+  // ── MATH HELPERS ──
+  const ease = (p, g) => p < 0.5 ? 0.5*Math.pow(2*p,g) : 1-0.5*Math.pow(2*(1-p),g);
+  const easeOutElastic = x => {
+    if (x<=0) return 0; if (x>=1) return 1;
+    const c4 = (2*Math.PI)/4.5;
+    return Math.pow(2,-8*x)*Math.sin((x*8-0.75)*c4)+1;
+  };
+  const mapR  = (v,s1,e1,s2,e2) => s2+(e2-s2)*((v-s1)/(e1-s1));
+  const clamp = (v,a,b) => Math.min(Math.max(v,a),b);
+  const lerp  = (a,b,t) => a*(1-t)+b*t;
+
+  function spiralPath(p) {
+    p = clamp(1.2*p, 0, 1);
+    p = ease(p, 1.8);
+    const turns = 6;
+    const theta = 2*Math.PI*turns*Math.sqrt(p);
+    const r = 170*Math.sqrt(p);
+    return { x: r*Math.cos(theta), y: r*Math.sin(theta)+START_DOT_Y };
+  }
+
+  function rotate(v1, v2, p, orientation) {
+    const mx = (v1.x+v2.x)/2, my = (v1.y+v2.y)/2;
+    const dx = v1.x-mx, dy = v1.y-my;
+    const angle = Math.atan2(dy, dx);
+    const o = orientation ? -1 : 1;
+    const r = Math.sqrt(dx*dx+dy*dy);
+    const bounce = Math.sin(p*Math.PI)*0.05*(1-p);
+    return {
+      x: mx + r*(1+bounce)*Math.cos(angle+o*Math.PI*easeOutElastic(p)),
+      y: my + r*(1+bounce)*Math.sin(angle+o*Math.PI*easeOutElastic(p))
+    };
+  }
+
+  // ── STAR CLASS ──
+  function makeStar() {
+    const angle = Math.random()*Math.PI*2;
+    const distance = 30*Math.random()+15;
+    const rotDir = Math.random()>0.5?1:-1;
+    const expRate = 0.6+Math.random()*0.4;
+    const finalScale = 0.4+Math.random()*0.35;
+    const dx = distance*Math.cos(angle);
+    const dy = distance*Math.sin(angle);
+    const spiralLoc = (1-Math.pow(1-Math.random(),3.0))/1.3;
+    let z = lerp(0.5*CAMERA_Z, TRAVEL+CAMERA_Z, Math.random());
+    z = lerp(z, TRAVEL/2, 0.3*spiralLoc);
+    const swf = Math.pow(Math.random(),2.0);
+    // color band
+    const colorT = Math.random();
+    return { angle, distance, rotDir, expRate, finalScale, dx, dy, spiralLoc, z, swf, colorT };
+  }
+
+  // Seeded init for consistent layout
+  let _seed = 1234;
+  const seededRand = () => { _seed=(_seed*9301+49297)%233280; return _seed/233280; };
+  const _origRand = Math.random;
+  Math.random = seededRand;
+  const stars = Array.from({length:N_STARS}, makeStar);
+  Math.random = _origRand;
+
+  function getStarColor(star, alpha) {
+    let c;
+    if (star.colorT < 0.4)      c = lerpColor(CYAN, PURPLE, star.colorT/0.4);
+    else if (star.colorT < 0.7) c = lerpColor(PURPLE, MAGENTA, (star.colorT-0.4)/0.3);
+    else                         c = lerpColor(MAGENTA, CYAN, (star.colorT-0.7)/0.3);
+    return rgbStr(c, alpha);
+  }
+
+  function showProjectedDot(time, px, py, pz, sizeFactor, starColor) {
+    const t2 = clamp(mapR(time, CHANGE_T, 1, 0, 1), 0, 1);
+    const newCameraZ = CAMERA_Z + ease(Math.pow(t2,1.2),1.8)*TRAVEL;
+    if (pz > newCameraZ) {
+      const depth = pz - newCameraZ;
+      const sx = VIEW_ZOOM*px/depth;
+      const sy = VIEW_ZOOM*py/depth;
+      const sw = Math.min(400*sizeFactor/depth, 5);
+      ctx.fillStyle = starColor;
+      ctx.beginPath();
+      ctx.arc(sx, sy, Math.max(sw/2, 0.3), 0, Math.PI*2);
+      ctx.fill();
+    }
+  }
+
+  function renderStar(star, p, time) {
+    const spiralPos = spiralPath(star.spiralLoc);
+    const q = p - star.spiralLoc;
+    if (q <= 0) return;
+
+    const dp = clamp(4*q, 0, 1);
+    let easing;
+    if (dp < 0.3)      easing = lerp(dp, dp*dp, dp/0.3);
+    else if (dp < 0.7) easing = lerp(dp*dp, easeOutElastic(dp), (dp-0.3)/0.4);
+    else               easing = easeOutElastic(dp);
+
+    let sx, sy;
+    if (dp < 0.3) {
+      sx = lerp(spiralPos.x, spiralPos.x+star.dx*0.3, easing/0.3);
+      sy = lerp(spiralPos.y, spiralPos.y+star.dy*0.3, easing/0.3);
+    } else if (dp < 0.7) {
+      const mp = (dp-0.3)/0.4;
+      const cs = Math.sin(mp*Math.PI)*star.rotDir*1.5;
+      const bx = spiralPos.x+star.dx*0.3, by = spiralPos.y+star.dy*0.3;
+      const tx = spiralPos.x+star.dx*0.7, ty = spiralPos.y+star.dy*0.7;
+      const px2 = -star.dy*0.4*cs, py2 = star.dx*0.4*cs;
+      sx = lerp(bx,tx,mp)+px2*mp; sy = lerp(by,ty,mp)+py2*mp;
+    } else {
+      const fp = (dp-0.7)/0.3;
+      const bx = spiralPos.x+star.dx*0.7, by = spiralPos.y+star.dy*0.7;
+      const td = star.distance*star.expRate*0.7;
+      const sa = star.angle+1.2*star.rotDir*fp*Math.PI;
+      const tx = spiralPos.x+td*Math.cos(sa), ty = spiralPos.y+td*Math.sin(sa);
+      sx = lerp(bx,tx,fp); sy = lerp(by,ty,fp);
+    }
+
+    const t2 = clamp(mapR(time, CHANGE_T, 1, 0, 1), 0, 1);
+    const newCamZ = CAMERA_Z + ease(Math.pow(t2,1.2),1.8)*TRAVEL;
+    const vx = (star.z - newCamZ)*sx/VIEW_ZOOM;
+    const vy = (star.z - newCamZ)*sy/VIEW_ZOOM;
+
+    let sm;
+    if (dp < 0.6) sm = 1+dp*0.1;
+    else { const t=(dp-0.6)/0.4; sm=lerp(1.1,star.finalScale,t); }
+
+    const alpha = clamp(dp*3, 0, 1);
+    const fadeAlpha = dp > 0.85 ? clamp(1-(dp-0.85)/0.15, 0, 1)*alpha : alpha;
+    showProjectedDot(time, vx, vy, star.z, 5.0*star.swf*sm, getStarColor(star, fadeAlpha));
+  }
+
+  // ── ANIMATION LOOP ──
+  let time = 0;
+  let lastTS = null;
+  let animId = null;
+  const DURATION = 12; // seconds per cycle
+  let dismissed = false;
+  let startTime = null;
+
+  function renderFrame(ts) {
+    if (!startTime) startTime = ts;
+    const elapsed = (ts - startTime) / 1000;
+    time = (elapsed % DURATION) / DURATION;
+
+    // Update progress bar
+    const pct = Math.min(elapsed / 5, 1) * 100;
+    document.getElementById('intro-progress').style.width = pct + '%';
+
+    // Clear
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.fillStyle = BG;
+    ctx.fillRect(0, 0, SIZE, SIZE);
+
+    ctx.save();
+    ctx.translate(SIZE/2, SIZE/2);
+
+    const t1 = clamp(mapR(time, 0, CHANGE_T+0.25, 0, 1), 0, 1);
+    const t2 = clamp(mapR(time, CHANGE_T, 1, 0, 1), 0, 1);
+
+    ctx.rotate(-Math.PI*ease(t2, 2.7));
+
+    // Trail
+    for (let i = 0; i < TRAIL; i++) {
+      const f = mapR(i, 0, TRAIL, 1.1, 0.1);
+      const sw2 = (0.8*(1-t1)+1.8*Math.sin(Math.PI*t1))*f;
+      const pt = t1 - 0.00015*i;
+      const pos = spiralPath(pt);
+      const off = { x: pos.x+5, y: pos.y+5 };
+      const rot = rotate(pos, off, Math.sin(time*Math.PI*2)*0.5+0.5, i%2===0);
+      // Color the trail
+      const tc = i/TRAIL;
+      let trailC;
+      if (tc < 0.5) trailC = lerpColor(CYAN, PURPLE, tc/0.5);
+      else           trailC = lerpColor(PURPLE, MAGENTA, (tc-0.5)/0.5);
+      ctx.fillStyle = rgbStr(trailC, 0.9*f);
+      ctx.beginPath();
+      ctx.arc(rot.x, rot.y, Math.max(sw2/2, 0.5), 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    // Stars
+    for (const star of stars) renderStar(star, t1, time);
+
+    // Start dot
+    if (time > CHANGE_T) {
+      const t2b = clamp(mapR(time, CHANGE_T, 1, 0, 1), 0, 1);
+      const ncz = CAMERA_Z + ease(Math.pow(t2b,1.2),1.8)*TRAVEL;
+      const dy = ncz * START_DOT_Y / VIEW_ZOOM;
+      const depth = TRAVEL - ncz;
+      if (depth > 0) {
+        const sx = 0, sy = VIEW_ZOOM*dy/depth;
+        const sw = 400*2.5/depth;
+        ctx.fillStyle = rgbStr(CYAN, 0.9);
+        ctx.beginPath();
+        ctx.arc(sx, sy, Math.min(Math.max(sw/2,1), 8), 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    // Fade canvas near end of cycle
+    if (time > 0.88) {
+      const fadePct = (time - 0.88) / 0.12;
+      ctx.fillStyle = `rgba(11,14,22,${fadePct * 0.85})`;
+      ctx.fillRect(-SIZE/2, -SIZE/2, SIZE, SIZE);
+    }
+
+    ctx.restore();
+
+    // Fade in UI elements
+    if (elapsed > 0.8) {
+      document.getElementById('intro-tagline').style.opacity = '1';
+    }
+    if (elapsed > 2) {
+      document.getElementById('intro-cta').style.opacity = '1';
+    }
+
+    if (!dismissed) animId = requestAnimationFrame(renderFrame);
+  }
+
+  animId = requestAnimationFrame(renderFrame);
+
+  // ── DISMISS ──
+  function dismiss() {
+    if (dismissed) return;
+    dismissed = true;
+    cancelAnimationFrame(animId);
+    const overlay = document.getElementById('intro-overlay');
+    overlay.classList.add('dismissing');
+    setTimeout(() => overlay.remove(), 850);
+  }
+
+  document.getElementById('intro-overlay').addEventListener('click', dismiss);
+  document.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') dismiss(); }, { once: true });
+  // Auto-dismiss after 14s
+  setTimeout(dismiss, 14000);
+})();
+</script>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-p2a"><span class="p2">P2</span><span class="a">A</span></span>
+      <span class="logo-tech">TECH</span>
+    </a>
+    <div class="nav-links">
+      <a href="#dor" class="nav-link">O Problema</a>
+      <a href="#solucao" class="nav-link">A Solução</a>
+      <a href="#oferta" class="nav-link">O que você recebe</a>
+      <a href="#depoimentos" class="nav-link">Depoimentos</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="#cta-final" class="btn-primary" style="padding:10px 22px;font-size:13px;">Começar agora</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="glow-orb" style="width:600px;height:600px;background:rgba(106,92,255,0.15);top:-100px;right:-100px;"></div>
+  <div class="glow-orb" style="width:400px;height:400px;background:rgba(0,224,255,0.08);bottom:0;left:-50px;"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag">IA Aplicada a Negócios</div>
+
+        <div class="headline-variants">
+          <button class="hv-btn active" onclick="switchHeadline(0)">V1</button>
+          <button class="hv-btn" onclick="switchHeadline(1)">V2</button>
+          <button class="hv-btn" onclick="switchHeadline(2)">V3</button>
+        </div>
+
+        <h1 class="hero-h1" id="hero-headline">
+          Transforme sua operação com IA e <span class="grad-text">pare de perder tempo, dinheiro e oportunidades</span> todos os dias
+        </h1>
+        <p class="hero-sub">A P2A implementa soluções completas de IA aplicadas ao seu negócio — automatizando processos, melhorando atendimento e aumentando vendas com eficiência real.</p>
+        <div class="hero-ctas">
+          <a href="#cta-final" class="btn-primary">
+            <span>👉</span> Quero aplicar IA na minha empresa
+          </a>
+          <p class="microcopy">Diagnóstico estratégico inicial para identificar onde você está perdendo eficiência</p>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card-main">
+          <div class="card-icon">🤖</div>
+          <h3>Operação Inteligente</h3>
+          <p>Sua empresa funcionando com eficiência, escala e previsibilidade — de verdade.</p>
+          <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray);">
+              <span style="color:var(--cyan);font-weight:700;">✓</span> Processos automatizados
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray);">
+              <span style="color:var(--cyan);font-weight:700;">✓</span> Agentes inteligentes ativos
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray);">
+              <span style="color:var(--cyan);font-weight:700;">✓</span> Resultados mensuráveis
+            </div>
+          </div>
+        </div>
+        <div class="floating-badge badge-1">
+          <span class="badge-dot green"></span>
+          <span style="font-size:12px;">Agente ativo</span>
+        </div>
+        <div class="floating-badge badge-2">
+          <span class="badge-dot cyan"></span>
+          <span style="font-size:12px;">+340% eficiência</span>
+        </div>
+        <div class="floating-badge badge-3">
+          <span class="badge-dot purple"></span>
+          <span style="font-size:12px;">0 tarefas manuais</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto;">
+      <p class="section-label">Dados & Impacto</p>
+      <h2 class="section-title">O que acontece quando uma empresa<br><span class="grad-text">adota o modelo IA First</span></h2>
+    </div>
+    <div class="stats-grid">
+
+      <!-- Bar chart: ganhos de eficiência -->
+      <div class="stat-card reveal reveal-delay-1" data-animate="bars">
+        <p class="stat-card-label">Ganhos de eficiência operacional</p>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <div class="bar-meta"><span>Redução de tarefas manuais</span><span>87%</span></div>
+            <div class="bar-track"><div class="bar-fill c1" data-width="87"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-meta"><span>Velocidade no atendimento</span><span>74%</span></div>
+            <div class="bar-track"><div class="bar-fill c2" data-width="74"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-meta"><span>Aproveitamento de leads</span><span>68%</span></div>
+            <div class="bar-track"><div class="bar-fill c3" data-width="68"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-meta"><span>Previsibilidade de receita</span><span>91%</span></div>
+            <div class="bar-track"><div class="bar-fill c4" data-width="91"></div></div>
+          </div>
+        </div>
+        <p style="font-size:11px;color:var(--gray);margin-top:20px;">Média entre empresas que adotaram operação IA First</p>
+      </div>
+
+      <!-- Counters -->
+      <div class="stat-card reveal reveal-delay-2">
+        <p class="stat-card-label">Modelo IA First em números</p>
+        <div class="counters-grid">
+          <div class="counter-item">
+            <div class="counter-number" data-target="3.4" data-suffix="x">0</div>
+            <div class="counter-desc">mais produtividade por colaborador</div>
+          </div>
+          <div class="counter-item">
+            <div class="counter-number" data-target="60" data-suffix="%">0</div>
+            <div class="counter-desc">redução no tempo de resposta ao cliente</div>
+          </div>
+          <div class="counter-item">
+            <div class="counter-number" data-target="40" data-suffix="%">0</div>
+            <div class="counter-desc">menos custo operacional após implementação</div>
+          </div>
+          <div class="counter-item">
+            <div class="counter-number" data-target="24" data-suffix="/7">0</div>
+            <div class="counter-desc">operação ativa sem depender de equipe presencial</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Before / After comparison -->
+      <div class="stat-card reveal reveal-delay-1" data-animate="bars">
+        <p class="stat-card-label">Antes × Depois — Operação Tradicional vs IA First</p>
+        <div class="compare-chart">
+          <div class="compare-row">
+            <div class="compare-label">Horas gastas em tarefas repetitivas</div>
+            <div class="compare-bar-row">
+              <span class="compare-tag before">Antes</span>
+              <div class="compare-track"><div class="compare-fill before-fill" data-width="85"></div></div>
+              <span class="compare-val before">85%</span>
+            </div>
+            <div class="compare-bar-row">
+              <span class="compare-tag after">Depois</span>
+              <div class="compare-track"><div class="compare-fill after-fill" data-width="12"></div></div>
+              <span class="compare-val after">12%</span>
+            </div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-label">Taxa de resposta a leads em menos de 5 min</div>
+            <div class="compare-bar-row">
+              <span class="compare-tag before">Antes</span>
+              <div class="compare-track"><div class="compare-fill before-fill" data-width="18"></div></div>
+              <span class="compare-val before">18%</span>
+            </div>
+            <div class="compare-bar-row">
+              <span class="compare-tag after">Depois</span>
+              <div class="compare-track"><div class="compare-fill after-fill" data-width="97"></div></div>
+              <span class="compare-val after">97%</span>
+            </div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-label">Processos com execução padronizada</div>
+            <div class="compare-bar-row">
+              <span class="compare-tag before">Antes</span>
+              <div class="compare-track"><div class="compare-fill before-fill" data-width="22"></div></div>
+              <span class="compare-val before">22%</span>
+            </div>
+            <div class="compare-bar-row">
+              <span class="compare-tag after">Depois</span>
+              <div class="compare-track"><div class="compare-fill after-fill" data-width="100"></div></div>
+              <span class="compare-val after">100%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI First pillars -->
+      <div class="stat-card reveal reveal-delay-2">
+        <p class="stat-card-label">Os 6 pilares do modelo IA First</p>
+        <div class="pillars">
+          <div class="pillar">
+            <span class="pillar-icon">🔍</span>
+            <div class="pillar-val">Dados</div>
+            <div class="pillar-desc">Decisões baseadas em informação real</div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">⚙️</span>
+            <div class="pillar-val">Automação</div>
+            <div class="pillar-desc">Processos rodando sem intervenção</div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🤖</span>
+            <div class="pillar-val">Agentes</div>
+            <div class="pillar-desc">IA trabalhando por você 24/7</div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🔗</span>
+            <div class="pillar-val">Integração</div>
+            <div class="pillar-desc">Sistemas conectados e fluindo</div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">📈</span>
+            <div class="pillar-val">Escala</div>
+            <div class="pillar-desc">Crescimento sem aumento de caos</div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🎯</span>
+            <div class="pillar-val">Resultado</div>
+            <div class="pillar-desc">Métricas claras em cada etapa</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DOR -->
+<section id="dor">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">O Problema</p>
+      <h2 class="section-title">Se você sente que sua empresa está travada…</h2>
+      <p class="section-sub">Hoje, a maioria das empresas sabe que precisa evoluir. Mas continua presa em processos manuais, atendimento lento e decisões baseadas em tentativa e erro.</p>
+    </div>
+
+    <div class="pain-grid">
+      <div class="pain-item reveal reveal-delay-1">
+        <span class="pain-icon">⏳</span>
+        <div>
+          <h4>Tempo desperdiçado</h4>
+          <p>Sua equipe perde tempo com tarefas repetitivas que poderiam ser automatizadas.</p>
+        </div>
+      </div>
+      <div class="pain-item reveal reveal-delay-2">
+        <span class="pain-icon">📞</span>
+        <div>
+          <h4>Atendimento manual</h4>
+          <p>O atendimento depende de esforço humano constante, sem escala.</p>
+        </div>
+      </div>
+      <div class="pain-item reveal reveal-delay-1">
+        <span class="pain-icon">🎯</span>
+        <div>
+          <h4>Leads desperdiçados</h4>
+          <p>Leads não são bem aproveitados e o funil não é acompanhado corretamente.</p>
+        </div>
+      </div>
+      <div class="pain-item reveal reveal-delay-2">
+        <span class="pain-icon">📉</span>
+        <div>
+          <h4>Falta de previsibilidade</h4>
+          <p>Processos não padronizados e falta de clareza nos resultados.</p>
+        </div>
+      </div>
+      <div class="pain-item reveal reveal-delay-1">
+        <span class="pain-icon">🔄</span>
+        <div>
+          <h4>Processos sem padrão</h4>
+          <p>Cada execução depende de quem está disponível, não de um sistema robusto.</p>
+        </div>
+      </div>
+      <div class="pain-item reveal reveal-delay-2">
+        <span class="pain-icon">💸</span>
+        <div>
+          <h4>Dinheiro na mesa</h4>
+          <p>Ineficiência operacional custa caro — só que você não vê a nota fiscal.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pain-closer reveal" style="margin-top:48px;">
+      <p>E no fim do mês… você sabe que poderia estar <strong>faturando mais — com menos esforço</strong>.<br>Mas a operação não acompanha.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUÇÃO -->
+<section id="solucao">
+  <div class="glow-orb" style="width:500px;height:500px;background:rgba(0,224,255,0.07);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto;">
+      <p class="section-label">A Solução</p>
+      <h2 class="section-title">Não é sobre instalar ferramentas.<br><span class="grad-text">É sobre transformar como sua empresa funciona.</span></h2>
+    </div>
+
+    <div class="solution-grid">
+      <div class="process-steps reveal">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <h4>Diagnóstico completo da operação</h4>
+            <p>Mapeamos onde você está perdendo eficiência, dinheiro e oportunidades.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <h4>Desenho estratégico das automações</h4>
+            <p>Projetamos a solução ideal para a realidade do seu negócio.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <h4>Criação de agentes inteligentes</h4>
+            <p>Desenvolvemos agentes de IA que trabalham por você, 24/7.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div>
+            <h4>Integração com seus sistemas</h4>
+            <p>Conectamos tudo ao que você já usa — sem trocar o que funciona.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div>
+            <h4>Implementação e acompanhamento</h4>
+            <p>Executamos, treinamos e evoluímos a operação com você.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-visual reveal reveal-delay-2">
+        <p class="sol-vis-title">Fluxo da Operação Inteligente</p>
+        <div class="flow-item">
+          <div class="flow-dot" style="background:rgba(0,224,255,0.15);">🔍</div>
+          <span>Diagnóstico & mapeamento</span>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-item">
+          <div class="flow-dot" style="background:rgba(106,92,255,0.15);">⚙️</div>
+          <span>Automações & agentes de IA</span>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-item">
+          <div class="flow-dot" style="background:rgba(255,77,255,0.15);">🔗</div>
+          <span>Integração com seus canais</span>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-item">
+          <div class="flow-dot" style="background:rgba(0,255,136,0.15);">📈</div>
+          <span>Escala com previsibilidade</span>
+        </div>
+        <div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);">
+          <p style="font-size:13px;color:var(--gray);font-style:italic;">"Tudo adaptado à realidade do seu negócio."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section id="beneficios">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto;">
+      <p class="section-label">Benefícios</p>
+      <h2 class="section-title">Com a P2A, sua empresa passa a</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal reveal-delay-1">
+        <span class="benefit-icon">⚡</span>
+        <h4>Operar com muito mais eficiência</h4>
+        <p>Sem precisar aumentar equipe ou custo operacional.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-2">
+        <span class="benefit-icon">💬</span>
+        <h4>Responder com velocidade</h4>
+        <p>Atendimento consistente e rápido, sem depender de esforço manual.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-3">
+        <span class="benefit-icon">🤖</span>
+        <h4>Eliminar tarefas manuais</h4>
+        <p>Drasticamente. Sua equipe foca no que gera resultado.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-4">
+        <span class="benefit-icon">🎯</span>
+        <h4>Aproveitar cada lead</h4>
+        <p>Nenhuma oportunidade cai no vazio — o sistema captura tudo.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-1">
+        <span class="benefit-icon">📊</span>
+        <h4>Ganhar previsibilidade</h4>
+        <p>Vendas e operação com clareza e consistência mês a mês.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-2">
+        <span class="benefit-icon">🧠</span>
+        <h4>Tomar decisões melhores</h4>
+        <p>Com dados reais, não intuição e tentativa e erro.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-3">
+        <span class="benefit-icon">🚀</span>
+        <h4>Escalar sem caos</h4>
+        <p>Crescer sem que a operação quebre — estrutura que sustenta o crescimento.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-4">
+        <span class="benefit-icon">🔒</span>
+        <h4>Controle total</h4>
+        <p>Automação bem feita aumenta controle. Você vê tudo acontecendo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section id="oferta">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto;">
+      <p class="section-label">O que você recebe</p>
+      <h2 class="section-title">Implementação completa.<br><span class="grad-text">Do diagnóstico à evolução.</span></h2>
+    </div>
+    <div class="offer-wrapper">
+      <div class="offer-box reveal">
+        <h3>Entregáveis principais</h3>
+        <ul class="offer-list">
+          <li>Diagnóstico completo da sua operação</li>
+          <li>Desenho estratégico da solução com IA</li>
+          <li>Implementação de agentes inteligentes</li>
+          <li>Automações completas dos processos</li>
+          <li>Integração com sistemas e canais</li>
+          <li>Treinamento do time</li>
+          <li>Suporte e acompanhamento contínuo</li>
+        </ul>
+      </div>
+      <div class="bonus-box reveal reveal-delay-2">
+        <h3>Bônus incluídos</h3>
+        <span class="bonus-label">🎁 Sem custo adicional</span>
+        <ul class="bonus-list">
+          <li>Templates prontos de automação</li>
+          <li>Playbooks operacionais</li>
+          <li>Biblioteca de prompts</li>
+          <li>Fluxos estruturados</li>
+          <li>Documentação completa da operação</li>
+        </ul>
+        <div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);">
+          <p style="font-size:13px;color:var(--gray);">💰 <strong style="color:var(--light);">Modelo de investimento</strong><br>Projeto inicial + mensalidade de evolução.<br><span style="color:var(--cyan);">Valor personalizado conforme sua operação.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OBJEÇÕES -->
+<section id="objecoes">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto;">
+      <p class="section-label">Suas dúvidas respondidas</p>
+      <h2 class="section-title">A resposta para cada "mas…"</h2>
+    </div>
+    <div class="obj-grid" id="obj-grid">
+      <div class="obj-card" onclick="toggleObj(this)">
+        <div class="obj-q">
+          <span>"Não tenho dinheiro"</span>
+          <div class="obj-toggle">+</div>
+        </div>
+        <div class="obj-a">Você já está pagando pela ineficiência hoje — só não está vendo claramente na nota fiscal. A P2A devolve esse custo em eficiência real.</div>
+      </div>
+      <div class="obj-card" onclick="toggleObj(this)">
+        <div class="obj-q">
+          <span>"Não tenho tempo"</span>
+          <div class="obj-toggle">+</div>
+        </div>
+        <div class="obj-a">A proposta é justamente devolver tempo para você e sua equipe. O processo é conduzido por nós, com mínima demanda do seu lado.</div>
+      </div>
+      <div class="obj-card" onclick="toggleObj(this)">
+        <div class="obj-q">
+          <span>"Parece muito complexo"</span>
+          <div class="obj-toggle">+</div>
+        </div>
+        <div class="obj-a">A complexidade é nossa responsabilidade, não sua. Você não precisa entender de IA — cuidamos de toda a parte técnica.</div>
+      </div>
+      <div class="obj-card" onclick="toggleObj(this)">
+        <div class="obj-q">
+          <span>"Já tenho um processo"</span>
+          <div class="obj-toggle">+</div>
+        </div>
+        <div class="obj-a">Perfeito. Nós melhoramos e potencializamos o que já existe. Não é necessário trocar seus sistemas.</div>
+      </div>
+      <div class="obj-card" onclick="toggleObj(this)">
+        <div class="obj-q">
+          <span>"Não sei se IA funciona"</span>
+          <div class="obj-toggle">+</div>
+        </div>
+        <div class="obj-a">IA sem aplicação prática não funciona mesmo — e é exatamente isso que resolvemos. Implementação real, não teoria.</div>
+      </div>
+      <div class="obj-card" onclick="toggleObj(this)">
+        <div class="obj-q">
+          <span>"Não confio em automação"</span>
+          <div class="obj-toggle">+</div>
+        </div>
+        <div class="obj-a">Automação bem feita aumenta controle, não reduz. Você acompanha cada etapa com total transparência.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section id="garantia">
+  <div class="container">
+    <div class="guarantee-box reveal">
+      <div class="guarantee-icon">🛡️</div>
+      <div class="guarantee-text">
+        <h2>Implementação com<br><span class="grad-text">foco em resultado</span></h2>
+        <p>Você acompanha cada etapa — com total transparência — e só avançamos conforme entregas validadas. Sem risco. Sem surpresas. Com responsabilidade real pela execução.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESCASSEZ -->
+<section id="escassez">
+  <div class="container">
+    <div class="scarcity-inner reveal">
+      <div class="scarcity-badge">
+        <span>⚠️</span> Vagas limitadas por ciclo
+      </div>
+      <h2 class="section-title" style="text-align:center;margin-bottom:16px;">Atendemos um número limitado<br>de empresas por ciclo</h2>
+      <p style="color:var(--gray);text-align:center;font-size:16px;line-height:1.7;">Por ser um trabalho consultivo e altamente personalizado, isso garante qualidade, acompanhamento próximo e resultado real para cada cliente.</p>
+      <div class="slots">
+        <div class="slot taken"></div>
+        <div class="slot taken"></div>
+        <div class="slot taken"></div>
+        <div class="slot taken"></div>
+        <div class="slot taken"></div>
+        <div class="slot available"></div>
+        <div class="slot available"></div>
+        <div class="slot available"></div>
+      </div>
+      <p style="font-size:13px;color:var(--gray);text-align:center;">5 de 8 vagas preenchidas neste ciclo</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 0;">
+      <p class="section-label">FAQ</p>
+      <h2 class="section-title">Perguntas frequentes</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>Isso funciona para qualquer empresa?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Funciona para empresas que têm operação ativa e querem escalar com eficiência. Se você tem processos, atendimento e vendas acontecendo — tem onde aplicar IA.</div></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>Preciso entender de IA para contratar?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Não. Nós cuidamos de toda a parte técnica. Você só precisa conhecer seu negócio — o resto é com a gente.</div></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>Quanto tempo leva para implementar?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Depende da complexidade, mas os primeiros ganhos já aparecem nas primeiras etapas da implementação. Não esperamos tudo pronto para entregar valor.</div></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>Preciso trocar meus sistemas?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Não necessariamente. Integramos com o que você já usa. A ideia é potencializar, não substituir do zero.</div></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>Isso substitui minha equipe?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Não. Potencializa sua equipe. As pessoas focam no que gera mais valor; a IA cuida do operacional repetitivo.</div></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>Como funciona o suporte pós-implementação?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Acompanhamento contínuo com evolução da operação. Não entregamos e sumimos — somos parceiros do crescimento.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos" style="padding:100px 0;background:var(--bg2);overflow:hidden;">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 72px;">
+      <p class="section-label">Depoimentos</p>
+      <h2 class="section-title">O que dizem quem<br><span class="grad-text">já transformou a operação</span></h2>
+      <p style="font-size:15px;color:var(--gray);margin-top:12px;">Arraste o card para o lado ou clique na seta para ver o próximo</p>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap;">
+      <!-- Card stack -->
+      <div id="testimonial-stack" style="position:relative;width:350px;height:450px;flex-shrink:0;overflow:hidden;border-radius:20px;box-shadow:inset -40px 0 40px rgba(15,19,32,0.8);"></div>
+      <!-- Navigation -->
+      <div style="display:flex;flex-direction:column;gap:20px;align-items:flex-start;max-width:340px;">
+        <div id="testi-author-display" style="font-family:'Orbitron',sans-serif;font-size:13px;color:var(--cyan);letter-spacing:0.1em;"></div>
+        <div id="testi-role-display" style="font-size:13px;color:var(--gray);margin-top:-14px;"></div>
+        <div id="testi-quote-display" style="font-size:18px;color:var(--light);line-height:1.7;font-style:italic;"></div>
+        <div style="display:flex;gap:12px;margin-top:8px;">
+          <button onclick="shuffleTestimonial()" style="display:flex;align-items:center;gap:8px;background:var(--g1);border:none;color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;padding:12px 24px;border-radius:8px;cursor:pointer;transition:opacity .2s,transform .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+            Próximo →
+          </button>
+          <div id="testi-counter" style="display:flex;align-items:center;gap:6px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.testi-card {
+  position: absolute; left: 0; top: 0;
+  width: 350px; height: 450px;
+  background: rgba(15,19,32,0.85);
+  border: 1px solid rgba(106,92,255,0.25);
+  border-radius: 20px; padding: 32px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 20px; backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  user-select: none; cursor: grab;
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s;
+}
+.testi-card:active { cursor: grabbing; }
+.testi-card.front { z-index:3; box-shadow: 0 24px 60px rgba(106,92,255,0.25); }
+.testi-card.middle { z-index:2; }
+.testi-card.back { z-index:1; }
+.testi-card img { width:100px;height:100px;border-radius:50%;border:2px solid rgba(106,92,255,0.4);object-fit:cover;pointer-events:none; }
+.testi-card .quote { font-size:15px;color:var(--gray);text-align:center;line-height:1.7;font-style:italic;pointer-events:none; }
+.testi-card .name { font-size:13px;font-weight:700;color:var(--cyan);text-align:center;pointer-events:none; }
+.testi-card .role { font-size:12px;color:var(--gray);text-align:center;pointer-events:none; }
+.testi-dot { width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);transition:background .2s; }
+.testi-dot.active { background:var(--cyan);box-shadow:0 0 6px var(--cyan); }
+</style>
+
+<script>
+(function() {
+  const testimonials = [
+    { id:10, author:"Ricardo Mendes", role:"CEO, Mendes Distribuidora", quote:"A P2A transformou completamente nosso atendimento. Antes levávamos horas para responder leads — hoje é automático e consistente." },
+    { id:20, author:"Fernanda Costa", role:"Diretora Comercial, TechFlow", quote:"Reduzimos 80% das tarefas manuais do time de vendas. A equipe agora foca em fechar negócios, não em preencher planilhas." },
+    { id:30, author:"Marcos Oliveira", role:"COO, Grupo Nexus", quote:"A implementação foi surpreendentemente rápida. Já nas primeiras semanas sentimos o impacto na previsibilidade da operação." },
+    { id:40, author:"Ana Beatriz Lima", role:"Fundadora, Viva Saúde", quote:"Achei que IA era coisa de empresa grande. A P2A mostrou que qualquer negócio com operação real pode — e deve — escalar com inteligência." },
+    { id:50, author:"Gabriel Torres", role:"Head de Ops, Conecta B2B", quote:"O diferencial da P2A é que eles não vendem ferramenta. Vendem resultado. E entregam com acompanhamento real, não só teoria." },
+  ];
+
+  let current = 0;
+  const stack = document.getElementById('testimonial-stack');
+
+  function getPos(idx) {
+    const diff = (idx - current + testimonials.length) % testimonials.length;
+    if (diff === 0) return 'front';
+    if (diff === 1) return 'middle';
+    if (diff === 2) return 'back';
+    return 'hidden';
+  }
+
+  function buildCards() {
+    stack.innerHTML = '';
+    testimonials.forEach((t, idx) => {
+      const pos = getPos(idx);
+      if (pos === 'hidden') return;
+
+      const card = document.createElement('div');
+      card.className = 'testi-card ' + pos;
+      card.dataset.idx = idx;
+
+      const rot   = pos==='front'?-4:pos==='middle'?0:4;
+      const tx    = pos==='front'?'0px':pos==='middle'?'12px':'24px';
+      card.style.transform = `translateX(${tx}) rotate(${rot}deg)`;
+
+      card.innerHTML = `
+        <img src="https://i.pravatar.cc/128?img=${t.id}" alt="${t.author}" loading="lazy">
+        <p class="quote">"${t.quote}"</p>
+        <span class="name">${t.author}</span>
+        <span class="role">${t.role}</span>
+      `;
+
+      if (pos === 'front') setupDrag(card);
+      stack.appendChild(card);
+    });
+    updateSidebar();
+    updateDots();
+  }
+
+  function setupDrag(card) {
+    let startX = 0, dragging = false;
+    card.addEventListener('pointerdown', e => {
+      startX = e.clientX; dragging = true;
+      card.setPointerCapture(e.pointerId);
+    });
+    card.addEventListener('pointermove', e => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      card.style.transform = `translateX(${dx}px) rotate(${dx * 0.05}deg)`;
+      card.style.transition = 'none';
+    });
+    card.addEventListener('pointerup', e => {
+      if (!dragging) return;
+      dragging = false;
+      card.style.transition = '';
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 120) shuffleTestimonial();
+      else card.style.transform = 'translateX(0px) rotate(-4deg)';
+    });
+  }
+
+  function updateSidebar() {
+    const t = testimonials[current];
+    document.getElementById('testi-author-display').textContent = t.author;
+    document.getElementById('testi-role-display').textContent   = t.role;
+    document.getElementById('testi-quote-display').textContent  = '"' + t.quote + '"';
+  }
+
+  function updateDots() {
+    const c = document.getElementById('testi-counter');
+    c.innerHTML = '';
+    testimonials.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'testi-dot' + (i===current?' active':'');
+      c.appendChild(d);
+    });
+  }
+
+  window.shuffleTestimonial = function() {
+    current = (current + 1) % testimonials.length;
+    buildCards();
+  };
+
+  buildCards();
+})();
+</script>
+
+<!-- CTA FINAL -->
+<section id="cta-final">
+  <div class="glow-orb" style="width:700px;height:700px;background:rgba(106,92,255,0.12);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+  <div class="glow-orb" style="width:400px;height:400px;background:rgba(0,224,255,0.07);top:20%;left:10%;"></div>
+  <div class="container">
+    <div class="cta-final-inner reveal">
+      <h2>Sua empresa está pronta para escalar.<br><span class="grad-text">O que falta é a operação inteligente.</span></h2>
+      <p>Agende seu diagnóstico e descubra onde você está perdendo eficiência hoje. Sem compromisso. Com clareza total.</p>
+      <a href="#" class="btn-primary btn-big" onclick="handleCTA(event)">
+        🚀 Quero transformar minha operação com IA
+      </a>
+      <p class="microcopy" style="justify-content:center;margin-top:16px;">Agende seu diagnóstico e descubra onde você está perdendo eficiência hoje</p>
+
+      <div class="ps-block reveal reveal-delay-2" style="margin-top:72px;">
+        <p><strong>A diferença entre empresas que crescem com consistência e as que travam não é esforço.</strong><br><br>
+        É estrutura.<br><br>
+        Se sua operação não escala, o problema não é falta de trabalho.<br>
+        É falta de <strong>inteligência aplicada</strong>.<br><br>
+        <strong style="color:var(--cyan);">A P2A resolve isso.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT MODAL -->
+<div id="contact-modal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <button class="modal-close" onclick="closeContactModal()" aria-label="Fechar">×</button>
+    <div style="text-align:center;max-width:560px;margin:0 auto 32px;">
+      <p class="section-label">Fale com a gente</p>
+      <h2 id="contact-modal-title" class="section-title">Pronto para começar?<br><span class="grad-text">Fale agora com nossa equipe</span></h2>
+      <p style="font-size:16px;color:var(--gray);margin-top:12px;">Preencha os dados abaixo e enviaremos sua mensagem direto pelo WhatsApp.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;" id="contact-form-modal">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Nome *</label>
+        <input id="mf-nome" type="text" placeholder="Seu nome completo"
+          style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
+          onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Empresa *</label>
+        <input id="mf-empresa" type="text" placeholder="Nome da empresa"
+          style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
+          onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Telefone *</label>
+        <input id="mf-telefone" type="tel" placeholder="(00) 00000-0000"
+          style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
+          onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"
+          oninput="maskPhone(this)">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">E-mail *</label>
+        <input id="mf-email" type="email" placeholder="seu@email.com.br"
+          style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
+          onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+      </div>
+      <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px;">
+        <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Segmento *</label>
+        <select id="mf-segmento"
+          style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;cursor:pointer;appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A0A7B3' stroke-width='1.5' fill='none'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 16px center;"
+          onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          <option value="" style="background:#131828;">Selecione seu segmento</option>
+          <option value="E-commerce / Varejo" style="background:#131828;">E-commerce / Varejo</option>
+          <option value="Saúde e Bem-estar" style="background:#131828;">Saúde e Bem-estar</option>
+          <option value="Educação" style="background:#131828;">Educação</option>
+          <option value="Serviços B2B" style="background:#131828;">Serviços B2B</option>
+          <option value="Imobiliário" style="background:#131828;">Imobiliário</option>
+          <option value="Financeiro / Contabilidade" style="background:#131828;">Financeiro / Contabilidade</option>
+          <option value="Tecnologia / SaaS" style="background:#131828;">Tecnologia / SaaS</option>
+          <option value="Indústria / Manufatura" style="background:#131828;">Indústria / Manufatura</option>
+          <option value="Logística / Transporte" style="background:#131828;">Logística / Transporte</option>
+          <option value="Alimentação / Gastronomia" style="background:#131828;">Alimentação / Gastronomia</option>
+          <option value="Outro" style="background:#131828;">Outro</option>
+        </select>
+      </div>
+      <div style="grid-column:1/-1;">
+        <div id="modal-form-error" style="display:none;background:rgba(255,77,77,0.1);border:1px solid rgba(255,77,77,0.3);border-radius:10px;padding:12px 16px;font-size:13px;color:#ff6b6b;margin-bottom:14px;"></div>
+        <button onclick="submitModalForm()" id="modal-form-submit-btn"
+          style="width:100%;background:var(--g1);border:none;color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;padding:16px 24px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:opacity .2s,transform .2s,box-shadow .2s;box-shadow:0 0 32px rgba(0,224,255,0.2);"
+          onmouseover="this.style.opacity='.9';this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.823.736 5.476 2.02 7.782L0 32l8.469-2.001A15.94 15.94 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.28 13.28 0 01-6.782-1.853l-.486-.289-5.027 1.188 1.207-4.901-.317-.503A13.28 13.28 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.307-9.907c-.4-.2-2.367-1.167-2.733-1.3-.367-.133-.633-.2-.9.2-.267.4-1.033 1.3-1.267 1.567-.233.267-.467.3-.867.1-.4-.2-1.687-.622-3.213-1.98-1.187-1.058-1.988-2.365-2.22-2.765-.233-.4-.025-.616.175-.815.18-.18.4-.467.6-.7.2-.233.267-.4.4-.667.133-.267.067-.5-.033-.7-.1-.2-.9-2.167-1.233-2.967-.325-.78-.655-.674-.9-.686l-.767-.013c-.267 0-.7.1-1.067.5s-1.4 1.367-1.4 3.333 1.433 3.867 1.633 4.133c.2.267 2.82 4.307 6.833 6.04.955.413 1.7.66 2.282.844.959.305 1.832.262 2.522.159.769-.115 2.367-.968 2.7-1.903.333-.933.333-1.733.233-1.9-.1-.167-.367-.267-.767-.467z"/></svg> Enviar pelo WhatsApp
+        </button>
+        <p style="text-align:center;font-size:12px;color:var(--gray);margin-top:10px;">Você será redirecionado para o WhatsApp com seus dados preenchidos</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTATO UNIFICADO -->
+<section id="contato" style="padding:100px 0;background:var(--bg2);">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 64px;">
+      <p class="section-label">Fale com a gente</p>
+      <h2 class="section-title">Pronto para começar?<br><span class="grad-text">Fale agora com nossa equipe</span></h2>
+      <p style="font-size:16px;color:var(--gray);margin-top:12px;">Preencha os dados abaixo e enviaremos sua mensagem direto pelo WhatsApp — sem enrolação.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+
+      <!-- FORMULÁRIO -->
+      <div style="background:linear-gradient(135deg,rgba(106,92,255,0.1),rgba(0,224,255,0.05));border:1px solid rgba(106,92,255,0.2);border-radius:24px;padding:40px;" class="reveal">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;" id="contact-form">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Nome *</label>
+            <input id="f-nome" type="text" placeholder="Seu nome completo"
+              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
+              onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Empresa *</label>
+            <input id="f-empresa" type="text" placeholder="Nome da empresa"
+              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
+              onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Telefone *</label>
+            <input id="f-telefone" type="tel" placeholder="(00) 00000-0000"
+              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
+              onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"
+              oninput="maskPhone(this)">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">E-mail *</label>
+            <input id="f-email" type="email" placeholder="seu@email.com.br"
+              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
+              onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          </div>
+          <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px;">
+            <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Segmento *</label>
+            <select id="f-segmento"
+              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;cursor:pointer;appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A0A7B3' stroke-width='1.5' fill='none'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 16px center;"
+              onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+              <option value="" style="background:#131828;">Selecione seu segmento</option>
+              <option value="E-commerce / Varejo" style="background:#131828;">E-commerce / Varejo</option>
+              <option value="Saúde e Bem-estar" style="background:#131828;">Saúde e Bem-estar</option>
+              <option value="Educação" style="background:#131828;">Educação</option>
+              <option value="Serviços B2B" style="background:#131828;">Serviços B2B</option>
+              <option value="Imobiliário" style="background:#131828;">Imobiliário</option>
+              <option value="Financeiro / Contabilidade" style="background:#131828;">Financeiro / Contabilidade</option>
+              <option value="Tecnologia / SaaS" style="background:#131828;">Tecnologia / SaaS</option>
+              <option value="Indústria / Manufatura" style="background:#131828;">Indústria / Manufatura</option>
+              <option value="Logística / Transporte" style="background:#131828;">Logística / Transporte</option>
+              <option value="Alimentação / Gastronomia" style="background:#131828;">Alimentação / Gastronomia</option>
+              <option value="Outro" style="background:#131828;">Outro</option>
+            </select>
+          </div>
+          <div style="grid-column:1/-1;">
+            <div id="form-error" style="display:none;background:rgba(255,77,77,0.1);border:1px solid rgba(255,77,77,0.3);border-radius:10px;padding:12px 16px;font-size:13px;color:#ff6b6b;margin-bottom:14px;"></div>
+            <button onclick="submitForm()" id="form-submit-btn"
+              style="width:100%;background:var(--g1);border:none;color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;padding:16px 24px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:opacity .2s,transform .2s,box-shadow .2s;box-shadow:0 0 32px rgba(0,224,255,0.2);"
+              onmouseover="this.style.opacity='.9';this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
+              <svg viewBox="0 0 32 32" width="22" height="22" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.823.736 5.476 2.02 7.782L0 32l8.469-2.001A15.94 15.94 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.28 13.28 0 01-6.782-1.853l-.486-.289-5.027 1.188 1.207-4.901-.317-.503A13.28 13.28 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.307-9.907c-.4-.2-2.367-1.167-2.733-1.3-.367-.133-.633-.2-.9.2-.267.4-1.033 1.3-1.267 1.567-.233.267-.467.3-.867.1-.4-.2-1.687-.622-3.213-1.98-1.187-1.058-1.988-2.365-2.22-2.765-.233-.4-.025-.616.175-.815.18-.18.4-.467.6-.7.2-.233.267-.4.4-.667.133-.267.067-.5-.033-.7-.1-.2-.9-2.167-1.233-2.967-.325-.78-.655-.674-.9-.686l-.767-.013c-.267 0-.7.1-1.067.5s-1.4 1.367-1.4 3.333 1.433 3.867 1.633 4.133c.2.267 2.82 4.307 6.833 6.04.955.413 1.7.66 2.282.844.959.305 1.832.262 2.522.159.769-.115 2.367-.968 2.7-1.903.333-.933.333-1.733.233-1.9-.1-.167-.367-.267-.767-.467z"/></svg> Enviar pelo WhatsApp
+            </button>
+            <p style="text-align:center;font-size:12px;color:var(--gray);margin-top:10px;">Você será redirecionado para o WhatsApp com seus dados preenchidos</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR DIREITA -->
+      <div style="display:flex;flex-direction:column;gap:24px;" class="reveal reveal-delay-2">
+
+        <!-- O que acontece -->
+        <div style="background:linear-gradient(135deg,rgba(37,211,102,0.07),rgba(18,140,126,0.05));border:1px solid rgba(37,211,102,0.18);border-radius:20px;padding:32px;">
+          <h3 style="font-size:18px;margin-bottom:10px;">O que acontece quando você entrar em contato</h3>
+          <p style="font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:20px;">Sem pitch agressivo. Sem proposta genérica. Um papo direto sobre o seu negócio.</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+            <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray);"><span style="color:#25D366;font-weight:700;">✓</span> Você explica sua operação atual</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray);"><span style="color:#25D366;font-weight:700;">✓</span> Identificamos onde está o maior gargalo</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray);"><span style="color:#25D366;font-weight:700;">✓</span> Mostramos o que IA pode resolver para você</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray);"><span style="color:#25D366;font-weight:700;">✓</span> Se fizer sentido, agendamos o diagnóstico completo</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray);"><span style="color:#25D366;font-weight:700;">✓</span> Tudo sem compromisso e sem custo inicial</li>
+          </ul>
+          <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(37,211,102,0.12);display:flex;align-items:center;gap:10px;">
+            <span style="font-size:24px;">💬</span>
+            <div>
+              <div style="font-weight:700;font-size:14px;">P2A Tech</div>
+              <div style="font-size:12px;color:#25D366;display:flex;align-items:center;gap:5px;">
+                <span style="width:7px;height:7px;background:#25D366;border-radius:50%;display:inline-block;box-shadow:0 0 6px #25D366;"></span>
+                Online agora
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function maskPhone(input) {
+  let v = input.value.replace(/\D/g,'');
+  if (v.length > 11) v = v.slice(0,11);
+  if (v.length > 6) v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+  else if (v.length > 2) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+  else if (v.length > 0) v = '(' + v;
+  input.value = v;
+}
+function submitForm() {
+  const nome     = document.getElementById('f-nome').value.trim();
+  const empresa  = document.getElementById('f-empresa').value.trim();
+  const telefone = document.getElementById('f-telefone').value.trim();
+  const email    = document.getElementById('f-email').value.trim();
+  const segmento = document.getElementById('f-segmento').value;
+  const errEl    = document.getElementById('form-error');
+  if (!nome || !empresa || !telefone || !email || !segmento) {
+    errEl.style.display = 'block';
+    errEl.textContent = '⚠️ Por favor, preencha todos os campos antes de continuar.';
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errEl.style.display = 'block';
+    errEl.textContent = '⚠️ Informe um e-mail válido.';
+    return;
+  }
+  errEl.style.display = 'none';
+  const msg = `Olá! Vim pelo site da P2A Tech e gostaria de saber mais.\n\n*Nome:* ${nome}\n*Empresa:* ${empresa}\n*Telefone:* ${telefone}\n*E-mail:* ${email}\n*Segmento:* ${segmento}\n\nAguardo o contato para o diagnóstico!`;
+  const btn = document.getElementById('form-submit-btn');
+  btn.textContent = '✅ Redirecionando para o WhatsApp…';
+  btn.style.opacity = '0.8';
+  setTimeout(() => {
+    window.open('https://wa.me/5551993560244?text=' + encodeURIComponent(msg), '_blank');
+    btn.innerHTML = '<svg viewBox="0 0 32 32" width="22" height="22" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.823.736 5.476 2.02 7.782L0 32l8.469-2.001A15.94 15.94 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.28 13.28 0 01-6.782-1.853l-.486-.289-5.027 1.188 1.207-4.901-.317-.503A13.28 13.28 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.307-9.907c-.4-.2-2.367-1.167-2.733-1.3-.367-.133-.633-.2-.9.2-.267.4-1.033 1.3-1.267 1.567-.233.267-.467.3-.867.1-.4-.2-1.687-.622-3.213-1.98-1.187-1.058-1.988-2.365-2.22-2.765-.233-.4-.025-.616.175-.815.18-.18.4-.467.6-.7.2-.233.267-.4.4-.667.133-.267.067-.5-.033-.7-.1-.2-.9-2.167-1.233-2.967-.325-.78-.655-.674-.9-.686l-.767-.013c-.267 0-.7.1-1.067.5s-1.4 1.367-1.4 3.333 1.433 3.867 1.633 4.133c.2.267 2.82 4.307 6.833 6.04.955.413 1.7.66 2.282.844.959.305 1.832.262 2.522.159.769-.115 2.367-.968 2.7-1.903.333-.933.333-1.733.233-1.9-.1-.167-.367-.267-.767-.467z"/></svg> Enviar pelo WhatsApp';
+    btn.style.opacity = '1';
+  }, 600);
+}
+
+function openContactModal() {
+  const modal = document.getElementById('contact-modal');
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeContactModal() {
+  const modal = document.getElementById('contact-modal');
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function submitModalForm() {
+  const nome     = document.getElementById('mf-nome').value.trim();
+  const empresa  = document.getElementById('mf-empresa').value.trim();
+  const telefone = document.getElementById('mf-telefone').value.trim();
+  const email    = document.getElementById('mf-email').value.trim();
+  const segmento = document.getElementById('mf-segmento').value;
+  const errEl    = document.getElementById('modal-form-error');
+  if (!nome || !empresa || !telefone || !email || !segmento) {
+    errEl.style.display = 'block';
+    errEl.textContent = '⚠️ Por favor, preencha todos os campos antes de continuar.';
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errEl.style.display = 'block';
+    errEl.textContent = '⚠️ Informe um e-mail válido.';
+    return;
+  }
+  errEl.style.display = 'none';
+  const msg = `Olá! Vim pelo site da P2A Tech e gostaria de saber mais.\n\n*Nome:* ${nome}\n*Empresa:* ${empresa}\n*Telefone:* ${telefone}\n*E-mail:* ${email}\n*Segmento:* ${segmento}\n\nAguardo o contato para o diagnóstico!`;
+  const btn = document.getElementById('modal-form-submit-btn');
+  btn.textContent = '✅ Redirecionando para o WhatsApp…';
+  btn.style.opacity = '0.8';
+  setTimeout(() => {
+    window.open('https://wa.me/5551993560244?text=' + encodeURIComponent(msg), '_blank');
+    btn.innerHTML = '<svg viewBox="0 0 32 32" width="22" height="22" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.823.736 5.476 2.02 7.782L0 32l8.469-2.001A15.94 15.94 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.28 13.28 0 01-6.782-1.853l-.486-.289-5.027 1.188 1.207-4.901-.317-.503A13.28 13.28 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.307-9.907c-.4-.2-2.367-1.167-2.733-1.3-.367-.133-.633-.2-.9.2-.267.4-1.033 1.3-1.267 1.567-.233.267-.467.3-.867.1-.4-.2-1.687-.622-3.213-1.98-1.187-1.058-1.988-2.365-2.22-2.765-.233-.4-.025-.616.175-.815.18-.18.4-.467.6-.7.2-.233.267-.4.4-.667.133-.267.067-.5-.033-.7-.1-.2-.9-2.167-1.233-2.967-.325-.78-.655-.674-.9-.686l-.767-.013c-.267 0-.7.1-1.067.5s-1.4 1.367-1.4 3.333 1.433 3.867 1.633 4.133c.2.267 2.82 4.307 6.833 6.04.955.413 1.7.66 2.282.844.959.305 1.832.262 2.522.159.769-.115 2.367-.968 2.7-1.903.333-.933.333-1.733.233-1.9-.1-.167-.367-.267-.767-.467z"/></svg> Enviar pelo WhatsApp';
+    btn.style.opacity = '1';
+  }, 600);
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeContactModal();
+});
+
+document.getElementById('contact-modal').addEventListener('click', function(e) {
+  if (e.target.id === 'contact-modal') closeContactModal();
+});
+</script>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div style="margin-bottom:16px;">
+      <span class="logo-p2a" style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:18px;"><span style="color:var(--cyan);">P2</span><span style="color:var(--magenta);">A</span></span>
+      <span style="font-family:'Orbitron',sans-serif;font-weight:400;font-size:11px;color:var(--gray);letter-spacing:0.15em;margin-left:4px;">TECH</span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
+      <a href="https://www.instagram.com/p2a.tech/" target="_blank" aria-label="Instagram P2A Tech"
+        style="display:flex;align-items:center;gap:10px;padding:10px 20px;border-radius:100px;background:linear-gradient(135deg,#833AB4,#FD1D1D,#F77737);text-decoration:none;color:#fff;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;transition:opacity .2s,transform .2s;box-shadow:0 0 24px rgba(253,29,29,0.3);"
+        onmouseover="this.style.opacity='.85';this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        @p2a.tech
+      </a>
+    </div>
+    <p>© 2026 P2A Tech — Todos os direitos reservados</p>
+    <p class="footer-tagline">Inteligência aplicada. Resultados reais. Tecnologia que transforma negócios.</p>
+  </div>
+</footer>
+
+<!-- INSTAGRAM FLOAT -->
+<a id="insta-float" href="https://www.instagram.com/p2a.tech/" target="_blank" aria-label="Instagram P2A Tech"
+  style="position:fixed;bottom:100px;right:28px;z-index:199;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#833AB4,#FD1D1D,#F77737);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(253,29,29,0.4);cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s;"
+  onmouseover="this.style.transform='scale(1.12)';this.style.boxShadow='0 8px 32px rgba(253,29,29,0.6)';document.getElementById('insta-tip').style.opacity='1'" 
+  onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(253,29,29,0.4)';document.getElementById('insta-tip').style.opacity='0'">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+  <span id="insta-tip" style="position:absolute;right:62px;bottom:50%;transform:translateY(50%);background:#1a1f2e;border:1px solid rgba(253,29,29,0.3);border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;white-space:nowrap;color:#F5F7FA;pointer-events:none;opacity:0;transition:opacity .2s;box-shadow:0 4px 16px rgba(0,0,0,0.4);font-family:'Inter',sans-serif;">@p2a.tech no Instagram</span>
+</a>
+
+<!-- WHATSAPP FLOAT -->
+<a id="wpp-float" href="https://wa.me/5551993560244?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20a%20P2A%20Tech" target="_blank" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.823.736 5.476 2.02 7.782L0 32l8.469-2.001A15.94 15.94 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.28 13.28 0 01-6.782-1.853l-.486-.289-5.027 1.188 1.207-4.901-.317-.503A13.28 13.28 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.307-9.907c-.4-.2-2.367-1.167-2.733-1.3-.367-.133-.633-.2-.9.2-.267.4-1.033 1.3-1.267 1.567-.233.267-.467.3-.867.1-.4-.2-1.687-.622-3.213-1.98-1.187-1.058-1.988-2.365-2.22-2.765-.233-.4-.025-.616.175-.815.18-.18.4-.467.6-.7.2-.233.267-.4.4-.667.133-.267.067-.5-.033-.7-.1-.2-.9-2.167-1.233-2.967-.325-.78-.655-.674-.9-.686l-.767-.013c-.267 0-.7.1-1.067.5s-1.4 1.367-1.4 3.333 1.433 3.867 1.633 4.133c.2.267 2.82 4.307 6.833 6.04.955.413 1.7.66 2.282.844.959.305 1.832.262 2.522.159.769-.115 2.367-.968 2.7-1.903.333-.933.333-1.733.233-1.9-.1-.167-.367-.267-.767-.467z"/></svg>
+  <span class="wpp-tooltip">Falar no WhatsApp</span>
+</a>
+
+<!-- TWEAKS PANEL -->
+<div id="tweaks-panel">
+  <h4>⚙ TWEAKS</h4>
+  <div class="tweak-row">
+    <label>Headline ativa</label>
+    <select onchange="switchHeadline(parseInt(this.value))">
+      <option value="0">V1 — Dor + resultado</option>
+      <option value="1">V2 — Escala + eficiência</option>
+      <option value="2">V3 — Pronta para escalar</option>
+    </select>
+  </div>
+  <div class="tweak-row">
+    <label>Vagas disponíveis: <span id="slot-label">3</span></label>
+    <input type="range" min="0" max="8" value="3" oninput="updateSlots(this.value)">
+  </div>
+  <div class="tweak-row">
+    <label>Cor de destaque</label>
+    <select onchange="updateAccent(this.value)">
+      <option value="cyan">Cyan (padrão)</option>
+      <option value="magenta">Magenta</option>
+      <option value="purple">Purple</option>
+    </select>
+  </div>
+</div>
+
+<script>
+  // ── TWEAKS ──
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === '__activate_edit_mode') {
+      document.getElementById('tweaks-panel').style.display = 'block';
+    }
+    if (e.data && e.data.type === '__deactivate_edit_mode') {
+      document.getElementById('tweaks-panel').style.display = 'none';
+    }
+  });
+  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "headline": 0,
+    "slots": 3,
+    "accent": "purple"
+  }/*EDITMODE-END*/;
+
+  // ── HEADLINE SWITCHER ──
+  const headlines = [
+    'Transforme sua operação com IA e <span class="grad-text">pare de perder tempo, dinheiro e oportunidades</span> todos os dias',
+    'Implemente IA de verdade na sua empresa e ganhe <span class="grad-text">escala, eficiência e previsibilidade</span> — sem complicação',
+    'Sua empresa está pronta para escalar — o que falta é uma <span class="grad-text">operação inteligente</span>'
+  ];
+  function switchHeadline(idx) {
+    document.getElementById('hero-headline').innerHTML = headlines[idx];
+    document.querySelectorAll('.hv-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+    const sel = document.querySelector('#tweaks-panel select');
+    if (sel) sel.value = idx;
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { headline: idx } }, '*');
+  }
+
+  // ── SLOTS ──
+  function updateSlots(val) {
+    val = parseInt(val);
+    document.getElementById('slot-label').textContent = val;
+    const slots = document.querySelectorAll('.slot');
+    const taken = 8 - val;
+    slots.forEach((s, i) => {
+      s.className = 'slot ' + (i < taken ? 'taken' : 'available');
+    });
+    document.querySelector('.slots + p').textContent = taken + ' de 8 vagas preenchidas neste ciclo';
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { slots: val } }, '*');
+  }
+
+  // ── ACCENT ──
+  function updateAccent(val) {
+    const map = { cyan: '#00E0FF', magenta: '#FF4DFF', purple: '#6A5CFF' };
+    document.documentElement.style.setProperty('--cyan', map[val]);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accent: val } }, '*');
+  }
+
+  // ── OBJECTIONS ──
+  function toggleObj(card) {
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.obj-card').forEach(c => c.classList.remove('open'));
+    if (!isOpen) card.classList.add('open');
+  }
+
+  // ── FAQ ──
+  function toggleFaq(item) {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // ── CTA HANDLER ──
+  function handleCTA(e) {
+    e.preventDefault();
+    openContactModal();
+  }
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── NAV SCROLL EFFECT ──
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.background = window.scrollY > 50
+      ? 'rgba(11,14,22,0.97)'
+      : 'rgba(11,14,22,0.85)';
+  });
+
+  // ── APPLY SAVED TWEAKS ──
+  if (TWEAK_DEFAULTS.headline) switchHeadline(TWEAK_DEFAULTS.headline);
+  if (TWEAK_DEFAULTS.slots !== undefined) updateSlots(TWEAK_DEFAULTS.slots);
+  if (TWEAK_DEFAULTS.accent && TWEAK_DEFAULTS.accent !== 'cyan') updateAccent(TWEAK_DEFAULTS.accent);
+
+  // ── CHART ANIMATIONS ──
+  function animateBars(card) {
+    card.querySelectorAll('.bar-fill[data-width], .compare-fill[data-width]').forEach(bar => {
+      bar.style.width = bar.dataset.width + '%';
+    });
+  }
+
+  function animateCounters() {
+    document.querySelectorAll('.counter-number[data-target]').forEach(el => {
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const isDecimal = String(target).includes('.');
+      const duration = 1600;
+      const start = performance.now();
+      function update(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        const val = target * ease;
+        el.textContent = (isDecimal ? val.toFixed(1) : Math.round(val)) + suffix;
+        if (p < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    });
+  }
+
+  const chartObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      animateBars(entry.target);
+      chartObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.stat-card[data-animate]').forEach(c => chartObserver.observe(c));
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      animateCounters();
+      counterObserver.disconnect();
+    });
+  }, { threshold: 0.3 });
+  const countersEl = document.querySelector('.counters-grid');
+  if (countersEl) counterObserver.observe(countersEl);
+</script>
+</body>
+</html>
