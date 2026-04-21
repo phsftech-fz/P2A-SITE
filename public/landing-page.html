@@ -913,10 +913,10 @@
       <div class="hero-content">
         <div class="hero-tag">IA Aplicada a Negócios</div>
 
-        <div class="headline-variants">
-          <button class="hv-btn active" onclick="switchHeadline(0)">V1</button>
-          <button class="hv-btn" onclick="switchHeadline(1)">V2</button>
-          <button class="hv-btn" onclick="switchHeadline(2)">V3</button>
+        <div class="headline-variants" aria-label="Etapas automáticas da mensagem">
+          <span class="hv-btn active">Etapa 1</span>
+          <span class="hv-btn">Etapa 2</span>
+          <span class="hv-btn">Etapa 3</span>
         </div>
 
         <h1 class="hero-h1" id="hero-headline">
@@ -1535,7 +1535,7 @@
 <script>
 (function() {
   const testimonials = [
-    { id:10, author:"Ricardo Mendes", role:"CEO, Mendes Distribuidora", quote:"A P2A transformou completamente nosso atendimento. Antes levávamos horas para responder leads — hoje é automático e consistente." },
+    { id:10, author:"Carla Farias", role:"CEO, Mendes Distribuidora", quote:"A P2A transformou completamente nosso atendimento. Antes levávamos horas para responder leads — hoje é automático e consistente." },
     { id:20, author:"Fernanda Costa", role:"Diretora Comercial, TechFlow", quote:"Reduzimos 80% das tarefas manuais do time de vendas. A equipe agora foca em fechar negócios, não em preencher planilhas." },
     { id:30, author:"Marcos Oliveira", role:"COO, Grupo Nexus", quote:"A implementação foi surpreendentemente rápida. Já nas primeiras semanas sentimos o impacto na previsibilidade da operação." },
     { id:40, author:"Ana Beatriz Lima", role:"Fundadora, Viva Saúde", quote:"Achei que IA era coisa de empresa grande. A P2A mostrou que qualquer negócio com operação real pode — e deve — escalar com inteligência." },
@@ -2003,6 +2003,14 @@ document.getElementById('contact-modal').addEventListener('click', function(e) {
     window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { headline: idx } }, '*');
   }
 
+  let activeHeadline = 0;
+  function startHeadlineAutoplay() {
+    setInterval(() => {
+      activeHeadline = (activeHeadline + 1) % headlines.length;
+      switchHeadline(activeHeadline);
+    }, 3200);
+  }
+
   // ── SLOTS ──
   function updateSlots(val) {
     val = parseInt(val);
@@ -2063,7 +2071,11 @@ document.getElementById('contact-modal').addEventListener('click', function(e) {
   });
 
   // ── APPLY SAVED TWEAKS ──
-  if (TWEAK_DEFAULTS.headline) switchHeadline(TWEAK_DEFAULTS.headline);
+  if (TWEAK_DEFAULTS.headline !== undefined) {
+    activeHeadline = TWEAK_DEFAULTS.headline;
+    switchHeadline(TWEAK_DEFAULTS.headline);
+  }
+  startHeadlineAutoplay();
   if (TWEAK_DEFAULTS.slots !== undefined) updateSlots(TWEAK_DEFAULTS.slots);
   if (TWEAK_DEFAULTS.accent && TWEAK_DEFAULTS.accent !== 'cyan') updateAccent(TWEAK_DEFAULTS.accent);
 
