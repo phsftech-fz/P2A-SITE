@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>P2A Tech — IA Aplicada ao Seu Negócio</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>P2A Tech — IA para a Advocacia | adv.tech</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --cyan: #00E0FF;
-    --purple: #6A5CFF;
-    --magenta: #FF4DFF;
-    --bg: #0B0E16;
-    --bg2: #0F1320;
-    --bg3: #131828;
-    --gray: #A0A7B3;
+    --cyan: #E2BB66;     /* dourado — acento primario (adv.tech) */
+    --purple: #C9972F;   /* dourado profundo */
+    --magenta: #F0D69A;  /* dourado claro */
+    --bg: #070B16;       /* navy ink */
+    --bg2: #0B1222;
+    --bg3: #0F1626;
+    --gray: #9AA3B3;
     --light: #F5F7FA;
-    --g1: linear-gradient(135deg, #00E0FF, #6A5CFF);
-    --g2: linear-gradient(135deg, #6A5CFF, #FF4DFF);
-    --g3: linear-gradient(135deg, #00E0FF, #FF4DFF);
-    --g-text: linear-gradient(90deg, #00E0FF, #6A5CFF, #FF4DFF);
+    --g1: linear-gradient(135deg, #E2BB66, #C9972F);
+    --g2: linear-gradient(135deg, #C9972F, #E2BB66);
+    --g3: linear-gradient(135deg, #F0D69A, #C9972F);
+    --g-text: linear-gradient(90deg, #F0D69A, #E2BB66, #C9972F);
   }
 
   html { scroll-behavior: smooth; }
@@ -35,7 +35,7 @@
   }
 
   /* ── TYPOGRAPHY ── */
-  h1, h2, h3, h4 { font-family: 'Orbitron', sans-serif; line-height: 1.2; }
+  h1, h2, h3, h4 { font-family: 'Fraunces', serif; line-height: 1.2; }
   .grad-text {
     background: var(--g-text);
     -webkit-background-clip: text;
@@ -99,10 +99,10 @@
     max-width: 1160px; margin: 0 auto; padding: 16px 24px;
   }
   .logo { display: flex; align-items: center; gap: 2px; text-decoration: none; }
-  .logo-p2a { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 22px; }
+  .logo-p2a { font-family: 'Fraunces', serif; font-weight: 900; font-size: 22px; }
   .logo-p2a span.p2 { color: var(--cyan); }
   .logo-p2a span.a { color: var(--magenta); }
-  .logo-tech { font-family: 'Orbitron', sans-serif; font-weight: 400; font-size: 12px; color: var(--gray); letter-spacing: 0.15em; margin-left: 4px; }
+  .logo-tech { font-family: 'Fraunces', serif; font-weight: 400; font-size: 12px; color: var(--gray); letter-spacing: 0.15em; margin-left: 4px; }
   nav a.nav-link { color: var(--gray); font-size: 14px; font-weight: 500; text-decoration: none; transition: color .2s; }
   nav a.nav-link:hover { color: var(--cyan); }
   .nav-links { display: flex; gap: 32px; align-items: center; }
@@ -215,7 +215,7 @@
     width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
     background: rgba(0,224,255,0.1); border: 1px solid rgba(0,224,255,0.25);
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 14px; color: var(--cyan);
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 14px; color: var(--cyan);
     transition: all .2s;
   }
   .step h4 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 16px; margin-bottom: 4px; }
@@ -398,7 +398,7 @@
     font-size: 13px;
   }
   #tweaks-panel h4 {
-    font-family: 'Orbitron', sans-serif; font-size: 12px; color: var(--cyan);
+    font-family: 'Fraunces', serif; font-size: 12px; color: var(--cyan);
     letter-spacing: 0.15em; margin-bottom: 16px;
   }
   .tweak-row { margin-bottom: 14px; }
@@ -443,14 +443,14 @@
   .bar-meta span:last-child { font-size: 13px; font-weight: 700; color: var(--light); }
   .bar-track { height: 8px; background: rgba(255,255,255,0.06); border-radius: 100px; overflow: hidden; }
   .bar-fill { height: 100%; border-radius: 100px; width: 0; transition: width 1.4s cubic-bezier(0.4,0,0.2,1); }
-  .bar-fill.c1 { background: linear-gradient(90deg,#00E0FF,#6A5CFF); }
-  .bar-fill.c2 { background: linear-gradient(90deg,#6A5CFF,#FF4DFF); }
-  .bar-fill.c3 { background: linear-gradient(90deg,#FF4DFF,#00E0FF); }
-  .bar-fill.c4 { background: linear-gradient(90deg,#00E0FF,#FF4DFF); }
+  .bar-fill.c1 { background: linear-gradient(90deg,#E2BB66,#C9972F); }
+  .bar-fill.c2 { background: linear-gradient(90deg,#C9972F,#F0D69A); }
+  .bar-fill.c3 { background: linear-gradient(90deg,#F0D69A,#E2BB66); }
+  .bar-fill.c4 { background: linear-gradient(90deg,#E2BB66,#C9972F); }
   .counters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .counter-item { text-align: center; padding: 20px 12px; background: rgba(255,255,255,0.03); border-radius: 14px; }
   .counter-number {
-    font-family: 'Orbitron', sans-serif; font-size: 38px; font-weight: 700;
+    font-family: 'Fraunces', serif; font-size: 38px; font-weight: 700;
     background: var(--g-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text; line-height: 1.1; margin-bottom: 6px;
   }
@@ -465,7 +465,7 @@
   .compare-track { flex: 1; height: 10px; background: rgba(255,255,255,0.05); border-radius: 100px; overflow: hidden; }
   .compare-fill { height: 100%; border-radius: 100px; width: 0; transition: width 1.4s cubic-bezier(0.4,0,0.2,1); }
   .compare-fill.before-fill { background: rgba(160,167,179,0.35); }
-  .compare-fill.after-fill { background: linear-gradient(90deg,#00E0FF,#6A5CFF); }
+  .compare-fill.after-fill { background: linear-gradient(90deg,#E2BB66,#C9972F); }
   .compare-val { font-size: 12px; font-weight: 700; width: 36px; text-align: right; flex-shrink: 0; }
   .compare-val.before { color: var(--gray); }
   .compare-val.after { color: var(--cyan); }
@@ -478,7 +478,7 @@
   .pillar:hover { background: rgba(0,224,255,0.06); border-color: rgba(0,224,255,0.2); }
   .pillar-icon { font-size: 20px; margin-bottom: 8px; display: block; }
   .pillar-val {
-    font-family: 'Orbitron', sans-serif; font-size: 22px; font-weight: 700;
+    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700;
     background: var(--g1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     margin-bottom: 4px;
   }
@@ -590,20 +590,20 @@
 <body>
 
 <!-- INTRO SPLASH -->
-<div id="intro-overlay" style="position:fixed;inset:0;z-index:9999;background:#0B0E16;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;">
+<div id="intro-overlay" style="position:fixed;inset:0;z-index:9999;background:#070B16;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;">
   <canvas id="intro-canvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
   <div id="intro-ui" style="position:relative;z-index:2;text-align:center;pointer-events:none;">
-    <div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(40px,7vw,90px);line-height:1;margin-bottom:8px;">
-      <span style="color:#00E0FF;">P2</span><span style="color:#FF4DFF;">A</span><span style="font-weight:400;font-size:0.45em;color:#A0A7B3;letter-spacing:0.2em;vertical-align:middle;margin-left:8px;">TECH</span>
+    <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.02em;font-size:clamp(40px,7vw,90px);line-height:1;margin-bottom:8px;">
+      <span style="color:#E2BB66;">P2</span><span style="color:#F0D69A;">A</span><span style="font-weight:400;font-size:0.45em;color:#A0A7B3;letter-spacing:0.2em;vertical-align:middle;margin-left:8px;">TECH</span>
     </div>
     <div id="intro-tagline" style="font-family:'Inter',sans-serif;font-size:clamp(13px,1.5vw,18px);color:#A0A7B3;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:60px;opacity:0;transition:opacity 1s ease 1.2s;">
-      Inteligência aplicada. Resultados reais.
+      Inteligência artificial a serviço da advocacia.
     </div>
     <div id="intro-cta" style="font-family:'Inter',sans-serif;font-size:14px;color:rgba(160,167,179,0.7);letter-spacing:0.15em;text-transform:uppercase;opacity:0;transition:opacity 1s ease 2s;animation:intro-blink 2s ease-in-out infinite 2.5s;">
       Clique ou pressione Enter para entrar
     </div>
   </div>
-  <div id="intro-progress" style="position:absolute;bottom:0;left:0;height:2px;background:linear-gradient(90deg,#00E0FF,#6A5CFF,#FF4DFF);width:0%;transition:width 0.1s linear;"></div>
+  <div id="intro-progress" style="position:absolute;bottom:0;left:0;height:2px;background:linear-gradient(90deg,#F0D69A,#E2BB66,#C9972F);width:0%;transition:width 0.1s linear;"></div>
 </div>
 
 <style>
@@ -614,10 +614,10 @@
 <script>
 (function() {
   // ── CONFIG ──
-  const BG        = '#0B0E16';
-  const CYAN      = [0, 224, 255];
-  const PURPLE    = [106, 92, 255];
-  const MAGENTA   = [255, 77, 255];
+  const BG        = '#070B16';
+  const CYAN      = [226, 187, 102];
+  const PURPLE    = [201, 151, 47];
+  const MAGENTA   = [240, 214, 154];
 
   function lerpColor(a, b, t) {
     return [
@@ -911,7 +911,7 @@
   <div class="container">
     <div class="hero-grid">
       <div class="hero-content">
-        <div class="hero-tag">IA Aplicada a Negócios</div>
+        <div class="hero-tag">adv.tech · IA para a Advocacia</div>
 
         <div class="headline-variants" aria-label="Etapas automáticas da mensagem">
           <span class="hv-btn active">Etapa 1</span>
@@ -920,45 +920,45 @@
         </div>
 
         <h1 class="hero-h1" id="hero-headline">
-          Transforme sua operação com IA e <span class="grad-text">pare de perder tempo, dinheiro e oportunidades</span> todos os dias
+          Menos burocracia no escritório. <span class="grad-text">Mais tempo para advogar.</span>
         </h1>
-        <p class="hero-sub">A P2A implementa soluções completas de IA aplicadas ao seu negócio — automatizando processos, melhorando atendimento e aumentando vendas com eficiência real.</p>
+        <p class="hero-sub">A P2A Tech é a plataforma de IA para a advocacia: petições, contratos, prazos e atendimento dentro do seu fluxo — treinada no seu acervo, com o advogado sempre no controle.</p>
         <div class="hero-ctas">
           <a href="#cta-final" class="btn-primary">
-            <span>👉</span> Quero aplicar IA na minha empresa
+            <span>⚖️</span> Quero IA no meu escritório
           </a>
-          <p class="microcopy">Diagnóstico estratégico inicial para identificar onde você está perdendo eficiência</p>
+          <p class="microcopy">Diagnóstico gratuito: onde sua banca perde horas faturáveis hoje</p>
         </div>
       </div>
 
       <div class="hero-visual">
         <div class="hero-card-main">
-          <div class="card-icon">🤖</div>
-          <h3>Operação Inteligente</h3>
-          <p>Sua empresa funcionando com eficiência, escala e previsibilidade — de verdade.</p>
+          <div class="card-icon">⚖️</div>
+          <h3>Escritório inteligente</h3>
+          <p>Sua banca rodando com eficiência, padrão e segurança — de verdade.</p>
           <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray);">
-              <span style="color:var(--cyan);font-weight:700;">✓</span> Processos automatizados
+              <span style="color:var(--cyan);font-weight:700;">✓</span> Primeira minuta em minutos
             </div>
             <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray);">
-              <span style="color:var(--cyan);font-weight:700;">✓</span> Agentes inteligentes ativos
+              <span style="color:var(--cyan);font-weight:700;">✓</span> Prazos monitorados por IA
             </div>
             <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray);">
-              <span style="color:var(--cyan);font-weight:700;">✓</span> Resultados mensuráveis
+              <span style="color:var(--cyan);font-weight:700;">✓</span> Seu acervo vira conhecimento
             </div>
           </div>
         </div>
         <div class="floating-badge badge-1">
           <span class="badge-dot green"></span>
-          <span style="font-size:12px;">Agente ativo</span>
+          <span style="font-size:12px;">IA assistindo</span>
         </div>
         <div class="floating-badge badge-2">
           <span class="badge-dot cyan"></span>
-          <span style="font-size:12px;">+340% eficiência</span>
+          <span style="font-size:12px;">+12h faturáveis/semana</span>
         </div>
         <div class="floating-badge badge-3">
           <span class="badge-dot purple"></span>
-          <span style="font-size:12px;">0 tarefas manuais</span>
+          <span style="font-size:12px;">0 prazo perdido</span>
         </div>
       </div>
     </div>
@@ -970,63 +970,63 @@
   <div class="container">
     <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto;">
       <p class="section-label">Dados & Impacto</p>
-      <h2 class="section-title">O que acontece quando uma empresa<br><span class="grad-text">adota o modelo IA First</span></h2>
+      <h2 class="section-title">O que muda quando o escritório<br><span class="grad-text">coloca IA no fluxo</span></h2>
     </div>
     <div class="stats-grid">
 
       <!-- Bar chart: ganhos de eficiência -->
       <div class="stat-card reveal reveal-delay-1" data-animate="bars">
-        <p class="stat-card-label">Ganhos de eficiência operacional</p>
+        <p class="stat-card-label">Ganhos de eficiência no escritório</p>
         <div class="bar-chart">
           <div class="bar-row">
-            <div class="bar-meta"><span>Redução de tarefas manuais</span><span>87%</span></div>
-            <div class="bar-track"><div class="bar-fill c1" data-width="87"></div></div>
+            <div class="bar-meta"><span>Redução de redação repetitiva</span><span>84%</span></div>
+            <div class="bar-track"><div class="bar-fill c1" data-width="84"></div></div>
           </div>
           <div class="bar-row">
-            <div class="bar-meta"><span>Velocidade no atendimento</span><span>74%</span></div>
-            <div class="bar-track"><div class="bar-fill c2" data-width="74"></div></div>
+            <div class="bar-meta"><span>Velocidade na primeira minuta</span><span>79%</span></div>
+            <div class="bar-track"><div class="bar-fill c2" data-width="79"></div></div>
           </div>
           <div class="bar-row">
-            <div class="bar-meta"><span>Aproveitamento de leads</span><span>68%</span></div>
-            <div class="bar-track"><div class="bar-fill c3" data-width="68"></div></div>
+            <div class="bar-meta"><span>Reuso do acervo de teses</span><span>71%</span></div>
+            <div class="bar-track"><div class="bar-fill c3" data-width="71"></div></div>
           </div>
           <div class="bar-row">
-            <div class="bar-meta"><span>Previsibilidade de receita</span><span>91%</span></div>
-            <div class="bar-track"><div class="bar-fill c4" data-width="91"></div></div>
+            <div class="bar-meta"><span>Prazos sob controle</span><span>96%</span></div>
+            <div class="bar-track"><div class="bar-fill c4" data-width="96"></div></div>
           </div>
         </div>
-        <p style="font-size:11px;color:var(--gray);margin-top:20px;">Média entre empresas que adotaram operação IA First</p>
+        <p style="font-size:11px;color:var(--gray);margin-top:20px;">Média em escritórios que adotaram IA dentro do fluxo</p>
       </div>
 
       <!-- Counters -->
       <div class="stat-card reveal reveal-delay-2">
-        <p class="stat-card-label">Modelo IA First em números</p>
+        <p class="stat-card-label">IA no jurídico em números</p>
         <div class="counters-grid">
           <div class="counter-item">
             <div class="counter-number" data-target="3.4" data-suffix="x">0</div>
-            <div class="counter-desc">mais produtividade por colaborador</div>
+            <div class="counter-desc">mais peças produzidas por advogado</div>
           </div>
           <div class="counter-item">
-            <div class="counter-number" data-target="60" data-suffix="%">0</div>
-            <div class="counter-desc">redução no tempo de resposta ao cliente</div>
+            <div class="counter-number" data-target="70" data-suffix="%">0</div>
+            <div class="counter-desc">menos tempo na primeira versão de uma peça</div>
           </div>
           <div class="counter-item">
-            <div class="counter-number" data-target="40" data-suffix="%">0</div>
-            <div class="counter-desc">menos custo operacional após implementação</div>
+            <div class="counter-number" data-target="12" data-suffix="h">0</div>
+            <div class="counter-desc">horas faturáveis recuperadas por semana</div>
           </div>
           <div class="counter-item">
             <div class="counter-number" data-target="24" data-suffix="/7">0</div>
-            <div class="counter-desc">operação ativa sem depender de equipe presencial</div>
+            <div class="counter-desc">monitoramento de prazos, sem depender da memória</div>
           </div>
         </div>
       </div>
 
       <!-- Before / After comparison -->
       <div class="stat-card reveal reveal-delay-1" data-animate="bars">
-        <p class="stat-card-label">Antes × Depois — Operação Tradicional vs IA First</p>
+        <p class="stat-card-label">Antes × Depois — Escritório tradicional vs com IA</p>
         <div class="compare-chart">
           <div class="compare-row">
-            <div class="compare-label">Horas gastas em tarefas repetitivas</div>
+            <div class="compare-label">Horas gastas em redação repetitiva</div>
             <div class="compare-bar-row">
               <span class="compare-tag before">Antes</span>
               <div class="compare-track"><div class="compare-fill before-fill" data-width="85"></div></div>
@@ -1039,7 +1039,7 @@
             </div>
           </div>
           <div class="compare-row">
-            <div class="compare-label">Taxa de resposta a leads em menos de 5 min</div>
+            <div class="compare-label">Primeira minuta de petição no mesmo dia</div>
             <div class="compare-bar-row">
               <span class="compare-tag before">Antes</span>
               <div class="compare-track"><div class="compare-fill before-fill" data-width="18"></div></div>
@@ -1052,7 +1052,7 @@
             </div>
           </div>
           <div class="compare-row">
-            <div class="compare-label">Processos com execução padronizada</div>
+            <div class="compare-label">Peças no padrão do escritório</div>
             <div class="compare-bar-row">
               <span class="compare-tag before">Antes</span>
               <div class="compare-track"><div class="compare-fill before-fill" data-width="22"></div></div>
@@ -1069,37 +1069,37 @@
 
       <!-- AI First pillars -->
       <div class="stat-card reveal reveal-delay-2">
-        <p class="stat-card-label">Os 6 pilares do modelo IA First</p>
+        <p class="stat-card-label">Os 6 pilares da P2A no jurídico</p>
         <div class="pillars">
           <div class="pillar">
-            <span class="pillar-icon">🔍</span>
-            <div class="pillar-val">Dados</div>
-            <div class="pillar-desc">Decisões baseadas em informação real</div>
+            <span class="pillar-icon">📚</span>
+            <div class="pillar-val">Acervo</div>
+            <div class="pillar-desc">Seu conhecimento vira base da IA</div>
           </div>
           <div class="pillar">
             <span class="pillar-icon">⚙️</span>
             <div class="pillar-val">Automação</div>
-            <div class="pillar-desc">Processos rodando sem intervenção</div>
+            <div class="pillar-desc">Tarefas repetitivas fora do caminho</div>
           </div>
           <div class="pillar">
-            <span class="pillar-icon">🤖</span>
-            <div class="pillar-val">Agentes</div>
-            <div class="pillar-desc">IA trabalhando por você 24/7</div>
+            <span class="pillar-icon">⚖️</span>
+            <div class="pillar-val">Assistente</div>
+            <div class="pillar-desc">IA jurídica trabalhando no seu fluxo</div>
           </div>
           <div class="pillar">
             <span class="pillar-icon">🔗</span>
             <div class="pillar-val">Integração</div>
-            <div class="pillar-desc">Sistemas conectados e fluindo</div>
+            <div class="pillar-desc">Conecta ao que o escritório já usa</div>
           </div>
           <div class="pillar">
             <span class="pillar-icon">📈</span>
             <div class="pillar-val">Escala</div>
-            <div class="pillar-desc">Crescimento sem aumento de caos</div>
+            <div class="pillar-desc">Mais casos sem inchar a equipe</div>
           </div>
           <div class="pillar">
-            <span class="pillar-icon">🎯</span>
-            <div class="pillar-val">Resultado</div>
-            <div class="pillar-desc">Métricas claras em cada etapa</div>
+            <span class="pillar-icon">🔒</span>
+            <div class="pillar-val">Controle</div>
+            <div class="pillar-desc">Sigilo total e advogado no comando</div>
           </div>
         </div>
       </div>
@@ -1113,57 +1113,57 @@
   <div class="container">
     <div class="reveal">
       <p class="section-label">O Problema</p>
-      <h2 class="section-title">Se você sente que sua empresa está travada…</h2>
-      <p class="section-sub">Hoje, a maioria das empresas sabe que precisa evoluir. Mas continua presa em processos manuais, atendimento lento e decisões baseadas em tentativa e erro.</p>
+      <h2 class="section-title">Se o escritório vive apagando incêndio…</h2>
+      <p class="section-sub">A maioria das bancas sabe que precisa ganhar eficiência. Mas segue presa em redação repetitiva, controle de prazo manual e horas faturáveis indo embora em tarefa mecânica.</p>
     </div>
 
     <div class="pain-grid">
       <div class="pain-item reveal reveal-delay-1">
         <span class="pain-icon">⏳</span>
         <div>
-          <h4>Tempo desperdiçado</h4>
-          <p>Sua equipe perde tempo com tarefas repetitivas que poderiam ser automatizadas.</p>
+          <h4>Horas faturáveis no lixo</h4>
+          <p>Advogado sênior redigindo do zero o que é, no fundo, variação do mesmo modelo.</p>
         </div>
       </div>
       <div class="pain-item reveal reveal-delay-2">
-        <span class="pain-icon">📞</span>
+        <span class="pain-icon">📅</span>
         <div>
-          <h4>Atendimento manual</h4>
-          <p>O atendimento depende de esforço humano constante, sem escala.</p>
+          <h4>Prazo na memória</h4>
+          <p>O controle depende de planilha e de alguém lembrar. Um deslize custa caro — e ao cliente.</p>
         </div>
       </div>
       <div class="pain-item reveal reveal-delay-1">
-        <span class="pain-icon">🎯</span>
+        <span class="pain-icon">📄</span>
         <div>
-          <h4>Leads desperdiçados</h4>
-          <p>Leads não são bem aproveitados e o funil não é acompanhado corretamente.</p>
+          <h4>Contrato que trava a equipe</h4>
+          <p>Revisão de contrato padrão lida linha a linha só pra achar a cláusula que mudou.</p>
         </div>
       </div>
       <div class="pain-item reveal reveal-delay-2">
-        <span class="pain-icon">📉</span>
+        <span class="pain-icon">🔎</span>
         <div>
-          <h4>Falta de previsibilidade</h4>
-          <p>Processos não padronizados e falta de clareza nos resultados.</p>
+          <h4>Acervo perdido</h4>
+          <p>A tese que você já venceu está enterrada em pastas — e ninguém acha na hora certa.</p>
         </div>
       </div>
       <div class="pain-item reveal reveal-delay-1">
         <span class="pain-icon">🔄</span>
         <div>
-          <h4>Processos sem padrão</h4>
-          <p>Cada execução depende de quem está disponível, não de um sistema robusto.</p>
+          <h4>Peça sem padrão</h4>
+          <p>Cada peça sai do jeito de quem redigiu, não do padrão e da qualidade do escritório.</p>
         </div>
       </div>
       <div class="pain-item reveal reveal-delay-2">
         <span class="pain-icon">💸</span>
         <div>
-          <h4>Dinheiro na mesa</h4>
-          <p>Ineficiência operacional custa caro — só que você não vê a nota fiscal.</p>
+          <h4>Receita travada</h4>
+          <p>Sem tempo, o escritório recusa casos. Cresce no susto, não na estratégia.</p>
         </div>
       </div>
     </div>
 
     <div class="pain-closer reveal" style="margin-top:48px;">
-      <p>E no fim do mês… você sabe que poderia estar <strong>faturando mais — com menos esforço</strong>.<br>Mas a operação não acompanha.</p>
+      <p>E no fim do mês, o escritório poderia ter <strong>aceitado mais causas — com menos desgaste</strong>.<br>Mas a rotina não deixa.</p>
     </div>
   </div>
 </section>
@@ -1174,7 +1174,7 @@
   <div class="container">
     <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto;">
       <p class="section-label">A Solução</p>
-      <h2 class="section-title">Não é sobre instalar ferramentas.<br><span class="grad-text">É sobre transformar como sua empresa funciona.</span></h2>
+      <h2 class="section-title">Não é sobre instalar mais um software.<br><span class="grad-text">É sobre mudar como o escritório trabalha.</span></h2>
     </div>
 
     <div class="solution-grid">
@@ -1182,63 +1182,63 @@
         <div class="step">
           <div class="step-num">01</div>
           <div>
-            <h4>Diagnóstico completo da operação</h4>
-            <p>Mapeamos onde você está perdendo eficiência, dinheiro e oportunidades.</p>
+            <h4>Diagnóstico do escritório</h4>
+            <p>Mapeamos onde a banca perde horas faturáveis e onde está o maior gargalo.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">02</div>
           <div>
-            <h4>Desenho estratégico das automações</h4>
-            <p>Projetamos a solução ideal para a realidade do seu negócio.</p>
+            <h4>Conexão do seu acervo</h4>
+            <p>A IA aprende suas teses, modelos e o seu jeito de peticionar — isolado e sigiloso.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">03</div>
           <div>
-            <h4>Criação de agentes inteligentes</h4>
-            <p>Desenvolvemos agentes de IA que trabalham por você, 24/7.</p>
+            <h4>Assistentes de IA no fluxo</h4>
+            <p>Petições, contratos e pareceres ganham uma primeira minuta no seu padrão.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">04</div>
           <div>
-            <h4>Integração com seus sistemas</h4>
-            <p>Conectamos tudo ao que você já usa — sem trocar o que funciona.</p>
+            <h4>Integração com o escritório</h4>
+            <p>Conectamos ao que você já usa — sem trocar o que funciona.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">05</div>
           <div>
-            <h4>Implementação e acompanhamento</h4>
-            <p>Executamos, treinamos e evoluímos a operação com você.</p>
+            <h4>Implantação e acompanhamento</h4>
+            <p>Treinamos a equipe e evoluímos a operação jurídica junto com você.</p>
           </div>
         </div>
       </div>
 
       <div class="solution-visual reveal reveal-delay-2">
-        <p class="sol-vis-title">Fluxo da Operação Inteligente</p>
+        <p class="sol-vis-title">Fluxo do escritório com IA</p>
         <div class="flow-item">
-          <div class="flow-dot" style="background:rgba(0,224,255,0.15);">🔍</div>
+          <div class="flow-dot" style="background:rgba(226,187,102,0.15);">🔎</div>
           <span>Diagnóstico & mapeamento</span>
         </div>
         <div class="flow-arrow">↓</div>
         <div class="flow-item">
-          <div class="flow-dot" style="background:rgba(106,92,255,0.15);">⚙️</div>
-          <span>Automações & agentes de IA</span>
+          <div class="flow-dot" style="background:rgba(201,151,47,0.15);">📚</div>
+          <span>IA treinada no seu acervo</span>
         </div>
         <div class="flow-arrow">↓</div>
         <div class="flow-item">
-          <div class="flow-dot" style="background:rgba(255,77,255,0.15);">🔗</div>
-          <span>Integração com seus canais</span>
+          <div class="flow-dot" style="background:rgba(240,214,154,0.18);">⚖️</div>
+          <span>Peças e prazos no seu fluxo</span>
         </div>
         <div class="flow-arrow">↓</div>
         <div class="flow-item">
           <div class="flow-dot" style="background:rgba(0,255,136,0.15);">📈</div>
-          <span>Escala com previsibilidade</span>
+          <span>Mais causas, com controle</span>
         </div>
         <div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);">
-          <p style="font-size:13px;color:var(--gray);font-style:italic;">"Tudo adaptado à realidade do seu negócio."</p>
+          <p style="font-size:13px;color:var(--gray);font-style:italic;">"Tudo adaptado à realidade do seu escritório."</p>
         </div>
       </div>
     </div>
@@ -1250,48 +1250,48 @@
   <div class="container">
     <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto;">
       <p class="section-label">Benefícios</p>
-      <h2 class="section-title">Com a P2A, sua empresa passa a</h2>
+      <h2 class="section-title">Com a P2A, o seu escritório passa a</h2>
     </div>
     <div class="benefits-grid">
       <div class="benefit-card reveal reveal-delay-1">
         <span class="benefit-icon">⚡</span>
-        <h4>Operar com muito mais eficiência</h4>
-        <p>Sem precisar aumentar equipe ou custo operacional.</p>
+        <h4>Produzir muito mais</h4>
+        <p>Mais peças e mais casos sem aumentar a equipe.</p>
       </div>
       <div class="benefit-card reveal reveal-delay-2">
-        <span class="benefit-icon">💬</span>
-        <h4>Responder com velocidade</h4>
-        <p>Atendimento consistente e rápido, sem depender de esforço manual.</p>
+        <span class="benefit-icon">📝</span>
+        <h4>Minuta em minutos</h4>
+        <p>Você revisa e refina, em vez de redigir cada peça do zero.</p>
       </div>
       <div class="benefit-card reveal reveal-delay-3">
-        <span class="benefit-icon">🤖</span>
-        <h4>Eliminar tarefas manuais</h4>
-        <p>Drasticamente. Sua equipe foca no que gera resultado.</p>
+        <span class="benefit-icon">📅</span>
+        <h4>Nunca mais perder prazo</h4>
+        <p>Prazos capturados e monitorados pela IA, com alerta antecipado.</p>
       </div>
       <div class="benefit-card reveal reveal-delay-4">
-        <span class="benefit-icon">🎯</span>
-        <h4>Aproveitar cada lead</h4>
-        <p>Nenhuma oportunidade cai no vazio — o sistema captura tudo.</p>
+        <span class="benefit-icon">📚</span>
+        <h4>Reaproveitar o acervo</h4>
+        <p>A tese certa na hora certa — seu conhecimento vira vantagem.</p>
       </div>
       <div class="benefit-card reveal reveal-delay-1">
-        <span class="benefit-icon">📊</span>
-        <h4>Ganhar previsibilidade</h4>
-        <p>Vendas e operação com clareza e consistência mês a mês.</p>
+        <span class="benefit-icon">📄</span>
+        <h4>Padronizar a qualidade</h4>
+        <p>Toda peça no padrão do escritório, independente de quem redige.</p>
       </div>
       <div class="benefit-card reveal reveal-delay-2">
         <span class="benefit-icon">🧠</span>
-        <h4>Tomar decisões melhores</h4>
-        <p>Com dados reais, não intuição e tentativa e erro.</p>
+        <h4>Decidir com mais base</h4>
+        <p>A IA organiza e resume; a estratégia e a decisão continuam suas.</p>
       </div>
       <div class="benefit-card reveal reveal-delay-3">
         <span class="benefit-icon">🚀</span>
-        <h4>Escalar sem caos</h4>
+        <h4>Aceitar mais causas</h4>
         <p>Crescer sem que a operação quebre — estrutura que sustenta o crescimento.</p>
       </div>
       <div class="benefit-card reveal reveal-delay-4">
         <span class="benefit-icon">🔒</span>
-        <h4>Controle total</h4>
-        <p>Automação bem feita aumenta controle. Você vê tudo acontecendo.</p>
+        <h4>Sigilo e controle</h4>
+        <p>Acervo isolado por escritório; nada vai ao cliente sem revisão de um advogado.</p>
       </div>
     </div>
   </div>
@@ -1308,12 +1308,12 @@
       <div class="offer-box reveal">
         <h3>Entregáveis principais</h3>
         <ul class="offer-list">
-          <li>Diagnóstico completo da sua operação</li>
-          <li>Desenho estratégico da solução com IA</li>
-          <li>Implementação de agentes inteligentes</li>
-          <li>Automações completas dos processos</li>
-          <li>Integração com sistemas e canais</li>
-          <li>Treinamento do time</li>
+          <li>Diagnóstico completo do seu escritório</li>
+          <li>Conexão e treinamento da IA no seu acervo</li>
+          <li>Assistentes de IA para petições e contratos</li>
+          <li>Automação de prazos e tarefas repetitivas</li>
+          <li>Integração com os sistemas do escritório</li>
+          <li>Treinamento da equipe jurídica</li>
           <li>Suporte e acompanhamento contínuo</li>
         </ul>
       </div>
@@ -1321,14 +1321,14 @@
         <h3>Bônus incluídos</h3>
         <span class="bonus-label">🎁 Sem custo adicional</span>
         <ul class="bonus-list">
-          <li>Templates prontos de automação</li>
-          <li>Playbooks operacionais</li>
-          <li>Biblioteca de prompts</li>
-          <li>Fluxos estruturados</li>
+          <li>Modelos de peças no seu padrão</li>
+          <li>Playbooks de uso de IA no jurídico</li>
+          <li>Biblioteca de prompts jurídicos</li>
+          <li>Fluxos de revisão e controle de prazo</li>
           <li>Documentação completa da operação</li>
         </ul>
         <div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);">
-          <p style="font-size:13px;color:var(--gray);">💰 <strong style="color:var(--light);">Modelo de investimento</strong><br>Projeto inicial + mensalidade de evolução.<br><span style="color:var(--cyan);">Valor personalizado conforme sua operação.</span></p>
+          <p style="font-size:13px;color:var(--gray);">💰 <strong style="color:var(--light);">Modelo de investimento</strong><br>Projeto inicial + mensalidade de evolução.<br><span style="color:var(--cyan);">Valor personalizado conforme o porte do escritório.</span></p>
         </div>
       </div>
     </div>
@@ -1345,45 +1345,45 @@
     <div class="obj-grid" id="obj-grid">
       <div class="obj-card" onclick="toggleObj(this)">
         <div class="obj-q">
-          <span>"Não tenho dinheiro"</span>
+          <span>"A IA vai me substituir?"</span>
           <div class="obj-toggle">+</div>
         </div>
-        <div class="obj-a">Você já está pagando pela ineficiência hoje — só não está vendo claramente na nota fiscal. A P2A devolve esse custo em eficiência real.</div>
+        <div class="obj-a">Não. A IA assiste; o advogado decide e assina. Ela tira a tarefa mecânica do caminho — você fica com a estratégia, a tese e o cliente.</div>
       </div>
       <div class="obj-card" onclick="toggleObj(this)">
         <div class="obj-q">
-          <span>"Não tenho tempo"</span>
+          <span>"E a confidencialidade?"</span>
           <div class="obj-toggle">+</div>
         </div>
-        <div class="obj-a">A proposta é justamente devolver tempo para você e sua equipe. O processo é conduzido por nós, com mínima demanda do seu lado.</div>
+        <div class="obj-a">Seu acervo fica isolado e privado por escritório. Não é usado para treinar modelos de terceiros — sigilo profissional e LGPD em primeiro lugar.</div>
       </div>
       <div class="obj-card" onclick="toggleObj(this)">
         <div class="obj-q">
-          <span>"Parece muito complexo"</span>
+          <span>"Não tenho tempo pra implantar"</span>
           <div class="obj-toggle">+</div>
         </div>
-        <div class="obj-a">A complexidade é nossa responsabilidade, não sua. Você não precisa entender de IA — cuidamos de toda a parte técnica.</div>
+        <div class="obj-a">A proposta é justamente devolver tempo ao escritório. A implantação é conduzida por nós, com mínima demanda da sua equipe.</div>
       </div>
       <div class="obj-card" onclick="toggleObj(this)">
         <div class="obj-q">
-          <span>"Já tenho um processo"</span>
+          <span>"Já tenho meus modelos"</span>
           <div class="obj-toggle">+</div>
         </div>
-        <div class="obj-a">Perfeito. Nós melhoramos e potencializamos o que já existe. Não é necessário trocar seus sistemas.</div>
+        <div class="obj-a">Ótimo. A IA aprende o SEU jeito de peticionar e potencializa o que já existe. Não trocamos seus sistemas nem seus modelos.</div>
       </div>
       <div class="obj-card" onclick="toggleObj(this)">
         <div class="obj-q">
-          <span>"Não sei se IA funciona"</span>
+          <span>"E se a IA inventar uma lei?"</span>
           <div class="obj-toggle">+</div>
         </div>
-        <div class="obj-a">IA sem aplicação prática não funciona mesmo — e é exatamente isso que resolvemos. Implementação real, não teoria.</div>
+        <div class="obj-a">A IA entrega minuta com as fontes à vista e o que não tem certeza, ela sinaliza. A conferência é sempre do advogado — nada vai ao tribunal sem revisão.</div>
       </div>
       <div class="obj-card" onclick="toggleObj(this)">
         <div class="obj-q">
-          <span>"Não confio em automação"</span>
+          <span>"IA genérica não decepciona?"</span>
           <div class="obj-toggle">+</div>
         </div>
-        <div class="obj-a">Automação bem feita aumenta controle, não reduz. Você acompanha cada etapa com total transparência.</div>
+        <div class="obj-a">Sim — por isso não usamos uma genérica. Treinamos no SEU acervo, dentro do seu fluxo. É feita para a advocacia, não adaptada dela.</div>
       </div>
     </div>
   </div>
@@ -1395,8 +1395,8 @@
     <div class="guarantee-box reveal">
       <div class="guarantee-icon">🛡️</div>
       <div class="guarantee-text">
-        <h2>Implementação com<br><span class="grad-text">foco em resultado</span></h2>
-        <p>Você acompanha cada etapa — com total transparência — e só avançamos conforme entregas validadas. Sem risco. Sem surpresas. Com responsabilidade real pela execução.</p>
+        <h2>O advogado<br><span class="grad-text">sempre no controle</span></h2>
+        <p>Você acompanha cada etapa com total transparência. A IA entrega minutas para revisão — a decisão e a assinatura são sempre suas. Acervo isolado, sigilo profissional preservado. Sem caixa-preta, sem risco.</p>
       </div>
     </div>
   </div>
@@ -1409,8 +1409,8 @@
       <div class="scarcity-badge">
         <span>⚠️</span> Vagas limitadas por ciclo
       </div>
-      <h2 class="section-title" style="text-align:center;margin-bottom:16px;">Atendemos um número limitado<br>de empresas por ciclo</h2>
-      <p style="color:var(--gray);text-align:center;font-size:16px;line-height:1.7;">Por ser um trabalho consultivo e altamente personalizado, isso garante qualidade, acompanhamento próximo e resultado real para cada cliente.</p>
+      <h2 class="section-title" style="text-align:center;margin-bottom:16px;">Atendemos um número limitado<br>de escritórios por ciclo</h2>
+      <p style="color:var(--gray);text-align:center;font-size:16px;line-height:1.7;">Por ser uma implantação consultiva e altamente personalizada — treinada no acervo de cada banca — isso garante qualidade, acompanhamento próximo e resultado real.</p>
       <div class="slots">
         <div class="slot taken"></div>
         <div class="slot taken"></div>
@@ -1436,17 +1436,17 @@
     <div class="faq-list">
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q">
-          <span>Isso funciona para qualquer empresa?</span>
+          <span>Funciona para qualquer escritório?</span>
           <span class="faq-icon">+</span>
         </div>
-        <div class="faq-a"><div class="faq-a-inner">Funciona para empresas que têm operação ativa e querem escalar com eficiência. Se você tem processos, atendimento e vendas acontecendo — tem onde aplicar IA.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Funciona para bancas de qualquer porte — do advogado solo ao full-service, e também para departamentos jurídicos. Se você produz peças, atende clientes e controla prazos, tem onde aplicar IA.</div></div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q">
           <span>Preciso entender de IA para contratar?</span>
           <span class="faq-icon">+</span>
         </div>
-        <div class="faq-a"><div class="faq-a-inner">Não. Nós cuidamos de toda a parte técnica. Você só precisa conhecer seu negócio — o resto é com a gente.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Não. Nós cuidamos de toda a parte técnica e treinamos a equipe. Você só precisa conhecer o seu escritório — o resto é com a gente.</div></div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q">
@@ -1464,10 +1464,10 @@
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q">
-          <span>Isso substitui minha equipe?</span>
+          <span>Isso substitui meus advogados?</span>
           <span class="faq-icon">+</span>
         </div>
-        <div class="faq-a"><div class="faq-a-inner">Não. Potencializa sua equipe. As pessoas focam no que gera mais valor; a IA cuida do operacional repetitivo.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Não. Potencializa a equipe. Os advogados focam na estratégia e no cliente; a IA cuida da redação repetitiva e do controle de prazo. A decisão e a assinatura são sempre humanas.</div></div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q">
@@ -1485,7 +1485,7 @@
   <div class="container">
     <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 72px;">
       <p class="section-label">Depoimentos</p>
-      <h2 class="section-title">O que dizem quem<br><span class="grad-text">já transformou a operação</span></h2>
+      <h2 class="section-title">O que dizem os escritórios<br><span class="grad-text">que colocaram IA no fluxo</span></h2>
       <p style="font-size:15px;color:var(--gray);margin-top:12px;">Arraste o card para o lado ou clique na seta para ver o próximo</p>
     </div>
     <div style="display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap;">
@@ -1493,7 +1493,7 @@
       <div id="testimonial-stack" style="position:relative;width:350px;height:450px;flex-shrink:0;overflow:hidden;border-radius:20px;box-shadow:inset -40px 0 40px rgba(15,19,32,0.8);"></div>
       <!-- Navigation -->
       <div style="display:flex;flex-direction:column;gap:20px;align-items:flex-start;max-width:340px;">
-        <div id="testi-author-display" style="font-family:'Orbitron',sans-serif;font-size:13px;color:var(--cyan);letter-spacing:0.1em;"></div>
+        <div id="testi-author-display" style="font-family:'Fraunces',serif;font-size:13px;color:var(--cyan);letter-spacing:0.1em;"></div>
         <div id="testi-role-display" style="font-size:13px;color:var(--gray);margin-top:-14px;"></div>
         <div id="testi-quote-display" style="font-size:18px;color:var(--light);line-height:1.7;font-style:italic;"></div>
         <div style="display:flex;gap:12px;margin-top:8px;">
@@ -1535,11 +1535,11 @@
 <script>
 (function() {
   const testimonials = [
-    { id:10, author:"Carla Farias", role:"CEO, Mendes Distribuidora", quote:"A P2A transformou completamente nosso atendimento. Antes levávamos horas para responder leads — hoje é automático e consistente." },
-    { id:20, author:"Fernanda Costa", role:"Diretora Comercial, TechFlow", quote:"Reduzimos 80% das tarefas manuais do time de vendas. A equipe agora foca em fechar negócios, não em preencher planilhas." },
-    { id:30, author:"Marcos Oliveira", role:"COO, Grupo Nexus", quote:"A implementação foi surpreendentemente rápida. Já nas primeiras semanas sentimos o impacto na previsibilidade da operação." },
-    { id:40, author:"Ana Beatriz Lima", role:"Fundadora, Viva Saúde", quote:"Achei que IA era coisa de empresa grande. A P2A mostrou que qualquer negócio com operação real pode — e deve — escalar com inteligência." },
-    { id:50, author:"Gabriel Torres", role:"Head de Ops, Conecta B2B", quote:"O diferencial da P2A é que eles não vendem ferramenta. Vendem resultado. E entregam com acompanhamento real, não só teoria." },
+    { id:10, author:"Dra. Carla Farias", role:"Sócia, Farias Sociedade de Advogados", quote:"A primeira minuta sai no meu estilo em minutos. Deixei de redigir do zero e passei a revisar — recuperei horas faturáveis toda semana." },
+    { id:20, author:"Dr. Rafael Mendes", role:"Sócio, Mendes & Associados", quote:"O controle de prazos saiu da planilha e da memória. A IA captura e alerta com antecedência. Em meses, zero prazo perdido." },
+    { id:30, author:"Dra. Fernanda Costa", role:"Coordenadora Jurídica, Grupo Nexus", quote:"A revisão de contratos padrão deixou de travar a equipe. A IA aponta o que mudou e o risco; a gente foca no que importa." },
+    { id:40, author:"Dr. Marcos Oliveira", role:"Advogado autônomo", quote:"Achei que IA jurídica era coisa de banca grande. A P2A mostrou que até quem atua sozinho consegue produzir como um time." },
+    { id:50, author:"Dra. Ana Beatriz Lima", role:"Sócia-fundadora, Lima Advocacia", quote:"O diferencial é que a IA é treinada no NOSSO acervo, com sigilo total. E o advogado segue no controle de tudo. Confiança real." },
   ];
 
   let current = 0;
@@ -1635,18 +1635,18 @@
   <div class="glow-orb" style="width:400px;height:400px;background:rgba(0,224,255,0.07);top:20%;left:10%;"></div>
   <div class="container">
     <div class="cta-final-inner reveal">
-      <h2>Sua empresa está pronta para escalar.<br><span class="grad-text">O que falta é a operação inteligente.</span></h2>
-      <p>Agende seu diagnóstico e descubra onde você está perdendo eficiência hoje. Sem compromisso. Com clareza total.</p>
+      <h2>Seu escritório está pronto para crescer.<br><span class="grad-text">Falta tirar a burocracia do caminho.</span></h2>
+      <p>Agende um diagnóstico e veja onde a banca perde horas faturáveis hoje. Sem compromisso. Com clareza total.</p>
       <a href="#" class="btn-primary btn-big" onclick="handleCTA(event)">
-        🚀 Quero transformar minha operação com IA
+        ⚖️ Quero IA no meu escritório
       </a>
-      <p class="microcopy" style="justify-content:center;margin-top:16px;">Agende seu diagnóstico e descubra onde você está perdendo eficiência hoje</p>
+      <p class="microcopy" style="justify-content:center;margin-top:16px;">Diagnóstico gratuito: onde sua banca perde tempo hoje</p>
 
       <div class="ps-block reveal reveal-delay-2" style="margin-top:72px;">
-        <p><strong>A diferença entre empresas que crescem com consistência e as que travam não é esforço.</strong><br><br>
-        É estrutura.<br><br>
-        Se sua operação não escala, o problema não é falta de trabalho.<br>
-        É falta de <strong>inteligência aplicada</strong>.<br><br>
+        <p><strong>A diferença entre escritórios que crescem com consistência e os que travam não é esforço.</strong><br><br>
+        É método.<br><br>
+        Se a banca não escala, o problema não é falta de trabalho.<br>
+        É tempo demais preso em <strong>tarefa repetitiva</strong>.<br><br>
         <strong style="color:var(--cyan);">A P2A resolve isso.</strong></p>
       </div>
     </div>
@@ -1670,8 +1670,8 @@
           onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;">
-        <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Empresa *</label>
-        <input id="mf-empresa" type="text" placeholder="Nome da empresa"
+        <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Escritório *</label>
+        <input id="mf-empresa" type="text" placeholder="Nome do escritório / banca"
           style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
           onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
       </div>
@@ -1689,22 +1689,21 @@
           onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
       </div>
       <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px;">
-        <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Segmento *</label>
+        <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Atuação *</label>
         <select id="mf-segmento"
           style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;cursor:pointer;appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A0A7B3' stroke-width='1.5' fill='none'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 16px center;"
           onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
-          <option value="" style="background:#131828;">Selecione seu segmento</option>
-          <option value="E-commerce / Varejo" style="background:#131828;">E-commerce / Varejo</option>
-          <option value="Saúde e Bem-estar" style="background:#131828;">Saúde e Bem-estar</option>
-          <option value="Educação" style="background:#131828;">Educação</option>
-          <option value="Serviços B2B" style="background:#131828;">Serviços B2B</option>
-          <option value="Imobiliário" style="background:#131828;">Imobiliário</option>
-          <option value="Financeiro / Contabilidade" style="background:#131828;">Financeiro / Contabilidade</option>
-          <option value="Tecnologia / SaaS" style="background:#131828;">Tecnologia / SaaS</option>
-          <option value="Indústria / Manufatura" style="background:#131828;">Indústria / Manufatura</option>
-          <option value="Logística / Transporte" style="background:#131828;">Logística / Transporte</option>
-          <option value="Alimentação / Gastronomia" style="background:#131828;">Alimentação / Gastronomia</option>
-          <option value="Outro" style="background:#131828;">Outro</option>
+          <option value="" style="background:#0F1626;">Selecione sua atuação</option>
+          <option value="Advogado autônomo / solo" style="background:#0F1626;">Advogado autônomo / solo</option>
+          <option value="Escritório pequeno (até 5 advogados)" style="background:#0F1626;">Escritório pequeno (até 5 advogados)</option>
+          <option value="Escritório médio / grande" style="background:#0F1626;">Escritório médio / grande</option>
+          <option value="Departamento jurídico (empresa)" style="background:#0F1626;">Departamento jurídico (empresa)</option>
+          <option value="Contencioso" style="background:#0F1626;">Contencioso</option>
+          <option value="Consultivo / Contratos" style="background:#0F1626;">Consultivo / Contratos</option>
+          <option value="Trabalhista" style="background:#0F1626;">Trabalhista</option>
+          <option value="Tributário" style="background:#0F1626;">Tributário</option>
+          <option value="Cível / Família" style="background:#0F1626;">Cível / Família</option>
+          <option value="Outra área" style="background:#0F1626;">Outra área</option>
         </select>
       </div>
       <div style="grid-column:1/-1;">
@@ -1741,8 +1740,8 @@
               onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
           </div>
           <div style="display:flex;flex-direction:column;gap:8px;">
-            <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Empresa *</label>
-            <input id="f-empresa" type="text" placeholder="Nome da empresa"
+            <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Escritório *</label>
+            <input id="f-empresa" type="text" placeholder="Nome do escritório / banca"
               style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
               onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
           </div>
@@ -1760,22 +1759,21 @@
               onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
           </div>
           <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px;">
-            <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Segmento *</label>
+            <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Atuação *</label>
             <select id="f-segmento"
               style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;cursor:pointer;appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A0A7B3' stroke-width='1.5' fill='none'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 16px center;"
               onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
-              <option value="" style="background:#131828;">Selecione seu segmento</option>
-              <option value="E-commerce / Varejo" style="background:#131828;">E-commerce / Varejo</option>
-              <option value="Saúde e Bem-estar" style="background:#131828;">Saúde e Bem-estar</option>
-              <option value="Educação" style="background:#131828;">Educação</option>
-              <option value="Serviços B2B" style="background:#131828;">Serviços B2B</option>
-              <option value="Imobiliário" style="background:#131828;">Imobiliário</option>
-              <option value="Financeiro / Contabilidade" style="background:#131828;">Financeiro / Contabilidade</option>
-              <option value="Tecnologia / SaaS" style="background:#131828;">Tecnologia / SaaS</option>
-              <option value="Indústria / Manufatura" style="background:#131828;">Indústria / Manufatura</option>
-              <option value="Logística / Transporte" style="background:#131828;">Logística / Transporte</option>
-              <option value="Alimentação / Gastronomia" style="background:#131828;">Alimentação / Gastronomia</option>
-              <option value="Outro" style="background:#131828;">Outro</option>
+              <option value="" style="background:#0F1626;">Selecione sua atuação</option>
+              <option value="Advogado autônomo / solo" style="background:#0F1626;">Advogado autônomo / solo</option>
+              <option value="Escritório pequeno (até 5 advogados)" style="background:#0F1626;">Escritório pequeno (até 5 advogados)</option>
+              <option value="Escritório médio / grande" style="background:#0F1626;">Escritório médio / grande</option>
+              <option value="Departamento jurídico (empresa)" style="background:#0F1626;">Departamento jurídico (empresa)</option>
+              <option value="Contencioso" style="background:#0F1626;">Contencioso</option>
+              <option value="Consultivo / Contratos" style="background:#0F1626;">Consultivo / Contratos</option>
+              <option value="Trabalhista" style="background:#0F1626;">Trabalhista</option>
+              <option value="Tributário" style="background:#0F1626;">Tributário</option>
+              <option value="Cível / Família" style="background:#0F1626;">Cível / Família</option>
+              <option value="Outra área" style="background:#0F1626;">Outra área</option>
             </select>
           </div>
           <div style="grid-column:1/-1;">
@@ -1796,11 +1794,11 @@
         <!-- O que acontece -->
         <div style="background:linear-gradient(135deg,rgba(37,211,102,0.07),rgba(18,140,126,0.05));border:1px solid rgba(37,211,102,0.18);border-radius:20px;padding:32px;">
           <h3 style="font-size:18px;margin-bottom:10px;">O que acontece quando você entrar em contato</h3>
-          <p style="font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:20px;">Sem pitch agressivo. Sem proposta genérica. Um papo direto sobre o seu negócio.</p>
+          <p style="font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:20px;">Sem pitch agressivo. Sem proposta genérica. Um papo direto sobre o seu escritório.</p>
           <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
-            <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray);"><span style="color:#25D366;font-weight:700;">✓</span> Você explica sua operação atual</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray);"><span style="color:#25D366;font-weight:700;">✓</span> Você conta a rotina do escritório</li>
             <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray);"><span style="color:#25D366;font-weight:700;">✓</span> Identificamos onde está o maior gargalo</li>
-            <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray);"><span style="color:#25D366;font-weight:700;">✓</span> Mostramos o que IA pode resolver para você</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray);"><span style="color:#25D366;font-weight:700;">✓</span> Mostramos o que a IA resolve no seu jurídico</li>
             <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray);"><span style="color:#25D366;font-weight:700;">✓</span> Se fizer sentido, agendamos o diagnóstico completo</li>
             <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray);"><span style="color:#25D366;font-weight:700;">✓</span> Tudo sem compromisso e sem custo inicial</li>
           </ul>
@@ -1849,7 +1847,7 @@ function submitForm() {
     return;
   }
   errEl.style.display = 'none';
-  const msg = `Olá! Vim pelo site da P2A Tech e gostaria de saber mais.\n\n*Nome:* ${nome}\n*Empresa:* ${empresa}\n*Telefone:* ${telefone}\n*E-mail:* ${email}\n*Segmento:* ${segmento}\n\nAguardo o contato para o diagnóstico!`;
+  const msg = `Olá! Vim pelo site da P2A Tech e gostaria de saber mais.\n\n*Nome:* ${nome}\n*Escritório:* ${empresa}\n*Telefone:* ${telefone}\n*E-mail:* ${email}\n*Atuação:* ${segmento}\n\nAguardo o contato para o diagnóstico!`;
   const btn = document.getElementById('form-submit-btn');
   btn.textContent = '✅ Redirecionando para o WhatsApp…';
   btn.style.opacity = '0.8';
@@ -1892,7 +1890,7 @@ function submitModalForm() {
     return;
   }
   errEl.style.display = 'none';
-  const msg = `Olá! Vim pelo site da P2A Tech e gostaria de saber mais.\n\n*Nome:* ${nome}\n*Empresa:* ${empresa}\n*Telefone:* ${telefone}\n*E-mail:* ${email}\n*Segmento:* ${segmento}\n\nAguardo o contato para o diagnóstico!`;
+  const msg = `Olá! Vim pelo site da P2A Tech e gostaria de saber mais.\n\n*Nome:* ${nome}\n*Escritório:* ${empresa}\n*Telefone:* ${telefone}\n*E-mail:* ${email}\n*Atuação:* ${segmento}\n\nAguardo o contato para o diagnóstico!`;
   const btn = document.getElementById('modal-form-submit-btn');
   btn.textContent = '✅ Redirecionando para o WhatsApp…';
   btn.style.opacity = '0.8';
@@ -1916,8 +1914,8 @@ document.getElementById('contact-modal').addEventListener('click', function(e) {
 <footer>
   <div class="container">
     <div style="margin-bottom:16px;">
-      <span class="logo-p2a" style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:18px;"><span style="color:var(--cyan);">P2</span><span style="color:var(--magenta);">A</span></span>
-      <span style="font-family:'Orbitron',sans-serif;font-weight:400;font-size:11px;color:var(--gray);letter-spacing:0.15em;margin-left:4px;">TECH</span>
+      <span class="logo-p2a" style="font-family:'Fraunces',serif;font-weight:900;font-size:18px;"><span style="color:var(--cyan);">P2</span><span style="color:var(--magenta);">A</span></span>
+      <span style="font-family:'Fraunces',serif;font-weight:400;font-size:11px;color:var(--gray);letter-spacing:0.15em;margin-left:4px;">TECH</span>
     </div>
     <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
       <a href="https://www.instagram.com/p2a.tech/" target="_blank" aria-label="Instagram P2A Tech"
@@ -1927,7 +1925,7 @@ document.getElementById('contact-modal').addEventListener('click', function(e) {
       </a>
     </div>
     <p>© 2026 P2A Tech — Todos os direitos reservados</p>
-    <p class="footer-tagline">Inteligência aplicada. Resultados reais. Tecnologia que transforma negócios.</p>
+    <p class="footer-tagline">adv.tech · Inteligência artificial a serviço da advocacia.</p>
   </div>
 </footer>
 
@@ -1991,9 +1989,9 @@ document.getElementById('contact-modal').addEventListener('click', function(e) {
 
   // ── HEADLINE SWITCHER ──
   const headlines = [
-    'Transforme sua operação com IA e <span class="grad-text">pare de perder tempo, dinheiro e oportunidades</span> todos os dias',
-    'Implemente IA de verdade na sua empresa e ganhe <span class="grad-text">escala, eficiência e previsibilidade</span> — sem complicação',
-    'Sua empresa está pronta para escalar — o que falta é uma <span class="grad-text">operação inteligente</span>'
+    'Menos burocracia no escritório. <span class="grad-text">Mais tempo para advogar.</span>',
+    'A IA que peticiona, revisa e controla prazos — <span class="grad-text">do seu jeito.</span>',
+    'Seu acervo vira <span class="grad-text">a inteligência do escritório.</span>'
   ];
   function switchHeadline(idx) {
     document.getElementById('hero-headline').innerHTML = headlines[idx];
@@ -2026,7 +2024,7 @@ document.getElementById('contact-modal').addEventListener('click', function(e) {
 
   // ── ACCENT ──
   function updateAccent(val) {
-    const map = { cyan: '#00E0FF', magenta: '#FF4DFF', purple: '#6A5CFF' };
+    const map = { cyan: '#E2BB66', magenta: '#F0D69A', purple: '#C9972F' };
     document.documentElement.style.setProperty('--cyan', map[val]);
     window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accent: val } }, '*');
   }
