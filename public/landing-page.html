@@ -2446,5 +2446,50 @@ document.getElementById('contact-modal').addEventListener('click', function(e) {
     .btn-primary::after { display:none; }
   }
 </style>
+
+<!-- ===== AJUSTES MOBILE / RESPONSIVO ===== -->
+<style id="mobile-fix">
+  @media (max-width: 900px) {
+    html, body { overflow-x: hidden; max-width: 100%; }
+    /* navbar: mantém logo + CTA, esconde os links de texto */
+    nav { padding: 12px 14px; }
+    .nav-inner { padding: 9px 10px 9px 18px; }
+    .nav-links { display: flex !important; gap: 0; }
+    .nav-links .nav-link { display: none; }
+    /* hero: empilha e ACHATA o mockup (resolve o overflow horizontal) */
+    #hero { padding: 104px 0 60px; }
+    .hero-grid { gap: 8px; }
+    .hero-visual { height: auto; margin-top: 14px; }
+    .hero-mock { width: 100% !important; max-width: 100%; transform: none !important; box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 60px rgba(77,159,255,.18); }
+    .floating-badge { display: none !important; }
+    .hero-h1 { font-size: clamp(28px, 8.5vw, 40px); }
+    .hero-sub { font-size: 16px; }
+    .hero-ctas .btn-primary { width: 100%; justify-content: center; }
+  }
+  @media (max-width: 600px) {
+    .container { padding: 0 18px; }
+    .section-title { font-size: clamp(24px, 7.5vw, 32px); }
+    .hero-h1 { font-size: 30px; line-height: 1.18; }
+    .section-sub, .hero-sub { font-size: 15px; }
+    /* mockup compacto */
+    .hm-side { gap: 12px; font-size: 14px; }
+    .hm-row { gap: 8px; }
+    .hm-tile { padding: 9px; } .hm-tile .val { font-size: 18px; } .hm-tile .lab { font-size: 8px; }
+    .hm-chart { height: 70px; } .hm-item { font-size: 11px; }
+    /* grids de cards largos viram 1 coluna */
+    .stats-grid, .benefits-grid, .obj-grid, .pain-grid, .offer-wrapper { grid-template-columns: 1fr !important; }
+    /* depoimentos: card cabe na tela */
+    #testimonial-stack { width: 290px !important; height: 420px !important; }
+    .testi-card { width: 290px !important; height: 420px !important; padding: 24px !important; }
+    .guarantee-box { padding: 28px !important; gap: 20px; }
+    .ps-block { padding: 26px 20px; font-size: 15px; }
+    /* seções de feature (orbe) */
+    .light-card { padding: 30px 22px !important; }
+  }
+  @media (max-width: 380px) {
+    .hero-h1 { font-size: 27px; }
+    .hm-tile .val { font-size: 16px; }
+  }
+</style>
 </body>
 </html>
