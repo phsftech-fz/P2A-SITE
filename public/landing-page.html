@@ -9,18 +9,19 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --cyan: #4D9FFF;     /* azul eletrico — acento vivo */
-    --purple: #2E6BFF;   /* azul profundo */
-    --magenta: #8FD3FF;  /* ciano claro */
-    --bg: #050608;       /* preto */
-    --bg2: #0A0C12;
-    --bg3: #0F121A;
+    --cyan: #4D9FFF;     /* azul eletrico — acento vivo (logo) */
+    --purple: #8B7BFF;   /* violeta da logo */
+    --violet: #8B7BFF;   /* violeta da logo (alias) */
+    --magenta: #8FD3FF;  /* ciano claro — brilho */
+    --bg: #04060E;       /* preto navy (base da logo) */
+    --bg2: #080B14;
+    --bg3: #0D111C;
     --gray: #AEB7C9;
     --light: #F5F7FA;
-    --g1: linear-gradient(135deg, #4D9FFF, #2E6BFF);
-    --g2: linear-gradient(135deg, #2E6BFF, #4D9FFF);
-    --g3: linear-gradient(135deg, #8FD3FF, #2E6BFF);
-    --g-text: linear-gradient(90deg, #8FD3FF, #4D9FFF, #2E6BFF);
+    --g1: linear-gradient(135deg, #4D9FFF, #8B7BFF);
+    --g2: linear-gradient(135deg, #8B7BFF, #4D9FFF);
+    --g3: linear-gradient(135deg, #8FD3FF, #8B7BFF);
+    --g-text: linear-gradient(90deg, #8FD3FF, #4D9FFF, #8B7BFF);
   }
 
   html { scroll-behavior: smooth; }
@@ -55,10 +56,10 @@
     font-size: 15px; padding: 16px 32px; border-radius: 8px;
     border: none; cursor: pointer; text-decoration: none;
     transition: opacity .2s, transform .2s, box-shadow .2s;
-    box-shadow: 0 0 30px rgba(0,224,255,0.25);
+    box-shadow: 0 0 30px rgba(77,159,255,0.25);
     white-space: nowrap;
   }
-  .btn-primary:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,224,255,0.4); }
+  .btn-primary:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 0 50px rgba(77,159,255,0.4); }
 
   .btn-secondary {
     display: inline-flex; align-items: center; gap: 10px;
@@ -68,7 +69,7 @@
     border: 1.5px solid var(--cyan); cursor: pointer; text-decoration: none;
     transition: background .2s, box-shadow .2s, transform .2s;
   }
-  .btn-secondary:hover { background: rgba(0,224,255,0.08); transform: translateY(-2px); box-shadow: 0 0 20px rgba(0,224,255,0.15); }
+  .btn-secondary:hover { background: rgba(77,159,255,0.08); transform: translateY(-2px); box-shadow: 0 0 20px rgba(77,159,255,0.15); }
 
   .btn-big {
     font-size: 18px; padding: 20px 44px; border-radius: 10px;
@@ -118,7 +119,7 @@
   .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
   .hero-tag {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(0,224,255,0.08); border: 1px solid rgba(0,224,255,0.2);
+    background: rgba(77,159,255,0.08); border: 1px solid rgba(77,159,255,0.2);
     border-radius: 100px; padding: 6px 16px; font-size: 12px;
     font-weight: 600; color: var(--cyan); letter-spacing: 0.1em; text-transform: uppercase;
     margin-bottom: 24px;
@@ -138,7 +139,7 @@
     color: var(--gray); font-size: 11px; padding: 4px 12px; border-radius: 100px;
     cursor: pointer; transition: all .2s; font-family: 'Inter', sans-serif;
   }
-  .hv-btn.active { background: rgba(0,224,255,0.12); border-color: var(--cyan); color: var(--cyan); }
+  .hv-btn.active { background: rgba(77,159,255,0.12); border-color: var(--cyan); color: var(--cyan); }
 
   /* Hero visual */
   .hero-visual {
@@ -146,7 +147,7 @@
     height: 480px;
   }
   .hero-card-main {
-    background: linear-gradient(135deg, rgba(106,92,255,0.15), rgba(0,224,255,0.08));
+    background: linear-gradient(135deg, rgba(106,92,255,0.15), rgba(77,159,255,0.08));
     border: 1px solid rgba(106,92,255,0.3);
     border-radius: 20px; padding: 32px; width: 340px;
     box-shadow: 0 0 60px rgba(106,92,255,0.2);
@@ -182,7 +183,7 @@
   .hm-item { display:flex; align-items:center; gap:9px; padding:9px 0; border-top:1px solid rgba(255,255,255,0.05); font-size:12px; color:var(--fg-2); }
   .hm-item .pz { margin-left:auto; font-size:10px; font-weight:700; color:#0A0703; background:var(--cyan); padding:2px 9px; border-radius:100px; }
   .floating-badge {
-    position: absolute; background: var(--bg3); border: 1px solid rgba(0,224,255,0.2);
+    position: absolute; background: var(--bg3); border: 1px solid rgba(77,159,255,0.2);
     border-radius: 12px; padding: 12px 16px; font-size: 13px; font-weight: 600;
     display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     animation: float 4s ease-in-out infinite;
@@ -236,7 +237,7 @@
   .step:hover .step-num { background: var(--g1); color: #fff; }
   .step-num {
     width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
-    background: rgba(0,224,255,0.1); border: 1px solid rgba(0,224,255,0.25);
+    background: rgba(77,159,255,0.1); border: 1px solid rgba(77,159,255,0.25);
     display: flex; align-items: center; justify-content: center;
     font-family: 'Fraunces', serif; font-weight: 700; font-size: 14px; color: var(--cyan);
     transition: all .2s;
@@ -245,7 +246,7 @@
   .step p { font-size: 14px; color: var(--gray); }
 
   .solution-visual {
-    background: linear-gradient(135deg, rgba(0,224,255,0.06), rgba(106,92,255,0.1));
+    background: linear-gradient(135deg, rgba(77,159,255,0.06), rgba(106,92,255,0.1));
     border: 1px solid rgba(106,92,255,0.25); border-radius: 24px; padding: 40px;
   }
   .sol-vis-title { font-size: 13px; font-weight: 600; color: var(--gray); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 28px; }
@@ -254,13 +255,13 @@
     background: rgba(255,255,255,0.04); border-radius: 10px; margin-bottom: 8px;
     transition: background .2s;
   }
-  .flow-item:hover { background: rgba(0,224,255,0.07); }
+  .flow-item:hover { background: rgba(77,159,255,0.07); }
   .flow-dot {
     width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center;
     justify-content: center; font-size: 16px; flex-shrink: 0;
   }
   .flow-item span { font-size: 14px; font-weight: 500; }
-  .flow-arrow { text-align: center; color: rgba(0,224,255,0.4); font-size: 18px; margin: 4px 0; }
+  .flow-arrow { text-align: center; color: rgba(77,159,255,0.4); font-size: 18px; margin: 4px 0; }
 
   /* ─────────────────────────── BENEFITS ─────────────────────────── */
   #beneficios { padding: 100px 0; background: var(--bg2); }
@@ -273,8 +274,8 @@
   }
   .benefit-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(0,224,255,0.3);
-    box-shadow: 0 16px 40px rgba(0,224,255,0.08);
+    border-color: rgba(77,159,255,0.3);
+    box-shadow: 0 16px 40px rgba(77,159,255,0.08);
   }
   .benefit-icon { font-size: 32px; margin-bottom: 16px; display: block; }
   .benefit-card h4 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; margin-bottom: 8px; line-height: 1.3; }
@@ -286,7 +287,7 @@
     display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 56px;
   }
   .offer-box {
-    background: linear-gradient(135deg, rgba(106,92,255,0.1), rgba(0,224,255,0.05));
+    background: linear-gradient(135deg, rgba(106,92,255,0.1), rgba(77,159,255,0.05));
     border: 1px solid rgba(106,92,255,0.3); border-radius: 20px; padding: 36px;
   }
   .offer-box h3 { font-size: 20px; margin-bottom: 24px; }
@@ -294,7 +295,7 @@
   .offer-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; }
   .offer-list li::before {
     content: '✓'; color: var(--cyan); font-weight: 700; flex-shrink: 0;
-    width: 22px; height: 22px; background: rgba(0,224,255,0.12);
+    width: 22px; height: 22px; background: rgba(77,159,255,0.12);
     border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px;
     margin-top: 1px;
   }
@@ -321,7 +322,7 @@
     border-radius: 14px; padding: 24px; cursor: pointer;
     transition: border-color .25s, background .25s;
   }
-  .obj-card.open { border-color: rgba(0,224,255,0.3); background: rgba(0,224,255,0.04); }
+  .obj-card.open { border-color: rgba(77,159,255,0.3); background: rgba(77,159,255,0.04); }
   .obj-q {
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
   }
@@ -332,7 +333,7 @@
     font-size: 16px; transition: transform .25s, background .25s;
     color: var(--cyan);
   }
-  .obj-card.open .obj-toggle { transform: rotate(45deg); background: rgba(0,224,255,0.15); }
+  .obj-card.open .obj-toggle { transform: rotate(45deg); background: rgba(77,159,255,0.15); }
   .obj-a {
     max-height: 0; overflow: hidden; transition: max-height .3s ease, margin-top .3s;
     font-size: 14px; color: var(--gray); line-height: 1.7;
@@ -342,8 +343,8 @@
   /* ─────────────────────────── GUARANTEE ─────────────────────────── */
   #garantia { padding: 80px 0; }
   .guarantee-box {
-    background: linear-gradient(135deg, rgba(0,224,255,0.06), rgba(106,92,255,0.08));
-    border: 1px solid rgba(0,224,255,0.2); border-radius: 24px; padding: 56px;
+    background: linear-gradient(135deg, rgba(77,159,255,0.06), rgba(106,92,255,0.08));
+    border: 1px solid rgba(77,159,255,0.2); border-radius: 24px; padding: 56px;
     display: flex; align-items: center; gap: 48px;
   }
   .guarantee-icon { font-size: 72px; flex-shrink: 0; }
@@ -374,7 +375,7 @@
     background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
     border-radius: 12px; overflow: hidden; transition: border-color .2s;
   }
-  .faq-item.open { border-color: rgba(0,224,255,0.2); }
+  .faq-item.open { border-color: rgba(77,159,255,0.2); }
   .faq-q {
     padding: 20px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
     font-weight: 600; font-size: 15px; user-select: none;
@@ -415,7 +416,7 @@
   /* ─────────────────────────── TWEAKS PANEL ─────────────────────────── */
   #tweaks-panel {
     display: none; position: fixed; bottom: 24px; right: 24px; z-index: 200;
-    background: #1a1f2e; border: 1px solid rgba(0,224,255,0.2);
+    background: #1a1f2e; border: 1px solid rgba(77,159,255,0.2);
     border-radius: 16px; padding: 20px; width: 260px;
     box-shadow: 0 16px 48px rgba(0,0,0,0.5);
     font-size: 13px;
@@ -454,7 +455,7 @@
     border-radius: 20px; padding: 32px; overflow: hidden; position: relative;
     transition: border-color .3s, box-shadow .3s;
   }
-  .stat-card:hover { border-color: rgba(0,224,255,0.25); box-shadow: 0 0 40px rgba(0,224,255,0.06); }
+  .stat-card:hover { border-color: rgba(77,159,255,0.25); box-shadow: 0 0 40px rgba(77,159,255,0.06); }
   .stat-card-label {
     font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
     color: var(--cyan); margin-bottom: 20px;
@@ -466,10 +467,10 @@
   .bar-meta span:last-child { font-size: 13px; font-weight: 700; color: var(--light); }
   .bar-track { height: 8px; background: rgba(255,255,255,0.06); border-radius: 100px; overflow: hidden; }
   .bar-fill { height: 100%; border-radius: 100px; width: 0; transition: width 1.4s cubic-bezier(0.4,0,0.2,1); }
-  .bar-fill.c1 { background: linear-gradient(90deg,#4D9FFF,#2E6BFF); }
-  .bar-fill.c2 { background: linear-gradient(90deg,#2E6BFF,#8FD3FF); }
+  .bar-fill.c1 { background: linear-gradient(90deg,#4D9FFF,#8B7BFF); }
+  .bar-fill.c2 { background: linear-gradient(90deg,#8B7BFF,#8FD3FF); }
   .bar-fill.c3 { background: linear-gradient(90deg,#8FD3FF,#4D9FFF); }
-  .bar-fill.c4 { background: linear-gradient(90deg,#4D9FFF,#2E6BFF); }
+  .bar-fill.c4 { background: linear-gradient(90deg,#4D9FFF,#8B7BFF); }
   .counters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .counter-item { text-align: center; padding: 20px 12px; background: rgba(255,255,255,0.03); border-radius: 14px; }
   .counter-number {
@@ -488,7 +489,7 @@
   .compare-track { flex: 1; height: 10px; background: rgba(255,255,255,0.05); border-radius: 100px; overflow: hidden; }
   .compare-fill { height: 100%; border-radius: 100px; width: 0; transition: width 1.4s cubic-bezier(0.4,0,0.2,1); }
   .compare-fill.before-fill { background: rgba(160,167,179,0.35); }
-  .compare-fill.after-fill { background: linear-gradient(90deg,#4D9FFF,#2E6BFF); }
+  .compare-fill.after-fill { background: linear-gradient(90deg,#4D9FFF,#8B7BFF); }
   .compare-val { font-size: 12px; font-weight: 700; width: 36px; text-align: right; flex-shrink: 0; }
   .compare-val.before { color: var(--gray); }
   .compare-val.after { color: var(--cyan); }
@@ -498,7 +499,7 @@
     border-radius: 12px; padding: 16px; text-align: center;
     transition: background .2s, border-color .2s;
   }
-  .pillar:hover { background: rgba(0,224,255,0.06); border-color: rgba(0,224,255,0.2); }
+  .pillar:hover { background: rgba(77,159,255,0.06); border-color: rgba(77,159,255,0.2); }
   .pillar-icon { font-size: 20px; margin-bottom: 8px; display: block; }
   .pillar-val {
     font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700;
@@ -537,15 +538,15 @@
     width: 60px; height: 60px; border-radius: 50%;
     background: linear-gradient(135deg,#25D366,#128C7E);
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 24px rgba(0,224,255,0.4);
+    box-shadow: 0 4px 24px rgba(77,159,255,0.4);
     cursor: pointer; text-decoration: none;
     transition: transform .2s, box-shadow .2s;
     animation: wpp-pulse 3s ease-in-out infinite;
   }
-  #wpp-float:hover { transform: scale(1.1); box-shadow: 0 8px 40px rgba(0,224,255,0.6); animation: none; }
+  #wpp-float:hover { transform: scale(1.1); box-shadow: 0 8px 40px rgba(77,159,255,0.6); animation: none; }
   @keyframes wpp-pulse {
-    0%,100% { box-shadow: 0 4px 24px rgba(0,224,255,0.5), 0 0 0 0 rgba(0,224,255,0.3); }
-    50% { box-shadow: 0 4px 24px rgba(0,224,255,0.5), 0 0 0 14px rgba(0,224,255,0); }
+    0%,100% { box-shadow: 0 4px 24px rgba(77,159,255,0.5), 0 0 0 0 rgba(77,159,255,0.3); }
+    50% { box-shadow: 0 4px 24px rgba(77,159,255,0.5), 0 0 0 14px rgba(77,159,255,0); }
   }
   #wpp-float svg { width: 32px; height: 32px; fill: white; }
   .wpp-tooltip {
@@ -587,7 +588,7 @@
     width: min(760px, 100%);
     max-height: 90vh;
     overflow-y: auto;
-    background: linear-gradient(135deg, rgba(106,92,255,0.16), rgba(0,224,255,0.07));
+    background: linear-gradient(135deg, rgba(106,92,255,0.16), rgba(77,159,255,0.07));
     border: 1px solid rgba(106,92,255,0.35);
     border-radius: 24px;
     padding: 28px;
@@ -616,8 +617,8 @@
 <div id="intro-overlay" style="position:fixed;inset:0;z-index:9999;background:#070B16;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;">
   <canvas id="intro-canvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
   <div id="intro-ui" style="position:relative;z-index:2;text-align:center;pointer-events:none;">
-    <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.02em;font-size:clamp(40px,7vw,90px);line-height:1;margin-bottom:8px;">
-      <span style="color:#4D9FFF;">P2</span><span style="color:#8FD3FF;">A</span><span style="font-weight:400;font-size:0.45em;color:#A0A7B3;letter-spacing:0.2em;vertical-align:middle;margin-left:8px;">TECH</span>
+    <div style="margin-bottom:8px;display:flex;justify-content:center;">
+      <img src="/logo-mark.png" alt="P2A Tech" style="width:clamp(220px,42vw,460px);height:auto;filter:drop-shadow(0 8px 40px rgba(77,159,255,0.35));" />
     </div>
     <div id="intro-tagline" style="font-family:'Inter',sans-serif;font-size:clamp(13px,1.5vw,18px);color:#A0A7B3;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:60px;opacity:0;transition:opacity 1s ease 1.2s;">
       Inteligência artificial a serviço da advocacia.
@@ -626,7 +627,7 @@
       Clique ou pressione Enter para entrar
     </div>
   </div>
-  <div id="intro-progress" style="position:absolute;bottom:0;left:0;height:2px;background:linear-gradient(90deg,#8FD3FF,#4D9FFF,#2E6BFF);width:0%;transition:width 0.1s linear;"></div>
+  <div id="intro-progress" style="position:absolute;bottom:0;left:0;height:2px;background:linear-gradient(90deg,#8FD3FF,#4D9FFF,#8B7BFF);width:0%;transition:width 0.1s linear;"></div>
 </div>
 
 <style>
@@ -638,9 +639,9 @@
 (function() {
   // ── CONFIG ──
   const BG        = '#070B16';
-  const CYAN      = [226, 187, 102];
-  const PURPLE    = [201, 151, 47];
-  const MAGENTA   = [240, 214, 154];
+  const CYAN      = [77, 159, 255];
+  const PURPLE    = [139, 123, 255];
+  const MAGENTA   = [143, 211, 255];
 
   function lerpColor(a, b, t) {
     return [
@@ -913,8 +914,7 @@
 <nav>
   <div class="nav-inner">
     <a href="#" class="logo">
-      <span class="logo-p2a"><span class="p2">P2</span><span class="a">A</span></span>
-      <span class="logo-tech">TECH</span>
+      <img src="/logo-mark.png" alt="P2A Tech" style="height:38px;width:auto;display:block;" />
     </a>
     <div class="nav-links">
       <a href="#dor" class="nav-link">O Problema</a>
@@ -930,7 +930,7 @@
 <!-- HERO -->
 <section id="hero">
   <div class="glow-orb" style="width:600px;height:600px;background:rgba(106,92,255,0.15);top:-100px;right:-100px;"></div>
-  <div class="glow-orb" style="width:400px;height:400px;background:rgba(0,224,255,0.08);bottom:0;left:-50px;"></div>
+  <div class="glow-orb" style="width:400px;height:400px;background:rgba(77,159,255,0.08);bottom:0;left:-50px;"></div>
   <div class="container">
     <div class="hero-grid">
       <div class="hero-content">
@@ -1197,7 +1197,7 @@
 
 <!-- SOLUÇÃO -->
 <section id="solucao">
-  <div class="glow-orb" style="width:500px;height:500px;background:rgba(0,224,255,0.07);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+  <div class="glow-orb" style="width:500px;height:500px;background:rgba(77,159,255,0.07);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
   <div class="container">
     <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto;">
       <p class="section-label">A Solução</p>
@@ -1288,7 +1288,7 @@
   .eco-orb {
     position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
     width: 188px; height: 188px; border-radius: 50%; z-index: 3;
-    background: radial-gradient(circle at 38% 30%, #DCF1FF 0%, #4D9FFF 40%, #2E6BFF 72%, #0B2B6B 100%);
+    background: radial-gradient(circle at 38% 30%, #DCF1FF 0%, #4D9FFF 40%, #8B7BFF 72%, #0B2B6B 100%);
     box-shadow: 0 0 60px rgba(77,159,255,0.5), 0 0 130px rgba(77,159,255,0.28),
       inset 0 -12px 32px rgba(0,0,0,0.35), inset 0 10px 22px rgba(255,255,255,0.45);
     display: flex; align-items: center; justify-content: center;
@@ -1433,7 +1433,7 @@
   .lc-orb .ring2 { position:absolute; inset:-16px; border-radius:50%; border:1px dashed rgba(77,159,255,.40); animation: lc-spin 16s linear infinite; }
   .lc-orb .core {
     position:relative; width:150px; height:150px; border-radius:50%;
-    background: radial-gradient(circle at 38% 32%, #DCF1FF 0%, #4D9FFF 42%, #2E6BFF 70%, #123a8f 100%);
+    background: radial-gradient(circle at 38% 32%, #DCF1FF 0%, #4D9FFF 42%, #8B7BFF 70%, #123a8f 100%);
     box-shadow: 0 0 50px rgba(77,159,255,.55), inset 0 -10px 26px rgba(0,0,0,.3), inset 0 8px 18px rgba(255,255,255,.4);
     display:flex; align-items:center; justify-content:center; font-size:58px;
     animation: lc-bob 6s ease-in-out infinite;
@@ -1870,7 +1870,7 @@
 <!-- CTA FINAL -->
 <section id="cta-final">
   <div class="glow-orb" style="width:700px;height:700px;background:rgba(106,92,255,0.12);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
-  <div class="glow-orb" style="width:400px;height:400px;background:rgba(0,224,255,0.07);top:20%;left:10%;"></div>
+  <div class="glow-orb" style="width:400px;height:400px;background:rgba(77,159,255,0.07);top:20%;left:10%;"></div>
   <div class="container">
     <div class="cta-final-inner reveal">
       <h2>Seu escritório está pronto para crescer.<br><span class="grad-text">Falta tirar a burocracia do caminho.</span></h2>
@@ -1905,32 +1905,32 @@
         <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Nome *</label>
         <input id="mf-nome" type="text" placeholder="Seu nome completo"
           style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
-          onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          onfocus="this.style.borderColor='rgba(77,159,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;">
         <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Escritório *</label>
         <input id="mf-empresa" type="text" placeholder="Nome do escritório / banca"
           style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
-          onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          onfocus="this.style.borderColor='rgba(77,159,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;">
         <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Telefone *</label>
         <input id="mf-telefone" type="tel" placeholder="(00) 00000-0000"
           style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
-          onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"
+          onfocus="this.style.borderColor='rgba(77,159,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"
           oninput="maskPhone(this)">
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;">
         <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">E-mail *</label>
         <input id="mf-email" type="email" placeholder="seu@email.com.br"
           style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
-          onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          onfocus="this.style.borderColor='rgba(77,159,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
       </div>
       <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px;">
         <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Atuação *</label>
         <select id="mf-segmento"
           style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;cursor:pointer;appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A0A7B3' stroke-width='1.5' fill='none'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 16px center;"
-          onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          onfocus="this.style.borderColor='rgba(77,159,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
           <option value="" style="background:#0F1626;">Selecione sua atuação</option>
           <option value="Advogado autônomo / solo" style="background:#0F1626;">Advogado autônomo / solo</option>
           <option value="Escritório pequeno (até 5 advogados)" style="background:#0F1626;">Escritório pequeno (até 5 advogados)</option>
@@ -1947,7 +1947,7 @@
       <div style="grid-column:1/-1;">
         <div id="modal-form-error" style="display:none;background:rgba(255,77,77,0.1);border:1px solid rgba(255,77,77,0.3);border-radius:10px;padding:12px 16px;font-size:13px;color:#ff6b6b;margin-bottom:14px;"></div>
         <button onclick="submitModalForm()" id="modal-form-submit-btn"
-          style="width:100%;background:var(--g1);border:none;color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;padding:16px 24px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:opacity .2s,transform .2s,box-shadow .2s;box-shadow:0 0 32px rgba(0,224,255,0.2);"
+          style="width:100%;background:var(--g1);border:none;color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;padding:16px 24px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:opacity .2s,transform .2s,box-shadow .2s;box-shadow:0 0 32px rgba(77,159,255,0.2);"
           onmouseover="this.style.opacity='.9';this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
           <svg viewBox="0 0 32 32" width="22" height="22" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.823.736 5.476 2.02 7.782L0 32l8.469-2.001A15.94 15.94 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.28 13.28 0 01-6.782-1.853l-.486-.289-5.027 1.188 1.207-4.901-.317-.503A13.28 13.28 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.307-9.907c-.4-.2-2.367-1.167-2.733-1.3-.367-.133-.633-.2-.9.2-.267.4-1.033 1.3-1.267 1.567-.233.267-.467.3-.867.1-.4-.2-1.687-.622-3.213-1.98-1.187-1.058-1.988-2.365-2.22-2.765-.233-.4-.025-.616.175-.815.18-.18.4-.467.6-.7.2-.233.267-.4.4-.667.133-.267.067-.5-.033-.7-.1-.2-.9-2.167-1.233-2.967-.325-.78-.655-.674-.9-.686l-.767-.013c-.267 0-.7.1-1.067.5s-1.4 1.367-1.4 3.333 1.433 3.867 1.633 4.133c.2.267 2.82 4.307 6.833 6.04.955.413 1.7.66 2.282.844.959.305 1.832.262 2.522.159.769-.115 2.367-.968 2.7-1.903.333-.933.333-1.733.233-1.9-.1-.167-.367-.267-.767-.467z"/></svg> Enviar pelo WhatsApp
         </button>
@@ -1969,38 +1969,38 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
 
       <!-- FORMULÁRIO -->
-      <div style="background:linear-gradient(135deg,rgba(106,92,255,0.1),rgba(0,224,255,0.05));border:1px solid rgba(106,92,255,0.2);border-radius:24px;padding:40px;" class="reveal">
+      <div style="background:linear-gradient(135deg,rgba(106,92,255,0.1),rgba(77,159,255,0.05));border:1px solid rgba(106,92,255,0.2);border-radius:24px;padding:40px;" class="reveal">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;" id="contact-form">
           <div style="display:flex;flex-direction:column;gap:8px;">
             <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Nome *</label>
             <input id="f-nome" type="text" placeholder="Seu nome completo"
               style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
-              onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+              onfocus="this.style.borderColor='rgba(77,159,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
           </div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Escritório *</label>
             <input id="f-empresa" type="text" placeholder="Nome do escritório / banca"
               style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
-              onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+              onfocus="this.style.borderColor='rgba(77,159,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
           </div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Telefone *</label>
             <input id="f-telefone" type="tel" placeholder="(00) 00000-0000"
               style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
-              onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"
+              onfocus="this.style.borderColor='rgba(77,159,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"
               oninput="maskPhone(this)">
           </div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">E-mail *</label>
             <input id="f-email" type="email" placeholder="seu@email.com.br"
               style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;"
-              onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+              onfocus="this.style.borderColor='rgba(77,159,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
           </div>
           <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px;">
             <label style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;">Atuação *</label>
             <select id="f-segmento"
               style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 15px;color:var(--light);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s;cursor:pointer;appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A0A7B3' stroke-width='1.5' fill='none'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 16px center;"
-              onfocus="this.style.borderColor='rgba(0,224,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+              onfocus="this.style.borderColor='rgba(77,159,255,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
               <option value="" style="background:#0F1626;">Selecione sua atuação</option>
               <option value="Advogado autônomo / solo" style="background:#0F1626;">Advogado autônomo / solo</option>
               <option value="Escritório pequeno (até 5 advogados)" style="background:#0F1626;">Escritório pequeno (até 5 advogados)</option>
@@ -2017,7 +2017,7 @@
           <div style="grid-column:1/-1;">
             <div id="form-error" style="display:none;background:rgba(255,77,77,0.1);border:1px solid rgba(255,77,77,0.3);border-radius:10px;padding:12px 16px;font-size:13px;color:#ff6b6b;margin-bottom:14px;"></div>
             <button onclick="submitForm()" id="form-submit-btn"
-              style="width:100%;background:var(--g1);border:none;color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;padding:16px 24px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:opacity .2s,transform .2s,box-shadow .2s;box-shadow:0 0 32px rgba(0,224,255,0.2);"
+              style="width:100%;background:var(--g1);border:none;color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;padding:16px 24px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:opacity .2s,transform .2s,box-shadow .2s;box-shadow:0 0 32px rgba(77,159,255,0.2);"
               onmouseover="this.style.opacity='.9';this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
               <svg viewBox="0 0 32 32" width="22" height="22" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.823.736 5.476 2.02 7.782L0 32l8.469-2.001A15.94 15.94 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.28 13.28 0 01-6.782-1.853l-.486-.289-5.027 1.188 1.207-4.901-.317-.503A13.28 13.28 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.307-9.907c-.4-.2-2.367-1.167-2.733-1.3-.367-.133-.633-.2-.9.2-.267.4-1.033 1.3-1.267 1.567-.233.267-.467.3-.867.1-.4-.2-1.687-.622-3.213-1.98-1.187-1.058-1.988-2.365-2.22-2.765-.233-.4-.025-.616.175-.815.18-.18.4-.467.6-.7.2-.233.267-.4.4-.667.133-.267.067-.5-.033-.7-.1-.2-.9-2.167-1.233-2.967-.325-.78-.655-.674-.9-.686l-.767-.013c-.267 0-.7.1-1.067.5s-1.4 1.367-1.4 3.333 1.433 3.867 1.633 4.133c.2.267 2.82 4.307 6.833 6.04.955.413 1.7.66 2.282.844.959.305 1.832.262 2.522.159.769-.115 2.367-.968 2.7-1.903.333-.933.333-1.733.233-1.9-.1-.167-.367-.267-.767-.467z"/></svg> Enviar pelo WhatsApp
             </button>
@@ -2151,9 +2151,8 @@ document.getElementById('contact-modal').addEventListener('click', function(e) {
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <div style="margin-bottom:16px;">
-      <span class="logo-p2a" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.02em;font-size:18px;"><span style="color:var(--cyan);">P2</span><span style="color:var(--magenta);">A</span></span>
-      <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:11px;color:var(--gray);letter-spacing:0.15em;margin-left:4px;">TECH</span>
+    <div style="margin-bottom:16px;display:flex;justify-content:center;">
+      <img src="/logo-mark.png" alt="P2A Tech" style="height:44px;width:auto;opacity:0.95;" />
     </div>
     <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
       <a href="https://www.instagram.com/p2a.tech/" target="_blank" aria-label="Instagram P2A Tech"
@@ -2253,7 +2252,7 @@ document.getElementById('contact-modal').addEventListener('click', function(e) {
 
   // ── ACCENT ──
   function updateAccent(val) {
-    const map = { cyan: '#4D9FFF', magenta: '#8FD3FF', purple: '#2E6BFF' };
+    const map = { cyan: '#4D9FFF', magenta: '#8FD3FF', purple: '#8B7BFF' };
     document.documentElement.style.setProperty('--cyan', map[val]);
     window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accent: val } }, '*');
   }
