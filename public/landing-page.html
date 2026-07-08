@@ -1773,11 +1773,11 @@
 <script>
 (function() {
   const testimonials = [
-    { id:10, author:"Dra. Carla Farias", role:"Sócia, Farias Sociedade de Advogados", quote:"A primeira minuta sai no meu estilo em minutos. Deixei de redigir do zero e passei a revisar — recuperei horas faturáveis toda semana." },
-    { id:20, author:"Dr. Rafael Mendes", role:"Sócio, Mendes & Associados", quote:"O controle de prazos saiu da planilha e da memória. A IA captura e alerta com antecedência. Em meses, zero prazo perdido." },
-    { id:30, author:"Dra. Fernanda Costa", role:"Coordenadora Jurídica, Grupo Nexus", quote:"A revisão de contratos padrão deixou de travar a equipe. A IA aponta o que mudou e o risco; a gente foca no que importa." },
-    { id:40, author:"Dr. Marcos Oliveira", role:"Advogado autônomo", quote:"Achei que IA jurídica era coisa de banca grande. A P2A mostrou que até quem atua sozinho consegue produzir como um time." },
-    { id:50, author:"Dra. Ana Beatriz Lima", role:"Sócia-fundadora, Lima Advocacia", quote:"O diferencial é que a IA é treinada no NOSSO acervo, com sigilo total. E o advogado segue no controle de tudo. Confiança real." },
+    { photo:"/testimonials/carla.jpg", author:"Dra. Carla Farias", role:"Sócia, Farias Sociedade de Advogados", quote:"A primeira minuta sai no meu estilo em minutos. Deixei de redigir do zero e passei a revisar — recuperei horas faturáveis toda semana." },
+    { photo:"/testimonials/rafael.jpg", author:"Dr. Rafael Mendes", role:"Sócio, Mendes & Associados", quote:"O controle de prazos saiu da planilha e da memória. A IA captura e alerta com antecedência. Em meses, zero prazo perdido." },
+    { photo:"/testimonials/fernanda.jpg", author:"Dra. Fernanda Costa", role:"Coordenadora Jurídica, Grupo Nexus", quote:"A revisão de contratos padrão deixou de travar a equipe. A IA aponta o que mudou e o risco; a gente foca no que importa." },
+    { photo:"/testimonials/marcos.jpg", author:"Dr. Marcos Oliveira", role:"Advogado autônomo", quote:"Achei que IA jurídica era coisa de banca grande. A P2A mostrou que até quem atua sozinho consegue produzir como um time." },
+    { photo:"/testimonials/ana.jpg", author:"Dra. Ana Beatriz Lima", role:"Sócia-fundadora, Lima Advocacia", quote:"O diferencial é que a IA é treinada no NOSSO acervo, com sigilo total. E o advogado segue no controle de tudo. Confiança real." },
   ];
 
   let current = 0;
@@ -1806,7 +1806,7 @@
       card.style.transform = `translateX(${tx}) rotate(${rot}deg)`;
 
       card.innerHTML = `
-        <img src="https://i.pravatar.cc/128?img=${t.id}" alt="${t.author}" loading="lazy">
+        <img src="${t.photo}" alt="${t.author}" loading="lazy">
         <p class="quote">"${t.quote}"</p>
         <span class="name">${t.author}</span>
         <span class="role">${t.role}</span>
